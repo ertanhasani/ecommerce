@@ -1,0 +1,81 @@
+﻿@page
+@model eCommerce.Pages.Profile.IndexModel
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<div class="contenti">
+    <div class="container">
+        <h4>Profile &emsp;<a asp-page="/Profile/Edit" asp-route-userId="@Model.UserId"><i class="fa fa-pencil-square-o"></i></a></h4>
+        <hr />
+        <div class="row">
+            <div class="col-3">
+                <h6>First Name:</h6>
+                <label>@Model.Profile.FirstName</label>
+            </div>
+            <div class="col-3">
+                <h6>Last Name:</h6>
+                <label>@Model.Profile.LastName</label>
+            </div>
+            <div class="col-3">
+                <h6>Birthday:</h6>
+                <label>@Model.Profile.BirthDate.ToString("dd.MM.yyyy")</label>
+            </div>
+            <div class="col-3">
+                <h6>Email:</h6>
+                <label>@Model.Profile.Email</label>
+            </div>
+        </div>
+        <hr />
+        <h4>My orders</h4>
+        <hr />
+        <div class="row">
+            <table class="table table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Status</th>
+                        <th>Ordered Date</th>
+                        <th>Total Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Orders.Count == 0)
+                    {
+                        <tr class="noOrder">
+                            <td colspan="5" class="text-center">There is no order yet.</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var item in Model.Orders)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Status</td>
+                                <td>@item.OrderedDate</td>
+                                <td>€ @item.TotalPrice.ToString("0.00")</td>
+                                <td><a asp-page="/Cart/View" asp-route-id="@item.Id" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a></td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts{ 
+<script>
+    $(function () {
+        if ('@ViewData["Success"]' != null && '@ViewData["Success"]' != '') {
+            toastr.success('@ViewData["Success"]')
+        }
+        if ('@ViewData["Error"]' != null && '@ViewData["Error"]' != '') {
+            toastr.error('@ViewData["Error"]')
+        }
+    });
+</script>
+}

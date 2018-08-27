@@ -1,0 +1,164 @@
+﻿@page "{id:int?}"
+@model eCommerce.Pages.Products.IndexModel
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<link href="~/css/ProductList.css" rel="stylesheet" />
+
+<div class="album contenti">
+    <div class="container">
+        @if (!String.IsNullOrEmpty(Model.SearchQuery))
+        {
+            <div class="row">
+                <h4>Search results for: @Model.SearchQuery</h4>
+            </div>
+        }
+        @if (User.IsInRole("Admin"))
+        {
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <a href="/Products/Add" class="btn btn-primary">Add New</a>
+                </div>
+            </div>
+        }
+        <div id="products" class="row">
+
+        </div>
+        <div class="row text-center paginationRow">
+            <ul id="pagination" class="pagination-sm pagination"></ul>
+        </div>
+        <div class="row noProducts" style="display: none;">
+            <div class="col-md-12 text-center" style="height: 500px;">
+                <label>We are so sorry but there is no product yet.</label>
+                <label><a href="/Products/Index">Click here</a> to search through all products.</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/lib/twbs-pagination/jquery.twbsPagination.min.js"></script>
+    <script src="~/js/mustache.js"></script>
+
+    <script id="productTemplate" type="text/template">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="product-wrapper">
+                <div class="item">
+                    <a href="{{url}}">
+                        <img src="{{imagePath}}" alt="Thumbnail" style="width: 100%; display: block;" data-holder-render="true" />
+                    </a>
+                    <div class="description">
+                        <a href="{{url}}">{{title}}</a>
+                        <div class="price">
+                            <h4 class="currentPrice">€ {{price}}</h4>
+                        </div>
+                    </div>
+                    <div class="action text-center">
+                        <a href="{{url}}" class="btn">DETAILS</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="productOnSaleTemplate" type="text/template">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="product-wrapper">
+                <img class="sale" src="/images/sale.png" />
+                <div class="item">
+                    <a href="{{url}}">
+                        <img src="{{imagePath}}" alt="Thumbnail" style="width: 100%; display: block;" data-holder-render="true" />
+                    </a>
+                    <div class="description">
+                        <a href="{{url}}">{{title}}</a>
+                        <div class="price">
+                            <h4 class="currentPrice" style="float:left; margin-right: 10px;">€ {{salePrice}}</h4>
+                            <label class="oldPrice">€ {{price}}</label>
+                        </div>
+                    </div>
+                    <div class="action text-center">
+                        <a href="{{url}}" class="btn">DETAILS</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script>
+        $(function () {
+            getProducts(1);
+
+            var isInitialized = false;
+
+            function getProducts(page) {
+                $.ajax({
+                    type: 'GET',
+                    url: "/Products",
+                    dataType: "json",
+                    data: {
+                        pageNr: page,
+                        categoryId: '@Model.CategoryId',
+                        searchQuery: '@Model.SearchQuery',
+                        handler: 'Products'
+                    },
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("XSRF-TOKEN",
+                            $('input:hidden[name="__RequestVerificationToken"]').val());
+                    },
+                    success: function (datas) {
+
+                        if (!datas.products.length) {
+                            $('.noProducts').show();
+                            return false;
+                        }
+                        else {
+                            $('.noProducts').hide();
+                        }
+                        $("#products").html("");
+
+                        var html = "";
+
+                        if (!isInitialized) {
+                            $('#pagination').twbsPagination({
+                                totalPages: datas.totalPages,
+                                visiblePages: 3,
+                                onPageClick: function (event, pageNr) {
+                                    getProducts(pageNr);
+                                    $("html, body").animate({ scrollTop: 0 }, "slow");
+                                    return false;
+                                }
+                            });
+                            isInitialized = true;
+                        }
+
+                        $.each(datas.products, function (index, data) {
+                            if (data.isOnSale == true) {
+                                var template = $('#productOnSaleTemplate').html();
+                                var producti = Mustache.to_html(template, data);
+                                html += producti;
+                            }
+                            else {
+                                var template = $('#productTemplate').html();
+                                var producti = Mustache.to_html(template, data);
+                                html += producti;
+                            }
+                        });
+
+                        $("#products").html(html);
+                    }
+                });
+            }
+
+            if ('@ViewData["Success"]' != null && '@ViewData["Success"]' != '')
+            {
+                toastr.success('@ViewData["Success"]')
+            }
+            if ('@ViewData["Error"]' != null && '@ViewData["Error"]' != '')
+            {
+                toastr.error('@ViewData["Error"]')
+            }
+        });
+    </script>
+}

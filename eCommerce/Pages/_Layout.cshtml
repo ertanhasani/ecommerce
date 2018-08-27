@@ -1,0 +1,164 @@
+﻿@inject eCommerce.Repositories.ICategoryRepository _categoryRepository
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewData["Title"] - TechBuy</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+    <link href="~/lib/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <environment include="Development">
+        <link href="~/lib/bootstrap-4.0.0-beta.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+              integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              crossorigin="anonymous"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    <link href="~/lib/toastr/toastr.min.css" rel="stylesheet" />
+
+    <style>
+        .contenti {
+            margin-top: 20px;
+        }
+
+        .navSearch > input {
+            border-right: none;
+        }
+
+        .navSearch > span {
+            border-left: none;
+            background-color: white;
+        }
+
+        .cartBadge {
+            position: fixed;
+            font-size: 65%;
+        }
+
+        .validateInput {
+            border: 2px solid red !important;
+        }
+    </style>
+</head>
+<body>
+    <form id="searchForma" asp-controller="Products" asp-action="SearchProducts" method="post">
+        <input type="hidden" id="searchQuery" name="searchQuery" />
+    </form>
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+        <div class="container">
+            <a class="navbar-brand" asp-page="/Index">TechBuy</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" asp-page="/Index">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item" href="/Products">All</a>
+                            @foreach (var item in _categoryRepository.GetCategories())
+                            {
+                                <a class="dropdown-item" href="/Products/@item.Id">@item.Name</a>
+                            }
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="input-group navSearch">
+                            <input id="searchString" type="text" class="form-control" placeholder="Search products" style="min-width: 300px;" />
+                            <span class="input-group-addon"><a id="searchBtn" href="#"><i class="fa fa-search"></i></a></span>
+                        </div>
+                    </li>
+                </ul>
+                @await Html.PartialAsync("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        @RenderBody()
+        <hr />
+        <footer class="text-muted">
+            <div class="container">
+                <p class="text-center">&copy; @DateTime.Now.Year - TechBuy | Developed by: <a href="https://www.linkedin.com/in/ertanhasani" target="_blank">Ertan Hasani</a></p>
+            </div>
+        </footer>
+    </main>
+    <script src="~/js/jquery-3.2.1.min.js"></script>
+    <script src="~/lib/bootstrap-4.0.0-beta.2/assets/js/vendor/popper.min.js"></script>
+    <script src="~/lib/toastr/toastr.min.js"></script>
+    <environment include="Development">
+        <script src="~/js/jquery-3.2.1.min.js"></script>
+        <script src="~/lib/bootstrap-4.0.0-beta.2/dist/js/bootstrap.min.js"></script>
+        <script src="~/lib/bootstrap-4.0.0-beta.2/assets/js/vendor/popper.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+                asp-fallback-src="~/js/jquery-3.2.1.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+                integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+                crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap-4.0.0-beta.2/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+    <script>
+        $(function () {
+            $('#logoutBtn').on('click', function () {
+                $('#logoutForm').submit();
+            });
+
+            toastr.options = {
+                "positionClass": "toast-bottom-right",
+            }   
+
+            $('#searchForma').bind('keypress keydown keyup', function (e) {
+                if (e.keyCode == 13) { e.preventDefault(); }
+            });
+
+            $('#searchBtn').on('click', function () {
+                $('#searchQuery').val($('#searchString').val());
+                $('#searchForma').submit();
+            });
+        })
+    </script>
+    <script>
+        getCartCount();
+
+        function getCartCount() {
+            $.ajax({
+                type: 'GET',
+                url: "/Cart",
+                dataType: "json",
+                data: {
+                    handler: 'CartCount'
+                },
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("XSRF-TOKEN",
+                        $('input:hidden[name="__RequestVerificationToken"]').val());
+                },
+                success: function (data) {
+                    $('#cartCount').text(data);
+                }
+            });
+        }
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

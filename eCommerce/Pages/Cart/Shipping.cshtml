@@ -1,0 +1,119 @@
+﻿@page
+@model eCommerce.Pages.Cart.ShippingModel
+
+@{
+    ViewData["Title"] = "Shipping";
+}
+<style>
+    button {
+        cursor: pointer;
+    }
+</style>
+
+<div class="contenti">
+    <div class="container">
+        <form id="form" method="post">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Shipping Address</h4>
+                    <hr />
+                    <div class="form-group">
+                        <label>Full Name:</label>
+                        <input type="text" asp-for="FullName" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Address 1:</label>
+                        <input type="text" asp-for="Address1" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Address 2:</label>
+                        <input type="text" asp-for="Address2" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>City:</label>
+                        <input type="text" asp-for="City" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>State:</label>
+                        <input type="text" asp-for="State" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Zip Code:</label>
+                        <input type="text" asp-for="ZipCode" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Payment</h4>
+                    <hr />
+                    <div class="form-group">
+                        <label>Name on Card:</label>
+                        <input type="text" asp-for="NameOnCard" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Card Number:</label>
+                        <input type="text" asp-for="CardNumber" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Expire Date:</label>
+                        <input type="text" asp-for="ExpireDate" class="form-control" placeholder="ex: 12/20" />
+                    </div>
+                    <div class="form-group">
+                        <label>CVV:</label>
+                        <input type="text" asp-for="CVV" class="form-control" placeholder="123" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button id="submitBtn" type="button" class="btn btn-primary">CONFIRM</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+    $(function () {
+        if ('@ViewData["Success"]' != null && '@ViewData["Success"]' != '') {
+            toastr.success('@ViewData["Success"]')
+        }
+
+        $('#form').bind('keypress keydown keyup', function (e) {
+            if (e.keyCode == 13) { e.preventDefault(); }
+        });
+
+        $('#submitBtn').on('click', function () {
+            var hasErrors = false;
+
+            $('#form input').each(function (i, item) {
+                var value = $(this).val();
+                if (value == '' || value == null) {
+                    $(this).addClass('validateInput');
+                    hasErrors = true;
+                }
+                else {
+                    $(this).removeClass('validateInput');
+                }
+            });
+            if (hasErrors) {
+                return false;
+            }
+            else {
+                $('#form').submit();
+            }
+        });
+
+        $('input').on('input', function () {
+            var value = $(this).val();
+
+            if (value == null || value == '') {
+                $(this).addClass('validateInput')
+            }
+            else {
+                $(this).removeClass('validateInput');
+            }
+        });
+    });
+    </script>
+}

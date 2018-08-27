@@ -1,0 +1,90 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+.selector-for-some-widget {
+    box-sizing: content-box;
+}
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+/*
+.dropdown-menu > li > a {
+    font-weight: 300;
+}
+
+.navbar-default .navbar-nav > li > a {
+    font-weight: 400;
+}
+
+.navbar-default {
+    background-color: white;
+    border-color: #0d92b9;
+}
+
+    .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+        color: #0d92b9;
+        background-color: transparent;
+    }
+
+    .navbar-default .navbar-nav > li.active > a {
+        color: #0d92b9;
+        background-color: transparent;
+    }
+
+    .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+        color: #0d92b9 !important;
+        background-color: transparent !important;
+    }
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    color: white;
+    text-decoration: none;
+    background-color: #0d92b9;
+}
+
+ul.nav > li.dropdown > ul.dropdown-menu {
+    border-top: 0px;
+    border-color: #0d92b9;
+}
+
+.navbar-brand > img {
+    position: relative;
+    top: -8px;
+}
+
+    */
