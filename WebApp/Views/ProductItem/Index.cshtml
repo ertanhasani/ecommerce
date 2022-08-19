@@ -1,0 +1,367 @@
+﻿@model WebApp.ViewModels.ProductItemViewModel
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<link href="~/css/ProductList.css" rel="stylesheet"/>
+<link href="~/lib/jquery-confirm/dist/jquery-confirm.min.css" rel="stylesheet"/>
+<style>
+
+    h2 {
+        font-size: 24px;
+        font-weight: 300;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        color: #868e96 !important;
+    }
+
+    .del {
+        color: #868e96 !important;
+        float: right;
+        margin-left: 20px;
+        text-decoration: line-through;
+    }
+
+    .contenti {
+        color: #868e96 !important;
+    }
+
+    .navSearch > input {
+        border-right: none;
+        border-left: none;
+    }
+    
+</style>
+
+<div class="contenti">
+
+<div class="container">
+
+@if (User.IsInRole("Admin"))
+{
+    <form id="deleteForm" method="post" asp-action="Delete">
+
+        <input asp-for="Id" type="hidden"/>
+
+    </form>
+
+    <div class="col-md-12">
+
+        <div class="text-right">
+
+            <a asp-action="Add" asp-controller="Products" asp-route-id="@Model.Id" class="btn btn-warning" style="margin-right: 10px;">
+
+                <i class="fa fa-pencil-square-o"></i>
+
+            </a>
+
+            <a id="deleteBtn" href="#" class="btn btn-danger">
+
+                <i class="fa fa-trash"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+}
+
+<div class="row" style="min-height: 500px;">
+
+    <div class="col-md-6">
+
+        <div id="mainCarousel" class="carousel slide">
+
+            <div class="carousel-inner">
+
+                @for (int i = 0; i < Model.Uploads.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        <div class="carousel-item text-center active">
+
+                            <img id="image-@i" class="productUpload" src="@Url.Content(Model.Uploads[i].Path)" alt="@Model.Uploads[i].FileName"/>
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="carousel-item text-center">
+
+                            <img id="image-@i" class="productUpload" src="@Url.Content(Model.Uploads[i].Path)" alt="@Model.Uploads[i].FileName"/>
+
+                        </div>
+                    }
+                }
+
+            </div>
+
+            <a class="carousel-control-prev" href="#mainCarousel" role="button" data-slide="prev">
+
+                <span aria-hidden="true">
+
+                    <i style="color:black" class="fa fa-2x fa-angle-left"></i>
+
+                </span>
+
+                <span class="sr-only">قبلی</span>
+
+            </a>
+
+            <a class="carousel-control-next" href="#mainCarousel" role="button" data-slide="next">
+
+                <span aria-hidden="true">
+
+                    <i style="color:black" class="fa fa-2x fa-angle-right"></i>
+
+                </span>
+
+                <span class="sr-only">بعدی</span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6" style="padding-top: 30px; text-align: right">
+
+        <h2>@Model.Name</h2>
+
+        @if (Model.IsOnSale)
+        {
+            <h2 class="del">ریال @Model.Price</h2>
+
+            <h2>ریال @Model.SalePrice</h2>
+        }
+        else
+        {
+            <h2>ریال @Model.Price</h2>
+        }
+
+        <hr/>
+
+        @if (!Model.IsDigit)
+        {
+            <p> موجودی:@(Model.Stock == 0 ? "تمام شده" : Model.Stock.ToString())</p>
+        }
+        else
+        {
+            <p>به صورت فایل دیجیتال</p>
+        }
+
+        <hr/>
+
+        <form method="post" asp-action="Index">
+
+            <div class="input-group col-md-5" style="float: left;">
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                @if (!Model.IsDigit)
+                {
+                    <span class="input-group-addon">
+
+                        <a id="minQuantity" href="javascript:void(0)" class="btn">
+
+                            <i class="fa fa-minus"></i>
+
+                        </a>
+
+                    </span>
+
+                    <input asp-for="Quantity" type="text" value="1" min="1" max="@Model.Quantity" class="form-control col-xs-2 text-center" maxlength="3">
+
+                    <span class="input-group-addon">
+
+                        <a id="maxQuantity" href="javascript:void(0)" class="btn">
+
+                            <i class="fa fa-plus"></i>
+
+                        </a>
+
+                    </span>
+
+                    <input type="hidden" asp-for="Quantity"/>
+                }
+                else
+                {
+                    <input type="hidden" asp-for="Quantity" value="1"/>
+                }
+
+            </div>
+
+            <input type="hidden" asp-for="Id"/>
+
+            <input type="hidden" asp-for="Price"/>
+
+            <input type="hidden" asp-for="SalePrice"/>
+
+            @if (Model.Stock > 0)
+            {
+                <button type="submit" class="btn btn-primary btn-lg" style="cursor: pointer;">افزودن به سبد</button>
+            }
+            else
+            {
+                <button type="button" class="btn btn-primary btn-lg" disabled>افزودن به سبد</button>
+            }
+
+        </form>
+
+        <hr/>
+
+        <i class="fa fa-tags"></i><label>&ensp; @Model.Categories</label>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-12">
+
+        <h6 style="text-align: right">توضیحات:</h6>
+
+        <hr/>
+
+        <p style="text-align: right; float: right">@Html.Raw(Model.Description)</p>
+
+        <hr/>
+
+    </div>
+
+</div>
+
+<div class="row" style="justify-content: space-evenly;">
+
+    @foreach (var item in Model.Products)
+    {
+        <div class="product-wrapper">
+
+            <div class="item">
+
+                @if (item.IsOnSale)
+                {
+                    <img class="sale" src="/images/sale.png" alt="@item.Title"/>
+                }
+
+                <a href="@item.Url">
+
+                    <img src="@item.ImagePath" alt="Thumbnail" style="width: 100%; display: block;" data-holder-render="true"/>
+
+                </a>
+
+                <div class="product-description">
+
+                    <p class="Category">@item.ProdoctCategories</p>
+
+                    <a href="@item.Url">@item.Title</a>
+
+                    <div class="button-container">
+
+                        <div class="price">
+
+                            @if (item.IsOnSale)
+                            {
+                                <h4 class="currentPrice">ریال @item.SalePrice</h4>
+
+                                <label class="oldPrice">ریال @item.Price</label>
+                            }
+                            else
+                            {
+                                <h4 class="currentPrice">ریال @item.Price</h4>
+                            }
+
+                        </div>
+
+                        <div class="action text-center">
+
+                            <a href="@item.Url" class="btn">جزئیات</a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    }
+
+</div>
+
+</div>
+
+</div>
+
+@section scripts{
+
+    <script src="~/lib/jquery-confirm/dist/jquery-confirm.min.js"></script>
+
+    <script>
+    
+        $(function () {
+            
+            $('.productUpload').each(function () {
+                
+                var width = this.width;
+                var height = this.height;
+                
+                if (width > height && width > 500) {
+                    $(this).width('500');
+                }
+                else if (height > width && height > 500) {
+                    $(this).height('500');
+                }
+
+            });
+
+            $('#mainCarousel').carousel({
+                interval: false
+            });
+
+            $('#minQuantity').click(function () {
+                
+                var vlera = $('#Quantity').val();
+                if (vlera == 1) {
+                    return false;
+                }
+                $('#Quantity').val(parseInt(vlera) - 1)
+                
+            });
+            
+            $('#maxQuantity').click(function () {
+                
+                var vlera = $('#Quantity').val();
+                $('#Quantity').val(parseInt(vlera) + 1)
+                
+            });
+
+            $('#deleteBtn').on('click', function () {
+                
+                $.confirm({
+                    title: '<i class="fa fa-exclamation-triangle"></i> آیامطمئن هستید?',
+                    content: 'آیا مطمئن هستید که می خواهید این محصول را حذف کنید؟',
+                     buttons: {
+                                somethingElse: {
+                                    text: 'حذف',
+                                    btnClass: 'btn-danger',
+                                    keys: ['enter'],
+                                    action: function () {
+                                    $('#deleteForm').submit();
+                                    }
+                                },
+                                            
+                               cancel: { 
+                                   text: 'لغو',
+                                   action:function () {
+                               }}
+                     }
+                });
+            });
+        });
+        
+    </script>
+}

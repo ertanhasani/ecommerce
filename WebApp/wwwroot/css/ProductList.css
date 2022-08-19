@@ -1,0 +1,120 @@
+﻿.item {
+    border-radius: 25px;
+    margin-top: 20px;
+    height: 340px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    background: #eeeeee;
+}
+
+.product-wrapper:hover > .item .product-wrapper:active > .item{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+    .item > a > img {
+        padding: 15px;
+        border-radius: 25px;
+        width: 100%;
+        display: block;
+        height: 200px;
+    }
+    
+.product-description {
+    margin: 0 10px;
+    text-align: right;
+}
+
+.product-description  a {
+    font-size: 17px;
+    font-weight: 400;
+    color: #04aec0;
+}
+
+.product-description > a:hover, .product-description > a:active {
+    font-size: 17px;
+    font-weight: 400;
+    color: #ee3b73;
+}
+    
+.price{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.currentPrice{
+    margin: 0;
+}
+
+.price .oldPrice {
+    color: #ee3b73 !important;
+    font-size: 13px;
+    margin: 0 !important;
+}
+
+.currentPrice::after{
+    content: "ریال";
+    font-size: 10px;
+    position: relative;
+    top: -5px;
+    left: -5px;
+}
+
+.button-container{
+    display: flex;
+    margin-top: 15px;
+}
+
+.button-container .action {
+    margin: auto auto auto 10px;
+}
+
+.action {
+    cursor: pointer;
+    color: #efefef;
+    height: 35px;
+    margin-top: auto;
+}
+
+.action > a {
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    color: black;
+    font-size: 1.25rem;
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+}
+
+.action:hover, .action:active {
+    color: white;
+    background-color: #ee3b73 !important;
+}
+
+.action {
+    background-color: #04aec0 !important;
+    border-radius: 10px;
+}
+
+.action > h5 {
+    padding-top: 15px;
+}
+
+.sale {
+width: 150px;
+position: absolute;
+z-index: 2;
+}
+
+.paginationRow {
+margin: 30px 0;
+}
+
+.Category{
+    display: flex;
+    margin: 0;
+}

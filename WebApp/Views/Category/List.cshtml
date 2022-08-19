@@ -1,0 +1,160 @@
+﻿@using WebApp.Data
+@model dynamic
+
+@{
+    ViewData["Title"] = "دسته بندی ها";
+    var category = new Category();
+}
+
+<div class="col-md-12">
+
+    <h4 style="text-align: right">دسته بندی</h4>
+
+    <hr/>
+
+</div>
+
+<div class="col-md-12" style="display: flex;">
+
+    <div class=col-md-7>
+
+        <div id="jstree"></div>
+
+        @using (Html.BeginForm("Delete", "category", FormMethod.Post))
+        {
+            <input type="hidden" name="selectedItems" id="selectedItems"/>
+
+            <div class="form-group">
+
+                <button type="submit" class="btn btn-danger">حذف</button>
+
+            </div>
+        }
+
+    </div>
+
+    <div class="col-md-5">
+
+        <form method="post" asp-action="Create" id="form" enctype="multipart/form-data">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+
+                <label asp-for="@category.ParentId">دسته بندی پدر</label>
+
+                <select asp-for="@category.ParentId" asp-items="@((MultiSelectList) ViewData["Categories"])" class="form-control required" style="text-align: right;" multiple></select>
+
+                <span asp-validation-for="@category.ParentId" class="text-danger"></span>
+
+            </div>
+
+            <div class="form-group">
+
+                <label asp-for="@category.Name">نام</label>
+
+                <input asp-for="@category.Name" type="text" class="form-control required"/>
+
+                <span asp-validation-for="@category.Name" class="text-danger"></span>
+
+            </div>
+
+            <div class="form-group">
+
+                <button type="submit" class="btn btn-primary">ثبت</button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+@section Styles
+{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css"/>
+
+    <link href="~/lib/select2/css/select2.min.css" rel="stylesheet"/>
+
+    <style>
+    
+    #jstree ul li {
+    direction: ltr;
+    } 
+    
+</style>
+}
+
+@section Scripts{
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+
+    <script src="~/lib/select2/js/select2.js"></script>
+
+    <script type="text/javascript">
+        
+            $(function () {
+                
+                                    $('#category_ParentId').select2({
+                                        placeholder: 'دسته بندی را انتخاب کنید'
+                                    });
+                
+                $('#jstree').on('changed.jstree', function (e, data) {
+                    
+                    var i, j;
+                    
+                    var selectedItems = [];
+                    
+                    for(i = 0, j = data.selected.length; i < j; i++) {
+     
+                        //Fetch the Id.
+                        var id = data.selected[i];
+     
+                        //Remove the ParentId.
+                        if(id.indexOf('-') != -1){
+                            id = id;
+                        }
+     
+                        //Add the Node to the JSON Array.
+                        selectedItems.push({
+                            text: data.instance.get_node(data.selected[i]).text,
+                            id: id,
+                            parent: data.node.parents[0]
+                        });
+                    }
+     
+                    //Serialize the JSON Array and save in HiddenField.
+                    $('#selectedItems').val(JSON.stringify(selectedItems));
+                    
+                }).jstree({
+                    "core": {
+                        "themes": {
+                            "variant": "large"
+                        },
+                        "data": @Html.Raw(ViewBag.Json)
+                        },
+                    "checkbox": {
+                        "keep_selected_style": false
+                    },
+                    "plugins": ["wholerow", "checkbox"],
+                });
+                
+            });
+            
+              $('#category_ParentId').on('change', function () {
+                            
+                            if ($(this).val() == null || $(this).val() == '') {
+                                $('.select2-selection.select2-selection--multiple').addClass('validateInput');
+                            }
+                            else {
+                                $('.select2-selection.select2-selection--multiple').removeClass('validateInput');
+                            }
+                            
+                        });
+            
+        </script>
+}

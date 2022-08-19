@@ -1,0 +1,89 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model WebApp.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "ورود";
+}
+
+<div class="container contenti" style="text-align: right">
+
+    <div class="row justify-content-md-center">
+
+        <div class="col-md-4">
+
+            <section>
+
+                <form id="form" method="post">
+
+                    <input asp-for="@Model.ReturnUrl" class="form-control" type="hidden"/>
+
+                    <h4>ورود</h4>
+
+                    <hr/>
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+
+                        <label asp-for="@Model.Email"></label>
+
+                        <input asp-for="@Model.Email" class="form-control"/>
+
+                        <span asp-validation-for="@Model.Email" class="text-danger"></span>
+
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label asp-for="@Model.Password"></label>
+
+                        <input asp-for="@Model.Password" class="form-control"/>
+
+                        <span asp-validation-for="@Model.Password" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="checkbox">
+
+                            <label asp-for="@Model.RememberMe">
+
+                                <input asp-for="@Model.RememberMe"/>
+
+                                @Html.DisplayNameFor(m => m.RememberMe)
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <button id="loginBtn" type="submit" class="btn btn-default" style="background: #04adbf; color: white">ورود</button>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <p>
+                            <a asp-action="ForgotPassword" asp-controller="Account">بازنشانی رمز عبور</a>
+                        </p>
+
+                        <p>
+                            <a asp-action="Register" asp-route-returnUrl="@Model.ReturnUrl">ثبت نام پروفایل جدید</a>
+                        </p>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</div>

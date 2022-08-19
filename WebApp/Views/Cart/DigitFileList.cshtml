@@ -1,0 +1,112 @@
+﻿@model WebApp.ViewModels.CartViewModel
+
+@{
+    ViewData["Title"] = "لیست فایل ها";
+}
+<link href="~/lib/jquery-confirm/dist/jquery-confirm.min.css" rel="stylesheet"/>
+
+<style>
+
+    .refreshQuantity {
+        padding: 7px !important;
+        display: block;
+    }
+
+    .quantityGroup {
+        float: left;
+    }
+    
+</style>
+
+<div class="contenti">
+
+    <div class="container">
+
+        <div class="row">
+
+            @if (Model.Products.Count > 0)
+            {
+                <div class="col-md-12">
+
+                    <table class="table table-condensed table-hover">
+
+                        <thead>
+
+                        <tr>
+
+                            <th>تصویر</th>
+
+                            <th>نام</th>
+
+                            <th>لینک دانلود</th>
+
+                            <th></th>
+
+                        </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                        @foreach (var item in Model.Products)
+                        {
+                            <tr>
+
+                                <td>
+
+                                    <a target="_blank" href="@item.ImagePath">
+
+                                        <img height="50px" src="@item.ImagePath" alt=""/>
+
+                                    </a>
+
+                                </td>
+
+                                <td>@item.ProductName</td>
+
+                                <td>
+
+                                    <form method="post" asp-action="DownloadFile">
+
+                                        <input type="hidden" asp-for="Id" value="@item.Id"/>
+
+                                        <button type="submit" data-id="@item.Id" class="btn btn-danger deleteProduct">
+
+                                            <i class="fa fa-link"></i>
+
+                                        </button>
+
+                                    </form>
+
+
+                                </td>
+
+                            </tr>
+                        }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+            }
+            else
+            {
+                <div class="col-md-12 text-center" style="height: 500px;">
+
+                    <label>فایلی خریداری نشده است.</label>
+
+                    <label>
+
+                        <a asp-action="Index" asp-controller="Products">شروع خرید</a>
+
+                    </label>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,381 @@
+﻿@using WebApp.Data
+@model System.Collections.Generic.List<WebApp.ViewModels.CarouselViewModel>
+
+@{
+    ViewData["Title"] = "نمایش";
+
+    var uploadPost = new Upload();
+}
+
+<link href="~/lib/croppie/croppie.css" rel="stylesheet"/>
+<link href="~/lib/jquery-confirm/dist/jquery-confirm.min.css" rel="stylesheet"/>
+
+<div class="container body-content" style="margin-bottom:200px;">
+
+    <div class="col-md-12" style="margin-top: 50px;">
+
+        <div class="col-md-12 text-right">
+
+            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addNew" style="margin-bottom: 15px;">افزودن</a>
+
+        </div>
+
+        <div class="col-md-12">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover">
+
+                    <thead>
+
+                    <tr>
+
+                        <th>شماره</th>
+
+                        <th>تصویر</th>
+
+                        <th>نام تصویر</th>
+
+                        <th>عنوان</th>
+
+                        <th>توضیحات کوتاه</th>
+
+                        <th>نام صفحه</th>
+
+                        <th>نام بخش</th>
+
+                        <th>آدرس</th>
+
+                        <th>استایل</th>
+
+                        <th>ردیف نمایش</th>
+
+                        <th></th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+
+                                <p>@item.Id</p>
+
+                            </td>
+
+                            <td>
+
+                                <a href="@item.Path" target="_blank">
+
+                                    <img src="@item.Path" width="100px" alt=""/>
+
+                                </a>
+
+                            </td>
+
+                            <td>@item.Name</td>
+
+                            <td>@item.Title</td>
+
+                            <td>@item.ShortDescription</td>
+
+                            <td>@item.PageName</td>
+
+                            <td>@item.SectionName</td>
+
+                            <td>@item.Link</td>
+
+                            <td>@item.Style</td>
+
+                            <td>@item.Order</td>
+
+                            <td>
+
+                                <a asp-action="CarouselItem" asp-route-id="@item.Id" class="btn btn-primarysm btn-warning" data-id="@item.Id">
+
+                                    <i class="fa fa-info"></i>
+
+                                </a>
+
+                            </td>
+
+                            <td>
+
+                                <a href="#" class="btn btn-sm btn-danger deleteBtn" data-id="@item.Id">
+
+                                    <i class="fa fa-trash"></i>
+
+                                </a>
+
+                            </td>
+
+                        </tr>
+                    }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal fade bd-example-modal-lg" id="addNew" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-lg" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title" id="exampleModalLabel">اضافه کردن نمایش جدید</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin: -1rem -1rem -1rem 0;">
+
+                    <span aria-hidden="true">&times;</span>
+
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <form id="forma" method="post" asp-action="AddUpload">
+
+                    <input type="hidden" id="imageBytes" name="imageBytes"/>
+
+                    <div class="row">
+
+                        <div class="col-md-12" style="padding-top:30px;">
+
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <div class="form-group">
+
+                                <br/>
+
+                                <label for="upload">انتخاب فایل</label>
+
+                                <input type="file" style="width: 210px" id="upload" class="hidden">
+
+                            </div>
+
+                            <br/>
+
+                            <div class="form-group">
+
+                                <label asp-for="@uploadPost.Title"></label>
+
+                                <input asp-for="@uploadPost.Title" class="form-control" name="title"/>
+
+                                <span asp-validation-for="@uploadPost.Title" class="text-danger"></span>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label asp-for="@uploadPost.Description"></label>
+
+                                <input asp-for="@uploadPost.Description" class="form-control" name="description"/>
+
+                                <span asp-validation-for="@uploadPost.Description" class="text-danger"></span>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label asp-for="@uploadPost.ShortDescription"></label>
+
+                                <input asp-for="@uploadPost.ShortDescription" class="form-control" name="shortDescription"/>
+
+                                <span asp-validation-for="@uploadPost.ShortDescription" class="text-danger"></span>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label asp-for="@uploadPost.PageName"></label>
+
+                                <input asp-for="@uploadPost.PageName" class="form-control" name="pageName"/>
+
+                                <span asp-validation-for="@uploadPost.PageName" class="text-danger"></span>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label asp-for="@uploadPost.SectionName"></label>
+
+                                <input asp-for="@uploadPost.SectionName" class="form-control" name="sectionName"/>
+
+                                <span asp-validation-for="@uploadPost.SectionName" class="text-danger"></span>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label asp-for="@uploadPost.Link"></label>
+
+                                <input asp-for="@uploadPost.Link" class="form-control" name="link"/>
+
+                                <span asp-validation-for="@uploadPost.Link" class="text-danger"></span>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label asp-for="@uploadPost.Style"></label>
+
+                                <input asp-for="@uploadPost.Style" class="form-control" name="link"/>
+
+                                <span asp-validation-for="@uploadPost.Style" class="text-danger"></span>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label asp-for="@uploadPost.Order"></label>
+
+                                <input asp-for="@uploadPost.Order" class="form-control" name="order"/>
+
+                                <span asp-validation-for="@uploadPost.Order" class="text-danger"></span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-12 text-center">
+
+                            <div id="upload-canvas" style=" display:none;"></div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <a href="#" class="btn btn-secondary" data-dismiss="modal">لغو</a>
+
+                        <a href="#" id="saveBtn" class="btn btn-primary" type="submit">ذخیره</a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section scripts{
+
+    <script src="~/lib/croppie/croppie.min.js"></script>
+    <script src="~/lib/jquery-confirm/dist/jquery-confirm.min.js"></script>
+
+    <script type="text/javascript">
+    
+        $uploadCrop = $('#upload-canvas').croppie({
+                    enableExif: true,
+                    boundary: {
+                        width: 600,
+                        height: 300
+                    }
+                });
+
+                $('#upload').on('change', function () {
+                    
+                    const reader = new FileReader();
+                    
+                    reader.onload = function (e) {
+
+                        $("#upload-canvas").show();
+                        
+                        $uploadCrop.croppie('bind', {
+                            url: e.target.result
+                        }).then(function () {
+
+                        });
+}
+
+                    reader.readAsDataURL(this.files[0]);
+                });
+
+                $('#saveBtn').on('click', function () {
+                    
+                    $(this).html('<i class="fa fa-spinner fa-spin"></i>');
+                    
+                    $uploadCrop.croppie('result', {
+                        type: 'base64',
+                        
+                        quality: 1
+                    }).then(function (resp) {
+                        $('#imageBytes').val(resp);
+                        $('#forma').submit();
+                    });
+                    
+                });
+
+                $(".deleteBtn").on("click", function () {
+                    
+                    const id = $(this).data("id");
+                            const t = $("input[name='__RequestVerificationToken']").val();
+                    $.confirm({
+                        title: '<i class="fa fa-exclamation-triangle"></i>آیا اطمینان دارید',
+                        content: 'آبا از حذف اطمینان دارید ؟',
+                        buttons: {
+                            somethingElse: {    
+                                text: 'حذف',
+                                btnClass: 'btn-danger',
+                                keys: ['enter'],
+                                action: function () {
+                                    
+                                $.ajax({
+                                    type: 'Post',
+                                    url: "/Panel/DeleteImage",
+                                    dataType: "json",
+                                        headers:
+                                                                                {
+                                                                                    "RequestVerificationToken": t
+                                                                                },
+                                    data: {
+                                        uploadId: id,
+                                    },
+                                    success: function (data) {
+                                        if (data == false)
+                                        {
+                                            setTimeout(function () {
+                                                location.reload();
+                                            }, 2000);
+                                        }
+                                        else {
+                                            setTimeout(function () {
+                                                location.reload();
+                                            }, 2000)
+                                        }
+                                    }
+                                });
+                                }
+                            },
+                                       cancel: { 
+                                                      text: 'لغو',
+                                                      action:function () {
+                                                  }}
+                        }
+                    });
+                });
+
+    </script>
+}

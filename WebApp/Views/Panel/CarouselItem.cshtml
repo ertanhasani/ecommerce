@@ -1,0 +1,260 @@
+﻿@model WebApp.ViewModels.CarouselViewModel
+
+@{
+    ViewBag.Title = "ویرایش نمایش";
+    Layout = "_Layout";
+}
+
+<link href="~/lib/croppie/croppie.css" rel="stylesheet"/>
+<link href="~/lib/jquery-confirm/dist/jquery-confirm.min.css" rel="stylesheet"/>
+
+<div class="modal-dialog modal-lg" role="document">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h5 class="modal-title" id="exampleModalLabel"> ویرایش نمایش </h5>
+
+        </div>
+
+        <div class="modal-body">
+
+            <form id="forma" method="post" asp-action="UpdateUpload">
+
+                <input type="hidden" id="imageBytes" name="imageBytes"/>
+
+                <div class="row">
+
+                    <div class="col-md-12" style="padding-top:30px;">
+
+                        <input asp-for="@Model.Id" class="form-control" name="id" type="hidden" value="@Model.Id"/>
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group">
+
+                            <label asp-for="@Model.Title"></label>
+
+                            <input asp-for="@Model.Title" class="form-control" name="title"/>
+
+                            <span asp-validation-for="@Model.Title" class="text-danger"></span>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label asp-for="@Model.Description"></label>
+
+                            <input asp-for="@Model.Description" class="form-control" name="description"/>
+
+                            <span asp-validation-for="@Model.Description" class="text-danger"></span>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label asp-for="@Model.ShortDescription"></label>
+
+                            <input asp-for="@Model.ShortDescription" class="form-control" name="shortDescription"/>
+
+                            <span asp-validation-for="@Model.ShortDescription" class="text-danger"></span>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label asp-for="@Model.PageName"></label>
+
+                            <input asp-for="@Model.PageName" class="form-control" name="pageName"/>
+
+                            <span asp-validation-for="@Model.PageName" class="text-danger"></span>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label asp-for="@Model.SectionName"></label>
+
+                            <input asp-for="@Model.SectionName" class="form-control" name="sectionName"/>
+
+                            <span asp-validation-for="@Model.SectionName" class="text-danger"></span>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label asp-for="@Model.Link"></label>
+
+                            <input asp-for="@Model.Link" class="form-control" name="link"/>
+
+                            <span asp-validation-for="@Model.Link" class="text-danger"></span>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label asp-for="@Model.Style"></label>
+
+                            <input asp-for="@Model.Style" class="form-control" name="link"/>
+
+                            <span asp-validation-for="@Model.Style" class="text-danger"></span>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label asp-for="@Model.Order"></label>
+
+                            <input asp-for="@Model.Order" class="form-control" name="order"/>
+
+                            <span asp-validation-for="@Model.Order" class="text-danger"></span>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label >عکس فعلی</label>
+
+                            <img src="@Model.Path" style="width: -webkit-fill-available; width: available";/>
+
+                        </div>
+
+                        <br/>
+
+                        <div class="form-group">
+
+                            <br/>
+
+                            <label for="upload">انتخاب فایل</label>
+
+                            <input type="file" style="width: 210px" id="upload" class="hidden">
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 text-center">
+
+                        <div id="upload-canvas" style=" display:none;"></div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <a asp-action="Carousel" class="btn btn-secondary" data-dismiss="modal">لغو</a>
+
+                    <a href="#" id="saveBtn" class="btn btn-primary" type="submit">ذخیره</a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section scripts{
+
+    <script src="~/lib/croppie/croppie.min.js"></script>
+    <script src="~/lib/jquery-confirm/dist/jquery-confirm.min.js"></script>
+
+    <script type="text/javascript">
+    
+        $uploadCrop = $('#upload-canvas').croppie({
+                    enableExif: true,
+                    boundary: {
+                        width: 600,
+                        height: 300
+                    }
+                });
+
+                $('#upload').on('change', function () {
+                    
+                    const reader = new FileReader();
+                    
+                    reader.onload = function (e) {
+
+                        $("#upload-canvas").show();
+                        
+                        $uploadCrop.croppie('bind', {
+                            url: e.target.result
+                        }).then(function () {
+
+                        });
+}
+
+                    reader.readAsDataURL(this.files[0]);
+                });
+
+                $('#saveBtn').on('click', function () {
+                    
+                    $(this).html('<i class="fa fa-spinner fa-spin"></i>');
+                    
+                    $uploadCrop.croppie('result', {
+                        type: 'base64',
+                        quality: 1
+                    }).then(function (resp) {
+                        $('#imageBytes').val(resp);
+                        $('#forma').submit();
+                    });
+                    
+                });
+
+                $(".deleteBtn").on("click", function () {
+                    
+                    const id = $(this).data("id");
+                            const t = $("input[name='__RequestVerificationToken']").val();
+                    $.confirm({
+                        title: '<i class="fa fa-exclamation-triangle"></i>آیا اطمینان دارید',
+                        content: 'آبا از حذف اطمینان دارید ؟',
+                        buttons: {
+                            somethingElse: {    
+                                text: 'حذف',
+                                btnClass: 'btn-danger',
+                                keys: ['enter'],
+                                action: function () {
+                                    
+                                $.ajax({
+                                    type: 'Post',
+                                    url: "/Panel/DeleteImage",
+                                    dataType: "json",    
+                                    headers:
+                                                                                                 {
+                                                                                                     "RequestVerificationToken": t
+                                                                                                 },
+                                    data: {
+                                        uploadId: id,
+                                    },
+                                    success: function (data) {
+                                        if (data == false)
+                                        {
+                                            setTimeout(function () {
+                                                location.reload();
+                                            }, 2000);
+                                        }
+                                        else {
+                                            setTimeout(function () {
+                                                location.reload();
+                                            }, 2000)
+                                        }
+                                    }
+                                });
+                                }
+                            },
+                                       cancel: { 
+                                                      text: 'لغو',
+                                                      action:function () {
+                                                  }}
+                        }
+                    });
+                });
+
+    </script>
+}

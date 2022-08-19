@@ -1,0 +1,86 @@
+@using WebApp.Data
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+<li class="nav-item nav-admin" style="min-width: 60px;">
+
+    <a id="cartBtn" class="nav-link" asp-action="Index" asp-controller="Cart">
+        <i class="fa fa-shopping-cart fa-lg"></i><span id="cartCount" class="badge badge-primary cartBadge">0</span>
+    </a>
+
+</li>
+
+@if (User.IsInRole("Admin"))
+{
+    <li class="nav-item dropdown">
+
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">پنل</a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+
+            <a class="dropdown-item" asp-action="Users" asp-controller="Panel">کاربران</a>
+
+            <a class="dropdown-item" asp-action="Orders" asp-controller="Panel">سفارشات</a>
+
+            <a class="dropdown-item" asp-action="PriceList" asp-controller="ProductItem">لیست قیمت</a>
+
+            <a class="dropdown-item" asp-action="Statistics" asp-controller="Panel">گزارشات</a>
+
+            <a class="dropdown-item" asp-action="Carousel" asp-controller="Panel">نمایش</a>
+
+            <a class="dropdown-item" asp-action="List" asp-controller="Category">دسته بندی</a>
+
+        </div>
+
+    </li>
+}
+
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    var user = await UserManager.GetUserAsync(User);
+
+    <li class="nav-item dropdown">
+
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+            @user.FirstName @user.LastName
+
+            <i class="fa fa-user fa-lg"></i>
+
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+
+            <a class="dropdown-item" asp-action="Index" asp-controller="Profile" asp-route-userId="@UserManager.GetUserId(User)">پروفایل</a>
+
+            <a class="dropdown-item" asp-action="DigitFileList" asp-controller="Cart">محصولات الکترونیکی من</a>
+
+            <form asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
+
+                <a href="#" id="logoutBtn" class="dropdown-item">خروج</a>
+
+            </form>
+
+        </div>
+
+    </li>
+}
+else
+{
+    <li class="nav-item">
+
+        <a class="nav-link" asp-action="Register" asp-controller="Account">ثبت نام</a>
+
+    </li>
+
+    <li class="nav-item">
+
+        <a class="nav-link" asp-action="Login" asp-controller="Account">ورود</a>
+
+    </li>
+}

@@ -1,0 +1,140 @@
+﻿@using WebApp.Extensions
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model WebApp.ViewModels.ProfileViewModel
+
+@{
+    ViewBag.Title = "پروفایل";
+    Layout = "_Layout";
+}
+
+<div class="contenti" style="text-align: center; margin-top: 40px">
+
+    <div class="container">
+
+        <h4>
+            پروفایل &emsp;
+
+            <a asp-action="Edit" asp-controller="Profile" asp-route-Id="@Model.Id">
+
+                <i class="fa fa-pencil-square-o"></i>
+
+            </a>
+
+        </h4>
+
+        <hr/>
+
+        <div class="row">
+
+            <div class="col-3">
+
+                <h6>نام</h6>
+
+                <label>@Model.FirstName</label>
+
+            </div>
+
+            <div class="col-3">
+
+                <h6>نام خانوادگی</h6>
+
+                <label>@Model.LastName</label>
+
+            </div>
+
+            <div class="col-3">
+
+                <h6>تاریخ تولد</h6>
+
+                <label>@DateHelper.MiladiToShamsi(Model.BirthDate)</label>
+
+            </div>
+
+            <div class="col-3">
+
+                <h6>ایمیل</h6>
+
+                <label>@Model.Email</label>
+
+            </div>
+
+        </div>
+
+        <hr/>
+
+        <h4>سفارش ها</h4>
+
+        <hr/>
+
+        <div class="row">
+
+            <table class="table table-hover table-condensed">
+
+                <thead>
+
+                <tr>
+
+                    <th>کد</th>
+
+                    <th>وضعیت</th>
+
+                    <th>تاریخ سفارش</th>
+
+                    <th>مبلغ کل</th>
+
+                    <th></th>
+
+                </tr>
+
+                </thead>
+
+                <tbody>
+                @if (Model.Orders.Count == 0)
+                {
+                    <tr class="noOrder">
+
+                        <td colspan="5" class="text-center">سفارشی ثبت نشده است.</td>
+
+                    </tr>
+                }
+                else
+                {
+                    foreach (var item in Model.Orders)
+                    {
+                        <tr>
+
+                            <td>@item.Id</td>
+
+                            <td>@item.Status</td>
+
+                            <td>@item.ShamsiOrderedDate</td>
+
+                            <td> ریال @item.TotalPrice.ToString("0.00")</td>
+
+                            <td>
+
+                                <a asp-action="Detail" asp-controller="Cart" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
+
+                                    <i class="fa fa-eye"></i>
+
+                                </a>
+
+                            </td>
+
+                        </tr>
+                    }
+                }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section scripts{
+
+}

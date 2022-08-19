@@ -1,0 +1,22 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "خطا";
+}
+
+<h1 class="text-danger" style="text-align: center">خطا</h1>
+
+@if (Model.ShowRequestId)
+{
+    <p>
+        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+    </p>
+}
+
+@if (string.IsNullOrEmpty(Model.Message))
+{
+    <h2 class="text-danger" style="text-align: center">مشکلی در سامانه رخداد است لطفا با مدیر سامانه تماس بگیرید</h2>
+}
+
+<h2 class="text-danger" style="text-align: center">@Model.Message</h2>
+        
+        

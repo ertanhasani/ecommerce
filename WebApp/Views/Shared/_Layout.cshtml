@@ -1,0 +1,283 @@
+﻿@using WebApp.Repositories
+@inject ICategoryRepository CategoryRepository
+
+<!DOCTYPE html>
+
+<html lang="fa">
+
+<head>
+
+    <meta charset="utf-8"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>@ViewData["Title"] - شرکت</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+
+    <environment include="Development">
+
+        <link href="~/lib/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+        <link href="~/lib/bootstrap-4.4.1/css/bootstrap.min.css" rel="stylesheet"/>
+
+        <link rel="stylesheet" href="~/css/site.css"/>
+
+        <link rel="stylesheet" href="~/lib/Persian-DatePicker/persian-datepicker.min.css"/>
+
+    </environment>
+
+    <environment exclude="Development">
+
+        <link href="~/css/bundles/site.min.css" rel="stylesheet"/>
+
+    </environment>
+
+    @await RenderSectionAsync("Styles", required: false)
+
+</head>
+
+<body>
+
+<header>
+
+    <form id="searchForma" asp-controller="Products" asp-action="SearchProducts" method="post">
+
+        <input type="hidden" id="searchQuery" name="searchQuery"/>
+
+    </form>
+
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+
+        <div class="container">
+
+            <a class="navbar-brand" asp-action="Index" asp-controller="Home">شرکت</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+
+                <ul class="navbar-nav">
+
+                    <li class="nav-item active">
+
+                        <a class="nav-link" asp-action="Index" asp-controller="Home">خانه <span class="sr-only">(current)</span></a>
+
+                    </li>
+
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                            محصولات
+
+                            <div class="fa fa-angle-down"></div>
+
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+
+                            <a class="dropdown-item" asp-action="Index" asp-controller="Products">تمامی محصولات</a>
+
+                            @foreach (var item in CategoryRepository.GetCategories().Where(x => x.IsDeleted == false))
+                            {
+                                <a class="dropdown-item" href="/Products/Index?id=@item.Id">@item.Name</a>
+                            }
+
+                        </div>
+
+                    </li>
+
+                    @await Html.PartialAsync("_LoginPartial")
+
+                    <li class="nav-item">
+
+                        <div class="input-group navSearch">
+
+                            <input id="searchString" type="text" class="form-control" placeholder="جستجو"/>
+
+                            <span class="input-group-addon">
+
+                                <a id="searchBtn" href="#">
+
+                                    <i class="fa fa-search"></i>
+
+                                </a>
+
+                            </span>
+
+                        </div>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+</header>
+
+@RenderBody()
+
+<footer class="text-muted">
+
+    <hr/>
+
+    <div data-section="contact-us" class="contact-us-slider section">
+
+        <div class="row contact-us-row">
+
+            <h2 class="contact-us-title">تماس با ما</h2>
+
+            <div class="container contact-us-container">
+
+                <div class="contact-us">
+
+                    <div class="contact-us-circle">
+
+                        <span class="fa fa-share-alt"></span>
+
+                    </div>
+
+                    <a class="contact-us-item">
+                        اینستاگرام
+                    </a>
+
+                    <a class="contact-us-item">
+                        تلگرام
+                    </a>
+
+                    <a class="contact-us-item">
+                        واتس آپ
+                    </a>
+
+                </div>
+
+                <div class="contact-us">
+
+                    <div class="contact-us-circle">
+
+                        <span class="fa fa-map-marker"></span>
+
+                    </div>
+
+                    <p class="contact-us-address">
+                        آدرس : <br>
+کرج
+                    </p>
+
+                </div>
+
+                <div class="contact-us">
+
+                    <div class="contact-us-circle">
+
+                        <span class="fa fa-phone"></span>
+
+                    </div>
+
+                    <a class="contact-us-item">
+                        1111111111
+                    </a>
+
+                    <a class="contact-us-item">
+                        1111111111111
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="container">
+
+        <p class="text-center">&copy; Developed by: <a href="https://www.linkedin.com/in/mohammadreza-master-82a311206/" target="_blank">Mrbanad</a></p>
+
+    </div>
+
+</footer>
+
+<environment include="Development">
+
+    <script src="~/lib/jquery/dist/jquery-3.6.0.min.js"></script>
+    <script src="~/lib/bootstrap-4.4.1/js/bootstrap.bundle.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/Persian-DatePicker/persian-date.min.js"></script>
+    <script src="~/lib/Persian-DatePicker/persian-datepicker.min.js"></script>
+
+</environment>
+
+<environment exclude="Development">
+
+    <script src="~/js/bundles/site.min.js"></script>
+
+</environment>
+
+<script>
+    
+        $(function () {
+            
+            $('#logoutBtn').on('click', function () {
+                $('#logoutForm').submit();
+            });
+
+            $('#searchForma').bind('keypress keydown keyup', function (e) {
+                if (e.keyCode === 13) { e.preventDefault(); }
+            });
+
+            $('#searchBtn').on('click', function () {
+                $('#searchQuery').val($('#searchString').val());
+                $('#searchForma').submit();
+            });
+            
+        })
+        
+    </script>
+
+<script>
+    
+        function getCartCount() {
+            
+                        const t = $("input[name='__RequestVerificationToken']").val();
+            
+            $.ajax({
+            
+                type: 'GET',
+                url: "/Cart/CartCount",
+                dataType: "json",
+                    headers:
+                                                            {
+                                                                "RequestVerificationToken": t
+                                                            },
+                data: {
+                },
+                success: function (data) {
+                    $('#cartCount').text(data);
+                },
+                failure:function (data) {
+                    
+                }
+            });
+        }
+        
+                getCartCount();
+        
+    </script>
+
+@await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>

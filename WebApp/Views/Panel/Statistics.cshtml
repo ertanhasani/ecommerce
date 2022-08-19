@@ -1,0 +1,288 @@
+﻿@model WebApp.ViewModels.StatisticsViewModel
+
+@{
+    ViewData["Title"] = "گزارشات";
+}
+
+<div class="contenti">
+
+<div class="row">
+
+<div class="col-md-6">
+
+    <h6 style="text-align: right">ده کاربر برتر</h6>
+
+    <table class="table table-condensed table-hover">
+
+        <thead>
+
+        <tr>
+
+            <th>شماره</th>
+
+            <th>نام و نام خانوادگی</th>
+
+            <th>ایمیل</th>
+
+            <th>سفارشات</th>
+
+            <th></th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        @if (Model.Users.Count == 0)
+        {
+            <tr>
+                <td colspan="5" class="text-center">کاربری موجود نیست.</td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in Model.Users)
+            {
+                <tr>
+                    <td>@item.Id</td>
+
+                    <td>@item.FullName</td>
+
+                    <td>@item.Email</td>
+
+                    <td>@item.Orders</td>
+
+                    <td>
+
+                        <a asp-action="Index" asp-controller="Profile" asp-route-userId="@item.Id" class="btn btn-primary">
+                            <i class="fa fa-eye"></i>
+                        </a>
+
+                    </td>
+
+                </tr>
+            }
+        }
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<div class="col-md-6">
+
+    <h6 style="text-align: right">ده محصول برتر</h6>
+
+    <table class="table table-condensed table-hover">
+
+        <thead>
+
+        <tr>
+
+            <th>شماره</th>
+
+            <th>نام</th>
+
+            <th>تعداد</th>
+
+            <th>قیمت</th>
+
+            <th>فروخته شده</th>
+
+            <th></th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        @if (Model.Products.Count == 0)
+        {
+            <tr>
+
+                <td colspan="6" class="text-center">محصولی موجود نیست.</td>
+
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in Model.Products)
+            {
+                <tr>
+
+                    <td>@item.Id</td>
+
+                    <td>@item.ProductName</td>
+
+                    <td>@item.Quantity</td>
+
+                    <td> ریال @item.Price</td>
+
+                    <td>@item.Sold</td>
+
+                    <td>
+
+                        <a asp-action="Index" asp-controller="ProductItem" asp-route-id="@item.Id" class="btn btn-primary">
+
+                            <i class="fa fa-eye"></i>
+
+                        </a>
+
+                    </td>
+
+                </tr>
+            }
+        }
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<div class="col-md-6">
+
+    <h6 style="text-align: right">ده سبد خرید برتر (قیمت)</h6>
+
+    <table class="table table-condensed table-hover">
+
+        <thead>
+
+        <tr>
+
+            <th>شماره</th>
+
+            <th>تاریخ سفارش</th>
+
+            <th>کاربر</th>
+
+            <th>وضعیت</th>
+
+            <th>جمع کل</th>
+
+            <th></th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        @if (Model.CostOrders.Count == 0)
+        {
+            <tr>
+                <td colspan="6" class="text-center">محصولی موجود نیست.</td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in Model.CostOrders)
+            {
+                <tr>
+
+                    <td>@item.Id</td>
+
+                    <td>@item.ShamsiOrderedDate</td>
+
+                    <td>
+                        <a asp-action="Index" asp-controller="Profile" asp-route-userId="@item.UserId">@item.UsersFullName</a>
+                    </td>
+
+                    <td>@item.Status</td>
+
+                    <td> ریال @item.TotalPrice.ToString("0.00")</td>
+
+                    <td>
+
+                        <a asp-action="Detail" asp-controller="Cart" asp-route-id="@item.Id" class="btn btn-primary">
+                            <i class="fa fa-eye"></i>
+                        </a>
+
+                    </td>
+
+                </tr>
+            }
+        }
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<div class="col-md-6">
+
+    <h6 style="text-align: right">ده سبد خرید برتر (محصول)</h6>
+
+    <table class="table table-condensed table-hover">
+
+        <thead>
+
+        <tr>
+
+            <th>شماره</th>
+
+            <th>تاریخ سفارش</th>
+
+            <th>کاربر</th>
+
+            <th>وضعیت</th>
+
+            <th>جمع کل</th>
+
+            <th></th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        @if (Model.ProductOrders.Count == 0)
+        {
+            <tr>
+                <td colspan="6" class="text-center">محصولی موجود نیست.</td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in Model.ProductOrders)
+            {
+                <tr>
+
+                    <td>@item.Id</td>
+
+                    <td>@item.ShamsiOrderedDate</td>
+
+                    <td>
+                        <a asp-action="Index" asp-controller="Profile" asp-route-userId="@item.UserId">@item.UsersFullName</a>
+                    </td>
+
+                    <td>@item.Status</td>
+
+                    <td> ریال @item.TotalPrice.ToString("0.00")</td>
+
+                    <td>
+
+                        <a asp-action="Detail" asp-controller="Cart" asp-route-id="@item.Id" class="btn btn-primary">
+                            <i class="fa fa-eye"></i>
+                        </a>
+
+                    </td>
+
+                </tr>
+            }
+        }
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</div>
+
+</div>
