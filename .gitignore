@@ -4,3 +4,5 @@ bin/
 obj/
 /WebApp/bin/
 /WebApp/obj/
+/WebApp/appsettings.json
+.idea/
