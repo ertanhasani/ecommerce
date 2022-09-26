@@ -30,7 +30,8 @@
     <environment exclude="Development">
 
         <link href="~/css/bundles/site.min.css" rel="stylesheet"/>
-
+        
+        
     </environment>
 
     @await RenderSectionAsync("Styles", required: false)
@@ -47,7 +48,7 @@
 
     </form>
 
-    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+    <nav class="navbar navbar-expand-md navbar-light fixed-top login-navbar">
 
         <div class="container">
 
@@ -91,6 +92,30 @@
                         </div>
 
                     </li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item dropdown">
+                    
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">پنل</a>
+                    
+                            <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    
+                                <a class="dropdown-item" asp-action="Users" asp-controller="Panel">کاربران</a>
+                    
+                                <a class="dropdown-item" asp-action="Orders" asp-controller="Panel">سفارشات</a>
+                    
+                                <a class="dropdown-item" asp-action="PriceList" asp-controller="ProductItem">لیست قیمت</a>
+                    
+                                <a class="dropdown-item" asp-action="Statistics" asp-controller="Panel">گزارشات</a>
+                    
+                                <a class="dropdown-item" asp-action="Carousel" asp-controller="Panel">نمایش</a>
+                    
+                                <a class="dropdown-item" asp-action="List" asp-controller="Category">دسته بندی</a>
+                    
+                            </div>
+                    
+                        </li>
+                    }
 
                     @await Html.PartialAsync("_LoginPartial")
 
@@ -126,77 +151,68 @@
 
 @RenderBody()
 
-<footer class="text-muted">
-
-    <hr/>
-
-    <div data-section="contact-us" class="contact-us-slider section">
-
-        <div class="row contact-us-row">
-
-            <h2 class="contact-us-title">تماس با ما</h2>
-
-            <div class="container contact-us-container">
-
-                <div class="contact-us">
-
-                    <div class="contact-us-circle">
-
-                        <span class="fa fa-share-alt"></span>
-
-                    </div>
-
-                    <a class="contact-us-item">
-                        اینستاگرام
-                    </a>
-
-                    <a class="contact-us-item">
-                        تلگرام
-                    </a>
-
-                    <a class="contact-us-item">
-                        واتس آپ
-                    </a>
-
-                </div>
-
-                <div class="contact-us">
-
-                    <div class="contact-us-circle">
-
-                        <span class="fa fa-map-marker"></span>
-
-                    </div>
-
-                    <p class="contact-us-address">
-                        آدرس : <br>
-کرج
-                    </p>
-
-                </div>
-
-                <div class="contact-us">
-
-                    <div class="contact-us-circle">
-
-                        <span class="fa fa-phone"></span>
-
-                    </div>
-
-                    <a class="contact-us-item">
-                        1111111111
-                    </a>
-
-                    <a class="contact-us-item">
-                        1111111111111
-                    </a>
-
-                </div>
-
+<footer class="footer-layout d-flex flex-column align-items-center">
+    
+    <div class="d-flex justify-content-center p-4 w-100">
+        
+        <div class="col-3 d-flex flex-column align-items-right">
+            <h5 class="text-right"> محصولات</h5>
+            <div class="d-flex flex-column align-items-baseline mr-4">
+                            <a><p>تمامی محصولات</p></a>
             </div>
+
+            
+        </div>
+
+        <div class="col-3 d-flex flex-column align-items-right">
+            <h5  class="text-right">پنل مدیریت</h5>
+            <div class="d-flex flex-column align-items-baseline mr-4">
+                           <a><p>کاربران</p></a>
+                            <a><p>سفارشات</p></a>
+                            <a><p>لیست قیمت</p></a>
+                            <a><p>گزارشات</p></a>
+                            <a><p>نمایش</p></a>
+                            <a><p>دسته بندی</p></a>
+            </div>
+ 
+            
+        </div>
+
+        <div class="col-3 d-flex flex-column align-items-right">
+            <h5  class="text-right">با ما در تماس باشید</h5>
+            <div class="d-flex flex-column align-items-baseline">
+                            <div class="d-flex align-items-center pb-3 mr-4">
+                                <img class="pl-1" src="/images/icon/addres.png"/>
+                                استان البرز _ جهانشهر
+                            </div>
+                            
+                            <div class="d-flex align-items-center pb-3 mr-4">
+                                <img class="pl-1" src="/images/icon/phone-outline.png"/>
+                                09129410523
+                            </div>
+            </div>
+
 
         </div>
 
+    </div>
+    
+    <div class="media-box d-flex justify-content-center align-items-center">
+        <div>
+            <a><img src="/images/icon/instafill.png"/></a>
+        </div>
+        <div class="tab-divider"></div>
+        <div>
+            <a><img src="/images/icon/telefill.png"/></a>
+        </div>
+                <div class="tab-divider"></div>
+        <div>
+            <a><img src="/images/icon/whastappfill.png"/></a>
+        </div>
+                <div class="tab-divider"></div>
+        <div>
+                        <a><img src="/images/icon/linkfill.png"/></a>
+        </div>
     </div>
 
     <div class="container">
