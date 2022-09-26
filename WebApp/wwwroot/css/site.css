@@ -80,8 +80,10 @@ td{
 
 }
 
-.dropdown-item{
-    color: #04adbf !important;
+.dropdown-menu{
+    right: 0;
+    background: #F1F1F1;
+    color: #0F3D3E;
 }
 
 .input-group-addon {
@@ -317,12 +319,15 @@ color: #F1F1F1;
 .media-box{
     background: #E2DCC8;
     height: 40px;
-    width: 22%;
     border-radius: 1rem;
+    padding: 0 2rem;
 }
+
 .tab-divider{
     width: 1px;
     margin: 0 1.5rem;
     background: #0F3D3E;
     height: 50%;
 }
+
+

@@ -3,21 +3,24 @@
 @{
     ViewData["Title"] = "سفارشات";
 }
-<div class="contenti">
+<div class="contenti container">
 
-    <div class="col-md-12">
+    <div class="col-md-12 orders-section p-3">
+        
+        <div class="d-flex justify-content-between align-items-center orders-title">
+            
+            <h4>سفارشات</h4>
 
-        <h4 style="text-align: right">سفارشات</h4>
+            <div class="form-group">
 
-        <hr/>
+                <input style="width: 250px !important;" id="search" type="text" class="form-control" placeholder="جستجو..."/>
 
-        <div class="form-group">
-
-            <input style="width: 250px !important;" id="search" type="text" class="form-control" placeholder="جستجو..."/>
-
+            </div>
+            
         </div>
 
-        <table id="ordersTable" class="table table-striped table-condensed">
+
+        <table id="ordersTable" class="table orders-table">
 
             <thead>
 
@@ -45,7 +48,7 @@
 
         </table>
 
-        <div class="text-center paginationRow">
+        <div class="text-center paginationRow order-pagination">
 
             <ul id="pagination" class="pagination-sm pagination"></ul>
 
@@ -154,6 +157,22 @@
     </div>
 
 </div>
+@section Styles
+{
+        <environment include="Development">
+    
+            <link href="~/css/Order.css" rel="stylesheet"/>
+    
+        </environment>
+    
+        <environment exclude="Development">
+    
+            <link href="~/css/bundles/Order.min.css" rel="stylesheet"/>
+            
+            
+        </environment>
+
+}
 
 @section scripts{
 

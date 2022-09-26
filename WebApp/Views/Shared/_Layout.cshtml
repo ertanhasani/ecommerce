@@ -98,7 +98,7 @@
                     
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">پنل</a>
                     
-                            <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <div class="dropdown-menu text-right" aria-labelledby="dropdown01">
                     
                                 <a class="dropdown-item" asp-action="Users" asp-controller="Panel">کاربران</a>
                     
@@ -153,32 +153,46 @@
 
 <footer class="footer-layout d-flex flex-column align-items-center">
     
-    <div class="d-flex justify-content-center p-4 w-100">
+    <div class="d-flex justify-content-center pr-5 pl-5 pt-5 w-100">
         
-        <div class="col-3 d-flex flex-column align-items-right">
+        <div class="col-4 d-flex flex-column align-items-right">
+            
             <h5 class="text-right"> محصولات</h5>
+            
             <div class="d-flex flex-column align-items-baseline mr-4">
-                            <a><p>تمامی محصولات</p></a>
+                
+                <a>
+                    <p>تمامی محصولات</p>
+                </a>
+                
             </div>
 
+
+        </div>
+
+        <div class="col-4 d-flex flex-column align-items-right">
+            
+            <h5 class="text-right">پنل مدیریت</h5>
+            
+            <div class="d-flex flex-column align-items-baseline mr-4">
+                
+                <a>
+                    <p>کاربران</p></a>
+                <a>
+                    <p>سفارشات</p></a>
+                <a>
+                    <p>لیست قیمت</p></a>
+                <a>
+                    <p>گزارشات</p></a>
+                <a>
+                    <p>نمایش</p></a>
+                <a>
+                    <p>دسته بندی</p></a>
+            </div>
             
         </div>
 
-        <div class="col-3 d-flex flex-column align-items-right">
-            <h5  class="text-right">پنل مدیریت</h5>
-            <div class="d-flex flex-column align-items-baseline mr-4">
-                           <a><p>کاربران</p></a>
-                            <a><p>سفارشات</p></a>
-                            <a><p>لیست قیمت</p></a>
-                            <a><p>گزارشات</p></a>
-                            <a><p>نمایش</p></a>
-                            <a><p>دسته بندی</p></a>
-            </div>
- 
-            
-        </div>
-
-        <div class="col-3 d-flex flex-column align-items-right">
+        <div class="col-4 d-flex flex-column align-items-right">
             <h5  class="text-right">با ما در تماس باشید</h5>
             <div class="d-flex flex-column align-items-baseline">
                             <div class="d-flex align-items-center pb-3 mr-4">
@@ -197,7 +211,7 @@
 
     </div>
     
-    <div class="media-box d-flex justify-content-center align-items-center">
+    <div class="media-box d-flex justify-content-center align-items-center mb-4">
         <div>
             <a><img src="/images/icon/instafill.png"/></a>
         </div>
