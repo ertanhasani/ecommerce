@@ -5,21 +5,17 @@
     ViewData["Title"] = "ورود";
 }
 
-<div class="container contenti" style="text-align: right">
+<div class="container contenti text-right">
 
     <div class="row justify-content-md-center">
 
-        <div class="col-md-4">
+        <div class="col-12 col-md-7 col-lg-5 login-holder">
 
-            <section>
-
-                <form id="form" method="post">
+            <form id="form" method="post">
 
                     <input asp-for="@Model.ReturnUrl" class="form-control" type="hidden"/>
 
-                    <h4>ورود</h4>
-
-                    <hr/>
+                    <h4 class="text-center">ورود</h4>
 
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -27,7 +23,7 @@
 
                         <label asp-for="@Model.Email"></label>
 
-                        <input asp-for="@Model.Email" class="form-control"/>
+                        <input asp-for="@Model.Email" class="form-control email-login-input"/>
 
                         <span asp-validation-for="@Model.Email" class="text-danger"></span>
 
@@ -38,52 +34,68 @@
 
                         <label asp-for="@Model.Password"></label>
 
-                        <input asp-for="@Model.Password" class="form-control"/>
+                        <input asp-for="@Model.Password" class="form-control password-login-input"/>
 
                         <span asp-validation-for="@Model.Password" class="text-danger"></span>
 
                     </div>
+                    
 
-                    <div class="form-group">
-
+                    <div class="form-group mb-0 d-flex justify-content-between password-login-forget flex-column flex-sm-row">
+                        
                         <div class="checkbox">
-
-                            <label asp-for="@Model.RememberMe">
-
-                                <input asp-for="@Model.RememberMe"/>
-
+                        
+                            <label asp-for="@Model.RememberMe" class="d-flex align-items-center">
+                        
+                                <input asp-for="@Model.RememberMe" class="ml-2"/>
+                        
                                 @Html.DisplayNameFor(m => m.RememberMe)
-
+                        
                             </label>
-
+                        
                         </div>
 
+                        <p>
+                            <a asp-action="ForgotPassword" asp-controller="Account">رمز عبور خود را فراموش کرده اید؟</a>
+                        </p>
+                        
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group w-100 text-center">
 
-                        <button id="loginBtn" type="submit" class="btn btn-default" style="background: #04adbf; color: white">ورود</button>
+                        <button id="loginBtn" type="submit" class="btn btn-default login-button w-100">ورود</button>
 
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group text-center signUp-link">
 
-                        <p>
-                            <a asp-action="ForgotPassword" asp-controller="Account">بازنشانی رمز عبور</a>
-                        </p>
-
-                        <p>
-                            <a asp-action="Register" asp-route-returnUrl="@Model.ReturnUrl">ثبت نام پروفایل جدید</a>
-                        </p>
+         
+                            <a asp-action="Register" asp-route-returnUrl="@Model.ReturnUrl" class="d-flex justify-content-center" ><p>حساب کاربری ندارید؟</p> / ایجاد حساب کاربری</a>
+           
 
                     </div>
 
                 </form>
-
-            </section>
 
         </div>
 
     </div>
 
 </div>
+
+@section Styles
+{
+    <environment include="Development">
+
+        <link href="~/css/login.css" rel="stylesheet"/>
+
+    </environment>
+
+    <environment exclude="Development">
+
+        <link href="~/css/bundles/Login.min.css" rel="stylesheet"/>
+
+
+    </environment>
+
+}

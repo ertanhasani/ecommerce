@@ -336,7 +336,7 @@ color: var(--globalFourthColor);
     border: 1px solid var(--globalThirdColor);
     border-radius: var(--globalRadius);
     font-size: 14px;
-    width: 75px;
+    width: 150px;
 }
 
 .userLogin:hover{
