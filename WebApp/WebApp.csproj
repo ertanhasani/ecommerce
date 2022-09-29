@@ -8,22 +8,26 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="BuildBundlerMinifier" Version="3.2.449"/>
+      <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.4" />
       <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.5" />
       <PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.0-preview2.22096.2" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0-preview.3.22175.1"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="7.0.0-preview.4.22229.2"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="7.0.0-preview.4.22229.2"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0-preview.3.22175.1"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0-preview.3.22175.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="7.0.0-preview.4.22229.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="7.0.0-preview.4.22229.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0-preview.3.22175.1" />
     </ItemGroup>
 
     <ItemGroup>
-        <_ContentIncludedByDefault Remove="Pages\Panel\Carousel.cshtml"/>
+        <_ContentIncludedByDefault Remove="Pages\Panel\Carousel.cshtml" />
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Pages"/>
+        <Folder Include="Pages" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="obj\Debug\net6.0\WebApp.MvcApplicationPartsAssemblyInfo.cache" />
     </ItemGroup>
 
 </Project>

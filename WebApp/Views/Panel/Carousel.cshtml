@@ -12,7 +12,7 @@
 
 <div class="container body-content" style="margin-bottom:200px;">
 
-    <div class="col-md-12" style="margin-top: 50px;">
+    <div class="col-md-12 component-section p-3" style="margin-top: 50px;">
 
         <div class="col-md-12 text-right">
 
@@ -24,7 +24,7 @@
 
             <div class="table-responsive">
 
-                <table class="table table-hover">
+                <table class="table  component-table table-responsive">
 
                     <thead>
 
@@ -279,6 +279,23 @@
     </div>
 
 </div>
+
+@section Styles
+{
+    <environment include="Development">
+
+        <link href="~/css/Component.css" rel="stylesheet"/>
+
+    </environment>
+
+    <environment exclude="Development">
+
+        <link href="~/css/bundles/Component.min.css" rel="stylesheet"/>
+
+
+    </environment>
+
+}
 
 @section scripts{
 

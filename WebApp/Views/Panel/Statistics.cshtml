@@ -4,15 +4,13 @@
     ViewData["Title"] = "گزارشات";
 }
 
-<div class="contenti">
+<div class="contenti container">
 
-<div class="row">
+<div class="component-section p-3">
 
-<div class="col-md-6">
+    <h4 class="text-right pb-2">ده کاربر برتر</h4>
 
-    <h6 style="text-align: right">ده کاربر برتر</h6>
-
-    <table class="table table-condensed table-hover">
+    <table class="table component-table table-responsive">
 
         <thead>
 
@@ -71,11 +69,11 @@
 
 </div>
 
-<div class="col-md-6">
+<div class="component-section p-3 mt-4">
 
-    <h6 style="text-align: right">ده محصول برتر</h6>
+    <h4 class="text-right pb-2">ده محصول برتر</h4>
 
-    <table class="table table-condensed table-hover">
+    <table class="table component-table table-responsive">
 
         <thead>
 
@@ -143,11 +141,11 @@
 
 </div>
 
-<div class="col-md-6">
+<div class="component-section p-3 mt-4">
 
-    <h6 style="text-align: right">ده سبد خرید برتر (قیمت)</h6>
+    <h4 class="text-right pb-2">ده سبد خرید برتر (قیمت)</h4>
 
-    <table class="table table-condensed table-hover">
+    <table class="table component-table table-responsive">
 
         <thead>
 
@@ -213,11 +211,11 @@
 
 </div>
 
-<div class="col-md-6">
+<div class="component-section p-3 mt-4">
 
-    <h6 style="text-align: right">ده سبد خرید برتر (محصول)</h6>
+    <h4 class="text-right pb-2">ده سبد خرید برتر (محصول)</h4>
 
-    <table class="table table-condensed table-hover">
+    <table class="table component-table table-responsive">
 
         <thead>
 
@@ -285,4 +283,19 @@
 
 </div>
 
-</div>
+@section Styles
+{
+    <environment include="Development">
+
+        <link href="~/css/Component.css" rel="stylesheet"/>
+
+    </environment>
+
+    <environment exclude="Development">
+
+        <link href="~/css/bundles/Component.min.css" rel="stylesheet"/>
+
+
+    </environment>
+
+}

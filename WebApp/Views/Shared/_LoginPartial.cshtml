@@ -15,32 +15,6 @@
 
 </li>
 
-@* @if (User.IsInRole("Admin")) *@
-@* { *@
-@*     <li class="nav-item dropdown"> *@
-@* *@
-@*         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">پنل</a> *@
-@* *@
-@*         <div class="dropdown-menu" aria-labelledby="dropdown01"> *@
-@* *@
-@*             <a class="dropdown-item" asp-action="Users" asp-controller="Panel">کاربران</a> *@
-@* *@
-@*             <a class="dropdown-item" asp-action="Orders" asp-controller="Panel">سفارشات</a> *@
-@* *@
-@*             <a class="dropdown-item" asp-action="PriceList" asp-controller="ProductItem">لیست قیمت</a> *@
-@* *@
-@*             <a class="dropdown-item" asp-action="Statistics" asp-controller="Panel">گزارشات</a> *@
-@* *@
-@*             <a class="dropdown-item" asp-action="Carousel" asp-controller="Panel">نمایش</a> *@
-@* *@
-@*             <a class="dropdown-item" asp-action="List" asp-controller="Category">دسته بندی</a> *@
-@* *@
-@*         </div> *@
-@* *@
-@*     </li> *@
-@* } *@
-
-
 
 @if (SignInManager.IsSignedIn(User))
 {

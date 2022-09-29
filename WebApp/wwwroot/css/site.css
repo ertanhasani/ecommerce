@@ -1,4 +1,6 @@
-﻿@font-face {
+﻿@import "_variable.css";
+
+@font-face {
     font-family: Vazir;
     src: url(../font/Vazir.ttf);
 }
@@ -12,7 +14,7 @@ body {
     font-family: 'Vazir', sans-serif;
     font-weight: 300;
     direction: rtl;
-    background: #E2DCC8;
+    background:var(--globalThirdColor);
 }
 
 header {
@@ -76,14 +78,14 @@ td{
 .nav-link{
     /*color: #04adbf !important;*/
 
-    color: #F1F1F1 !important;
+    color:var(--globalFourthColor) !important;
 
 }
 
 .dropdown-menu{
     right: 0;
-    background: #F1F1F1;
-    color: #0F3D3E;
+    background:var(--globalFourthColor);
+    color: var(--globalSecondColor);
 }
 
 .input-group-addon {
@@ -101,13 +103,13 @@ td{
 
 #searchString{
     min-width: 250px;
-    border-radius: 1rem !important;
-    background: #E2DCC8;
+    border-radius: var(--globalRadius)!important;
+    background: var(--globalThirdColor);
     min-height: 39px;
 }
 
 #searchString::placeholder{
-color: #100F0FFF;
+color: var(--globalPrimaryColor);
 }
 
 .contenti{
@@ -238,7 +240,7 @@ ul.nav > li.dropdown > ul.dropdown-menu {
     background-color: #04aec0;
     padding: 5px;
     text-align: center;
-    border-radius: 15px;
+    border-radius: var(--globalRadius);
     width: -webkit-fill-available;
     width: available;
     width: -moz-available;
@@ -263,8 +265,8 @@ ul.nav > li.dropdown > ul.dropdown-menu {
 }
 
 .login-navbar{
-    background: #100F0FFF;
-    color: #F1F1F1;
+    background: var(--globalPrimaryColor);
+    color:var(--globalFourthColor);
 }
 
 #searchBtn{
@@ -274,59 +276,59 @@ ul.nav > li.dropdown > ul.dropdown-menu {
 }
 
 #searchBtn i{
-    color: #100F0FFF;
+    color: var(--globalPrimaryColor);
 }
 
 .userInfo{
-    border: 1px solid #E2DCC8;
-    border-radius: 1rem;
+    border: 1px solid var(--globalThirdColor);
+    border-radius: var(--globalRadius);
     font-size: 14px;
     min-width: 150px;
 }
 
 .userInfo:hover{
     transform: scale(1.1);
-    transition: 0.5s;
+    transition: var(--transitionTimer);
 }
 
 .cartBtn{
-    border: 1px solid #E2DCC8;
-    border-radius: 1rem;
-    color: #F1F1F1;
+    border: 1px solid var(--globalThirdColor);
+    border-radius: var(--globalRadius);
+    color: var(--globalFourthColor);
     font-size: 14px;
     min-width: 150px;
 }
 
 .cartBtn i{
-color: #F1F1F1;
+color: var(--globalFourthColor);
 }
 
 .cartBtn:hover{
     transform: scale(1.1);
-    transition: 0.5s;
+    transition: var(--transitionTimer);
 }
 .navbar-brand{
-    color: #F1F1F1 !important; 
+    color:var(--globalFourthColor) !important; 
 }
 
 
 /* footer */
 .footer-layout{
     background: #100F0FFF ;
-    color: #F1F1F1 ;
+    color:var(--globalFourthColor);
 }
 
 .media-box{
-    background: #E2DCC8;
+    background:var(--globalThirdColor);
     height: 40px;
-    border-radius: 1rem;
+    border-radius: var(--globalRadius);
     padding: 0 2rem;
 }
 
 .tab-divider{
     width: 1px;
     margin: 0 1.5rem;
-    background: #0F3D3E;
+    background: var(--globalSecondColor);
     height: 50%;
 }
 

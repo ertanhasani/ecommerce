@@ -1,22 +1,24 @@
-﻿.orders-section{
+﻿@import "_variable.css";
+
+.component-section{
     background: white;
     border-radius: 1rem;
 }
 .form-control{
-    border: 1px solid #0F3D3E;
+    border: 1px solid var(--globalSecondColor);
     border-radius: 1rem;
 }
 
-.orders-table thead tr{
-    background:  #F1F1F1;
+.component-table thead tr{
+    background:  var(--globalFourthColor);
     border-radius: 1rem;
 }
 
-.orders-table thead tr th:first-child{
+.component-table thead tr th:first-child{
     border-radius: 0 1rem 1rem 0;
 }
 
-.orders-table thead tr th:last-child{
+.component-table thead tr th:last-child{
     border-radius:  1rem 0 0 1rem;
 }
 
@@ -29,9 +31,4 @@
 }
 .table thead th{
     border-bottom: 0;
-}
-
-.orders-table tbody {
-    background:  #F1F1F1;
-    border-radius: 1rem;
 }

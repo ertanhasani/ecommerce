@@ -7,9 +7,9 @@
     Layout = "_Layout";
 }
 
-<div class="contenti" style="text-align: center; margin-top: 40px">
+<div class="contenti container" style="text-align: center; margin-top: 40px">
 
-    <div class="container">
+    <div class="col-md-12 component-section p-3">
 
         <h4>
             پروفایل &emsp;
@@ -22,9 +22,7 @@
 
         </h4>
 
-        <hr/>
-
-        <div class="row">
+        <div class="row mt-2">
 
             <div class="col-3">
 
@@ -59,81 +57,99 @@
             </div>
 
         </div>
+        
 
-        <hr/>
-
-        <h4>سفارش ها</h4>
-
-        <hr/>
-
-        <div class="row">
-
-            <table class="table table-hover table-condensed">
-
-                <thead>
-
-                <tr>
-
-                    <th>کد</th>
-
-                    <th>وضعیت</th>
-
-                    <th>تاریخ سفارش</th>
-
-                    <th>مبلغ کل</th>
-
-                    <th></th>
-
-                </tr>
-
-                </thead>
-
-                <tbody>
-                @if (Model.Orders.Count == 0)
-                {
-                    <tr class="noOrder">
-
-                        <td colspan="5" class="text-center">سفارشی ثبت نشده است.</td>
-
+    </div >
+    
+        <div class="col-md-12 component-section p-3 mt-4">
+            
+            <h4>سفارش ها</h4>
+    
+            <div class="row">
+    
+                <table class="table component-table table-responsive">
+    
+                    <thead>
+    
+                    <tr>
+    
+                        <th>کد</th>
+    
+                        <th>وضعیت</th>
+    
+                        <th>تاریخ سفارش</th>
+    
+                        <th>مبلغ کل</th>
+    
+                        <th></th>
+    
                     </tr>
-                }
-                else
-                {
-                    foreach (var item in Model.Orders)
+    
+                    </thead>
+    
+                    <tbody>
+                    @if (Model.Orders.Count == 0)
                     {
-                        <tr>
-
-                            <td>@item.Id</td>
-
-                            <td>@item.Status</td>
-
-                            <td>@item.ShamsiOrderedDate</td>
-
-                            <td> ریال @item.TotalPrice.ToString("0.00")</td>
-
-                            <td>
-
-                                <a asp-action="Detail" asp-controller="Cart" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
-
-                                    <i class="fa fa-eye"></i>
-
-                                </a>
-
-                            </td>
-
+                        <tr class="noOrder">
+    
+                            <td colspan="5" class="text-center">سفارشی ثبت نشده است.</td>
+    
                         </tr>
                     }
-                }
-
-                </tbody>
-
-            </table>
-
+                    else
+                    {
+                        foreach (var item in Model.Orders)
+                        {
+                            <tr>
+    
+                                <td>@item.Id</td>
+    
+                                <td>@item.Status</td>
+    
+                                <td>@item.ShamsiOrderedDate</td>
+    
+                                <td> ریال @item.TotalPrice.ToString("0.00")</td>
+    
+                                <td>
+    
+                                    <a asp-action="Detail" asp-controller="Cart" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
+    
+                                        <i class="fa fa-eye"></i>
+    
+                                    </a>
+    
+                                </td>
+    
+                            </tr>
+                        }
+                    }
+    
+                    </tbody>
+    
+                </table>
+    
+            </div>
+    
         </div>
 
-    </div>
-
 </div>
+
+@section Styles
+{
+    <environment include="Development">
+
+        <link href="~/css/Component.css" rel="stylesheet"/>
+
+    </environment>
+
+    <environment exclude="Development">
+
+        <link href="~/css/bundles/Component.min.css" rel="stylesheet"/>
+
+
+    </environment>
+
+}
 
 @section scripts{
 

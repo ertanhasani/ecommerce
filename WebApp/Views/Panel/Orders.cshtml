@@ -5,10 +5,10 @@
 }
 <div class="contenti container">
 
-    <div class="col-md-12 orders-section p-3">
-        
-        <div class="d-flex justify-content-between align-items-center orders-title">
-            
+    <div class="col-md-12 component-section p-3">
+
+        <div class="d-flex justify-content-between align-items-center flex-column flex-sm-row component-title">
+
             <h4>سفارشات</h4>
 
             <div class="form-group">
@@ -16,11 +16,11 @@
                 <input style="width: 250px !important;" id="search" type="text" class="form-control" placeholder="جستجو..."/>
 
             </div>
-            
+
         </div>
 
 
-        <table id="ordersTable" class="table orders-table">
+        <table id="ordersTable" class="table component-table table-responsive">
 
             <thead>
 
@@ -48,7 +48,7 @@
 
         </table>
 
-        <div class="text-center paginationRow order-pagination">
+        <div class="text-center paginationRow component-pagination">
 
             <ul id="pagination" class="pagination-sm pagination"></ul>
 
@@ -56,21 +56,22 @@
 
     </div>
 
-    <hr/>
 
-    <div class="col-md-12" style="margin-top: 20px;">
+    <div class="col-md-12 component-section p-3 mt-4">
 
-        <h4 style="text-align: right">در حال اقدام</h4>
+        <div class="d-flex justify-content-between align-items-center flex-column flex-sm-row component-title">
 
-        <hr/>
+            <h4>در حال اقدام</h4>
+            
+            <div class="form-group">
 
-        <div class="form-group">
+                <input style="width: 250px !important;" id="processingSearch" type="text" class="form-control" placeholder="جستجو..."/>
 
-            <input style="width: 250px !important;" id="processingSearch" type="text" class="form-control" placeholder="جستجو..."/>
-
+            </div>
+            
         </div>
 
-        <table id="processingOrdersTable" class="table table-striped table-condensed">
+        <table id="processingOrdersTable" class="table component-table table-responsive">
 
             <thead>
 
@@ -98,7 +99,7 @@
 
         </table>
 
-        <div class="text-center paginationRow">
+        <div class="text-center paginationRow component-pagination">
 
             <ul id="processingPagination" class="pagination-sm pagination"></ul>
 
@@ -106,21 +107,22 @@
 
     </div>
 
-    <hr/>
 
-    <div class="col-md-12" style="margin-top: 20px;">
+    <div class="col-md-12 component-section p-3 mt-4">
 
-        <h4 style="text-align: right">ارسال شده</h4>
+        <div class="d-flex justify-content-between align-items-center flex-column flex-sm-row component-title">
 
-        <hr/>
+            <h4>ارسال شده</h4>
+            
+            <div class="form-group">
 
-        <div class="form-group">
+                <input style="width: 250px !important;" id="shippedSearch" type="text" class="form-control" placeholder="جستجو..."/>
 
-            <input style="width: 250px !important;" id="shippedSearch" type="text" class="form-control" placeholder="جستجو..."/>
-
+            </div>
+            
         </div>
 
-        <table id="shippedOrdersTable" class="table table-striped table-condensed">
+        <table id="shippedOrdersTable" class="table component-table table-responsive">
 
             <thead>
 
@@ -148,7 +150,7 @@
 
         </table>
 
-        <div class="text-center paginationRow">
+        <div class="text-center paginationRow component-pagination">
 
             <ul id="shippedPagination" class="pagination-sm pagination"></ul>
 
@@ -157,20 +159,21 @@
     </div>
 
 </div>
+
 @section Styles
 {
-        <environment include="Development">
-    
-            <link href="~/css/Order.css" rel="stylesheet"/>
-    
-        </environment>
-    
-        <environment exclude="Development">
-    
-            <link href="~/css/bundles/Order.min.css" rel="stylesheet"/>
-            
-            
-        </environment>
+    <environment include="Development">
+
+        <link href="~/css/Component.css" rel="stylesheet"/>
+
+    </environment>
+
+    <environment exclude="Development">
+
+        <link href="~/css/bundles/Component.min.css" rel="stylesheet"/>
+
+
+    </environment>
 
 }
 

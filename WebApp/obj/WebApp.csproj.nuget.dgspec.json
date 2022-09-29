@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Code\\Repository\\E-commerce-With-.Net-Core-MVC\\WebApp\\WebApp.csproj": {}
+    "C:\\seyed bozorgvar\\E-commerce-With-.Net-Core-MVC\\WebApp\\WebApp.csproj": {}
   },
   "projects": {
-    "F:\\Code\\Repository\\E-commerce-With-.Net-Core-MVC\\WebApp\\WebApp.csproj": {
+    "C:\\seyed bozorgvar\\E-commerce-With-.Net-Core-MVC\\WebApp\\WebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Code\\Repository\\E-commerce-With-.Net-Core-MVC\\WebApp\\WebApp.csproj",
+        "projectUniqueName": "C:\\seyed bozorgvar\\E-commerce-With-.Net-Core-MVC\\WebApp\\WebApp.csproj",
         "projectName": "WebApp",
-        "projectPath": "F:\\Code\\Repository\\E-commerce-With-.Net-Core-MVC\\WebApp\\WebApp.csproj",
-        "packagesPath": "C:\\Users\\Master\\.nuget\\packages\\",
-        "outputPath": "F:\\Code\\Repository\\E-commerce-With-.Net-Core-MVC\\WebApp\\obj\\",
+        "projectPath": "C:\\seyed bozorgvar\\E-commerce-With-.Net-Core-MVC\\WebApp\\WebApp.csproj",
+        "packagesPath": "C:\\Users\\MEHRAD\\.nuget\\packages\\",
+        "outputPath": "C:\\seyed bozorgvar\\E-commerce-With-.Net-Core-MVC\\WebApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Master\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MEHRAD\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -91,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     }
