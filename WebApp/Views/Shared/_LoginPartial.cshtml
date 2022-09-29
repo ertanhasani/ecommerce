@@ -5,7 +5,7 @@
 @inject UserManager<ApplicationUser> UserManager
 
 
-<li class="nav-item nav-admin" style="min-width: 60px;">
+<li class="nav-item nav-admin mb-2 mb-lg-0">
 
     <a id="cartBtn" class="nav-link cartBtn d-flex justify-content-center align-items-center" asp-action="Index" asp-controller="Cart">
         <i class="fa fa-shopping-cart fa-lg"></i><span id="cartCount" class="badge badge-primary cartBadge ml-1">0</span>
@@ -20,7 +20,7 @@
 {
     var user = await UserManager.GetUserAsync(User);
 
-    <li class="nav-item dropdown">
+    <li class="nav-item dropdown mb-2 mb-lg-0">
 
         <a class="nav-link dropdown-toggle userInfo d-flex justify-content-center align-items-center" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
@@ -30,7 +30,7 @@
             
         </a>
 
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
+        <div class="dropdown-menu text-right" aria-labelledby="dropdown01">
 
             <a class="dropdown-item" asp-action="Index" asp-controller="Profile" asp-route-userId="@UserManager.GetUserId(User)">پروفایل</a>
 
@@ -48,15 +48,15 @@
 }
 else
 {
-    <li class="nav-item">
+    <li class="nav-item mb-2 mb-lg-0">
 
-        <a class="nav-link" asp-action="Register" asp-controller="Account">ثبت نام</a>
+        <a class="nav-link userLogin d-flex justify-content-center align-items-center" asp-action="Register" asp-controller="Account">ثبت نام</a>
 
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item mb-2 mb-lg-0">
 
-        <a class="nav-link" asp-action="Login" asp-controller="Account">ورود</a>
+        <a class="nav-link userLogin d-flex justify-content-center align-items-center" asp-action="Login" asp-controller="Account">ورود</a>
 
     </li>
 }

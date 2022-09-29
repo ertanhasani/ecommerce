@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4998161-4d95-470b-bb51-8ef2f042af46" name="Changes" comment="redesign header &amp; footer">
-      <change afterPath="$PROJECT_DIR$/WebApp/wwwroot/css/_Layout.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApp/wwwroot/images/icon/phone-outline.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApp/wwwroot/images/icon/phoneCall.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.eCommerce/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.eCommerce/.idea/.name" afterDir="false" />
+    <list default="true" id="b4998161-4d95-470b-bb51-8ef2f042af46" name="Changes" comment="component">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.eCommerce/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.eCommerce/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApp/Views/Panel/Carousel.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/Panel/Carousel.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApp/Views/Panel/Orders.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/Panel/Orders.cshtml" afterDir="false" />
@@ -17,23 +13,7 @@
       <change beforePath="$PROJECT_DIR$/WebApp/Views/Profile/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/Profile/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApp/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/Shared/_Layout.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApp/Views/Shared/_LoginPartial.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/Shared/_LoginPartial.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/WebApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/WebApp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/obj/Debug/net6.0/WebApp.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/Debug/net6.0/WebApp.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/obj/Debug/net6.0/WebApp.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/Debug/net6.0/WebApp.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/obj/Debug/net6.0/WebApp.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/Debug/net6.0/WebApp.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/obj/WebApp.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/WebApp.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/obj/WebApp.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/WebApp.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/wwwroot/css/Order.css" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/wwwroot/css/Component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/wwwroot/css/_ManagementLayout.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/wwwroot/css/_WebPage.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/wwwroot/css/bundles/site.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/wwwroot/css/bundles/site.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApp/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/wwwroot/css/site.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/wwwroot/js/bundles/site.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/wwwroot/js/bundles/site.min.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +22,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bbdeabf08952bddf26ccbd6a8bd7fc4f88b647ac8d3e66aacb776f7da57c3/SingleQueryingEnumerable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/seyed bozorgvar/E-commerce-With-.Net-Core-MVC/WebApp/Views/Panel/Orders.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/seyed bozorgvar/E-commerce-With-.Net-Core-MVC/WebApp/Views/Panel/Orders.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/seyed bozorgvar/E-commerce-With-.Net-Core-MVC/WebApp/Views/Panel/Orders.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/seyed bozorgvar/E-commerce-With-.Net-Core-MVC/WebApp/Views/Panel/Orders.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/seyed bozorgvar/E-commerce-With-.Net-Core-MVC/WebApp/Views/Panel/Orders.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/seyed bozorgvar/E-commerce-With-.Net-Core-MVC/WebApp/Views/Panel/Orders.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
@@ -136,8 +119,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664438717696</updated>
-      <workItem from="1664438791442" duration="8982000" />
+      <workItem from="1664438791442" duration="13125000" />
     </task>
+    <task id="LOCAL-00001" summary="component">
+      <created>1664465299653</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1664465299653</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,5 +146,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="component" />
+    <option name="LAST_COMMIT_MESSAGE" value="component" />
   </component>
 </project>

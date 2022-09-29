@@ -83,7 +83,7 @@ td{
 }
 
 .dropdown-menu{
-    right: 0;
+    left: auto;
     background:var(--globalFourthColor);
     color: var(--globalSecondColor);
 }
@@ -283,7 +283,7 @@ ul.nav > li.dropdown > ul.dropdown-menu {
     border: 1px solid var(--globalThirdColor);
     border-radius: var(--globalRadius);
     font-size: 14px;
-    min-width: 150px;
+    width: 150px;
 }
 
 .userInfo:hover{
@@ -296,7 +296,7 @@ ul.nav > li.dropdown > ul.dropdown-menu {
     border-radius: var(--globalRadius);
     color: var(--globalFourthColor);
     font-size: 14px;
-    min-width: 150px;
+    width: 150px;
 }
 
 .cartBtn i{
@@ -332,4 +332,20 @@ color: var(--globalFourthColor);
     height: 50%;
 }
 
+.userLogin{
+    border: 1px solid var(--globalThirdColor);
+    border-radius: var(--globalRadius);
+    font-size: 14px;
+    width: 75px;
+}
 
+.userLogin:hover{
+    transform: scale(1.1);
+    transition: var(--transitionTimer);
+}
+
+@media (max-width: 991px) {
+    .nav-admin {
+        margin-right: inherit;
+    }
+}
