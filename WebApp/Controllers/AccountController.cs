@@ -96,8 +96,8 @@ public class AccountController : Controller
                 _logger.LogInformation(LogConstant.NewUserWithPass);
 
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
-                await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
+                // var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
+                // await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
 
                 await _userManager.AddToRoleAsync(user, GeneralConstant.Roles.Customer);
 
@@ -107,7 +107,7 @@ public class AccountController : Controller
                 return LocalRedirect(Url.GetLocalUrl(model.ReturnUrl));
             }
 
-            return View("Error", new ErrorViewModel {Message = ErrorConstant.GeneralErrors.Register});
+            this.AddErrors(result.Errors.Select(x => x.Description).ToList());
         }
 
         return View("Register", model);
