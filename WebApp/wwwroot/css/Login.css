@@ -7,9 +7,8 @@
 }
 
 .email-login-input {
-    border: none;
-    border-bottom: 1px solid var(--globalSecondColor);
-    border-radius: 5px 5px 0 0;
+    border-radius: 1rem;
+    border: 1px solid var(--globalSecondColor);
 }
 
 .form-control:focus {
@@ -19,9 +18,8 @@
 }
 
 .password-login-input {
-    border: none;
-    border-bottom: 1px solid var(--globalSecondColor);
-    border-radius: 5px 5px 0 0;
+    border-radius: 1rem;
+    border: 1px solid var(--globalSecondColor);
 }
 
 .password-login-input:focus {
@@ -56,4 +54,8 @@
 
 .signUp-link a p{
 color: var(--globalSecondColor);
+}
+
+label{
+    margin-bottom: 0;
 }

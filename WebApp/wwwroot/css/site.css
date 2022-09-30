@@ -112,8 +112,8 @@ td{
 color: var(--globalPrimaryColor);
 }
 
-.contenti{
-    margin-top: 45px;
+section:nth-child(1){
+    margin-top: 4rem;
 }
 
 /* Carousel */

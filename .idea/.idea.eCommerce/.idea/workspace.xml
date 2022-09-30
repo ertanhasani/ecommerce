@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4998161-4d95-470b-bb51-8ef2f042af46" name="Changes" comment="responsive">
-      <change afterPath="$PROJECT_DIR$/WebApp/wwwroot/css/Login.css" afterDir="false" />
+    <list default="true" id="b4998161-4d95-470b-bb51-8ef2f042af46" name="Changes" comment="login&amp;register button  .  login page re design">
+      <change afterPath="$PROJECT_DIR$/WebApp/wwwroot/css/Register.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.eCommerce/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.eCommerce/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApp/Views/Account/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/Account/Login.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApp/Views/Account/Register.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/Account/Register.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/Views/Shared/_LoginPartial.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/Shared/_LoginPartial.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Views/Panel/Carousel.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/Panel/Carousel.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Views/Panel/CarouselItem.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/Panel/CarouselItem.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Views/Panel/Orders.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/Panel/Orders.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Views/Panel/Statistics.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/Panel/Statistics.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Views/Panel/Users.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/Panel/Users.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/wwwroot/css/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/wwwroot/css/Login.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApp/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/wwwroot/css/site.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,13 +31,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bbdeabf08952bddf26ccbd6a8bd7fc4f88b647ac8d3e66aacb776f7da57c3/SingleQueryingEnumerable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/seyed bozorgvar/E-commerce-With-.Net-Core-MVC/WebApp/Views/Panel/Orders.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/seyed bozorgvar/E-commerce-With-.Net-Core-MVC/WebApp/Views/Panel/Orders.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/seyed bozorgvar/E-commerce-With-.Net-Core-MVC/WebApp/Views/Panel/Orders.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/seyed bozorgvar/E-commerce-With-.Net-Core-MVC/WebApp/Views/Panel/Orders.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/seyed bozorgvar/E-commerce-With-.Net-Core-MVC/WebApp/Views/Panel/Orders.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/seyed bozorgvar/E-commerce-With-.Net-Core-MVC/WebApp/Views/Panel/Orders.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/seyed bozorgvar/E-commerce-With-.Net-Core-MVC/WebApp/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -45,19 +43,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.WebApp: eCommerce">
     <configuration name="WebApp: CustomProfile" type="DotNetMsBuildPublish" factoryName="Publish to IIS">
       <riderPublish configuration="Release" platform="Any CPU" publish_profile="CustomProfile.pubxml" pubxml_path="$PROJECT_DIR$/WebApp/Properties/PublishProfiles/CustomProfile.pubxml" user_name="ecommerce18-001 " uuid_high="1293252817771908656" uuid_low="-7018654757742566173" />
@@ -125,7 +123,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664438717696</updated>
-      <workItem from="1664438791442" duration="19493000" />
+      <workItem from="1664438791442" duration="19942000" />
+      <workItem from="1664520769562" duration="3260000" />
     </task>
     <task id="LOCAL-00001" summary="component">
       <created>1664465299653</created>
@@ -141,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664473663559</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="login&amp;register button  .  login page re design">
+      <created>1664493884263</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1664493884263</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,6 +169,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="component" />
     <MESSAGE value="responsive" />
-    <option name="LAST_COMMIT_MESSAGE" value="responsive" />
+    <MESSAGE value="login&amp;register button  .  login page re design" />
+    <option name="LAST_COMMIT_MESSAGE" value="login&amp;register button  .  login page re design" />
   </component>
 </project>
