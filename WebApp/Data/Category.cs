@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApp.Data;
 
@@ -13,6 +14,7 @@ public class Category
 
     public int? ParentId { get; set; }
 
+    [Required (ErrorMessage = "نام دسته بندی باید وارد گردد")]
     public string Name { get; set; }
 
     public string CreatedByUserId { get; set; }
