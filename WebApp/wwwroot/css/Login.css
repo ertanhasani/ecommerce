@@ -1,30 +1,6 @@
 ﻿@import "_variable.css";
+@import "FormComponent.css";
 
-.login-holder {
-    background: white;
-    padding: 1.5rem 2rem 0 2rem;
-    border-radius: var(--globalRadius);
-}
-
-.email-login-input {
-    border-radius: 1rem;
-    border: 1px solid var(--globalSecondColor);
-}
-
-.form-control:focus {
-    background: white !important;
-    border-color: var(--globalSecondColor) !important;
-    box-shadow: none;
-}
-
-.password-login-input {
-    border-radius: 1rem;
-    border: 1px solid var(--globalSecondColor);
-}
-
-.password-login-input:focus {
-    background: white !important;
-}
 
 .password-login-forget {
     font-size: 14px;
@@ -42,20 +18,10 @@
     color: var(--globalSecondColor);
 }
 
-.login-button {
-    background: var(--globalSecondColor);
-    border-radius: 1rem;
-    color: white !important;
-}
-
 .signUp-link{
     font-size: 14px;
 }
 
 .signUp-link a p{
 color: var(--globalSecondColor);
-}
-
-label{
-    margin-bottom: 0;
 }

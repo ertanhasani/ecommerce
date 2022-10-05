@@ -9,7 +9,7 @@
 
     <div class="row justify-content-md-center">
 
-        <div class="col-12 col-md-7 col-lg-5 login-holder">
+        <div class="col-12 col-md-7 col-lg-5 formComponent-holder">
 
             <form id="form" method="post">
 
@@ -23,7 +23,7 @@
 
                         <label asp-for="@Model.Email"></label>
 
-                        <input asp-for="@Model.Email" class="form-control email-login-input"/>
+                        <input asp-for="@Model.Email" class="form-control formComponent-input"/>
 
                         <span asp-validation-for="@Model.Email" class="text-danger"></span>
 
@@ -34,7 +34,7 @@
 
                         <label asp-for="@Model.Password"></label>
 
-                        <input asp-for="@Model.Password" class="form-control password-login-input"/>
+                        <input asp-for="@Model.Password" class="form-control formComponent-input"/>
 
                         <span asp-validation-for="@Model.Password" class="text-danger"></span>
 
@@ -63,7 +63,7 @@
 
                     <div class="form-group w-100 text-center">
 
-                        <button id="loginBtn" type="submit" class="btn btn-default login-button w-100">ورود</button>
+                        <button id="loginBtn" type="submit" class="btn btn-default formComponent-first-button w-100">ورود</button>
 
                     </div>
 

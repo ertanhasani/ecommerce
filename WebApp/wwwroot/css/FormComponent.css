@@ -1,0 +1,38 @@
+﻿@import "_variable.css";
+
+.formComponent-holder {
+    background: white;
+    padding: 1.5rem 2rem 1.5rem 2rem;
+    border-radius: var(--globalRadius);
+}
+
+.formComponent-input {
+    border-radius: 1rem;
+    border: 1px solid var(--globalSecondColor);
+}
+
+.form-control:focus {
+    background: white !important;
+    border-color: var(--globalSecondColor) !important;
+    box-shadow: none;
+}
+
+.formComponent-first-button {
+    background: var(--globalSecondColor);
+    border-radius: 1rem;
+    color: white !important;
+}
+
+.formComponent-second-button {
+    border: 1px solid var(--globalSecondColor);
+    border-radius: 1rem;
+    color: var(--globalSecondColor) !important;
+}
+
+label{
+    margin-bottom: 0;
+}
+
+span{
+    font-size: 14px;
+}

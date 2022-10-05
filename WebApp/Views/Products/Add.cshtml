@@ -16,9 +16,9 @@
     
 </style>
 
-<div class="contenti">
+<section class="d-flex justify-content-center container text-right">
 
-<div class="container">
+<div class="formComponent-holder">
 
 <form method="post" id="form" enctype="multipart/form-data">
 
@@ -38,7 +38,7 @@
 
             <label asp-for="@Model.Name"></label>
 
-            <input asp-for="Name" type="text" class="form-control required"/>
+            <input asp-for="Name" type="text" class="form-control required formComponent-input"/>
 
             <span asp-validation-for="@Model.Name" class="text-danger"></span>
 
@@ -52,7 +52,7 @@
 
             <label asp-for="@Model.Description"></label>
 
-            <div id="textarea" class="descriptionRequired">
+            <div id="textarea" class="descriptionRequired formComponent-input">
                 @Html.Raw(Model.Description)
             </div>
 
@@ -68,7 +68,7 @@
 
             <label asp-for="@Model.Price"></label>
 
-            <input asp-for="Price" type="text" class="form-control required"/>
+            <input asp-for="Price" type="text" class="form-control required formComponent-input"/>
 
             <span asp-validation-for="@Model.Price" class="text-danger"></span>
 
@@ -86,7 +86,7 @@
 
                 <div class="input-group-addon">در تخفیف <input asp-for="IsOnSale" type="checkbox"/></div>
 
-                <input asp-for="SalePrice" type="text" class="form-control"/>
+                <input asp-for="SalePrice" type="text" class="form-control formComponent-input"/>
 
             </div>
 
@@ -104,7 +104,7 @@
 
             <div class="input-group-addon">
 
-                <input asp-for="IsDigit" type="checkbox"/>
+                <input asp-for="IsDigit" type="checkbox" class="formComponent-input"/>
 
             </div>
 
@@ -121,7 +121,7 @@
             <label asp-for="@Model.Quantity"></label>
 
 
-            <input asp-for="Quantity" type="text" class="form-control required quantity"/>
+            <input asp-for="Quantity" type="text" class="form-control required quantity formComponent-input"/>
 
             <span asp-validation-for="@Model.Quantity" class="text-danger"></span>
 
@@ -135,7 +135,7 @@
 
             <label asp-for="@Model.Categories"></label>
 
-            <select asp-for="Categories" asp-items="@((MultiSelectList) ViewData["Categories"])" class="form-control required" multiple></select>
+            <select asp-for="Categories" asp-items="@((MultiSelectList)ViewData["Categories"])" class="form-control required formComponent-input" multiple></select>
 
             <span asp-validation-for="@Model.Categories" class="text-danger"></span>
 
@@ -204,9 +204,9 @@
 
             <label>تصاویر دیگر :</label>
 
-            <div class="file-loading">
+            <div class="file-loading formComponent-input">
 
-                <input id="Uploads" name="uploads" type="file" multiple/>
+                <input id="Uploads" name="uploads" type="file" class="formComponent-input" multiple/>
 
             </div>
 
@@ -216,7 +216,7 @@
 
     <div class="col-md-12 text-right">
 
-        <button id="saveContentBtn" type="button" class="btn btn-primary">ثبت</button>
+        <button id="saveContentBtn" type="button" class="btn formComponent-first-button">ثبت</button>
 
     </div>
 
@@ -226,7 +226,23 @@
 
 </div>
 
-</div>
+</section>
+
+@section Styles
+{
+    <environment include="Development">
+
+        <link href="~/css/Add.css" rel="stylesheet"/>
+
+    </environment>
+
+    <environment exclude="Development">
+
+        <link href="~/css/bundles/Add.min.css" rel="stylesheet"/>
+
+    </environment>
+
+}
 
 @section scripts{
 
