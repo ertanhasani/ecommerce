@@ -2,7 +2,7 @@
 
 namespace WebApp.Data;
 
-public partial class eCommerceContext : DbContext
+public class ECommerceContext : DbContext
 {
     #region DbSet
 
@@ -44,11 +44,12 @@ public partial class eCommerceContext : DbContext
 
     #endregion
 
-    public eCommerceContext(DbContextOptions<eCommerceContext> options)
+    public ECommerceContext(DbContextOptions<ECommerceContext> options)
         : base(options)
     {
     }
 
+    [Obsolete("Obsolete")]
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<AspNetRoleClaims>(entity =>

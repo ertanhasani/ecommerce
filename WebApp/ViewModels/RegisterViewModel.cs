@@ -30,7 +30,6 @@ public class RegisterViewModel : IdentityUser
     public string LastName { get; set; }
 
     [Display(Name = "تاریخ تولد")] public DateTime BirthDate { get; set; }
-
     [Required(ErrorMessage = "لطفا تاریخ تولد را وارد کنید")]
     [Display(Name = "تاریخ تولد")]
     public string BirthDateString { get; set; }

@@ -5,7 +5,7 @@ namespace WebApp.Extensions;
 
 public static class ControllerHelpers
 {
-    public static string[] GetIdentityErrors(IdentityResult result)
+    public static IEnumerable<string> GetIdentityErrors(IdentityResult result)
     {
         var errors = new List<string>();
 
@@ -57,7 +57,7 @@ public static class ControllerHelpers
         AddErrors(controller, GetIdentityErrors(result));
     }
 
-    public static void AddErrors(this Controller controller, string[] errors)
+    public static void AddErrors(this Controller controller, IEnumerable<string> errors)
     {
         foreach (var err in errors)
         {
@@ -73,7 +73,7 @@ public static class ControllerHelpers
         }
     }
 
-    public static void AddErrors(this Controller controller, string key, string[] errors)
+    public static void AddErrors(this Controller controller, string key, IEnumerable<string> errors)
     {
         foreach (var err in errors)
         {
@@ -91,12 +91,10 @@ public static class ControllerHelpers
         controller.ModelState.AddModelError(key, err);
     }
 
-    public static string GetControllerName(this Controller controller, string className)
+    public static string GetControllerName(string className)
     {
-        var place = className.LastIndexOf("Controller");
+        var place = className.LastIndexOf("Controller", StringComparison.Ordinal);
 
-        if (place == -1)
-            return className;
-        return className.Remove(place, "Controller".Length);
+        return place == -1 ? className : className.Remove(place, "Controller".Length);
     }
 }

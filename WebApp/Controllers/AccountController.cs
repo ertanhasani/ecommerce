@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Data;
 using WebApp.Extensions;
-using WebApp.Models;
 using WebApp.Resources;
 using WebApp.Services;
 using WebApp.ViewModels;
@@ -96,8 +95,8 @@ public class AccountController : Controller
                 _logger.LogInformation(LogConstant.NewUserWithPass);
 
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                // var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
-                // await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
+                var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
+                await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
 
                 await _userManager.AddToRoleAsync(user, GeneralConstant.Roles.Customer);
 
@@ -179,10 +178,8 @@ public class AccountController : Controller
             }
         }
 
-        return View("Error", new ErrorViewModel
-        {
-            Message = ErrorConstant.GeneralErrors.Login
-        });
+        this.AddErrors(ErrorConstant.PasswordIsNotCorrect);
+        return View(model);
     }
 
     #endregion

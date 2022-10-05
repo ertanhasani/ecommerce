@@ -4,18 +4,60 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4998161-4d95-470b-bb51-8ef2f042af46" name="Changes" comment="login&amp;register button  .  login page re design">
-      <change afterPath="$PROJECT_DIR$/WebApp/wwwroot/css/Register.css" afterDir="false" />
+    <list default="true" id="b4998161-4d95-470b-bb51-8ef2f042af46" name="Changes" comment="اصلاح دسته بندی">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.eCommerce/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.eCommerce/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.eCommerce/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.eCommerce/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/Views/Account/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/Account/Login.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/Views/Account/Register.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/Account/Register.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/Views/Panel/Carousel.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/Panel/Carousel.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/Views/Panel/CarouselItem.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/Panel/CarouselItem.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/Views/Panel/Orders.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/Panel/Orders.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/Views/Panel/Statistics.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/Panel/Statistics.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/Views/Panel/Users.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/Panel/Users.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/wwwroot/css/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/wwwroot/css/Login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/wwwroot/css/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Controllers/AccountController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Controllers/CartController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Controllers/CartController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Controllers/CategoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Controllers/CategoryController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Controllers/PanelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Controllers/PanelController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Controllers/ProductItemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Controllers/ProductItemController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Controllers/ProfileController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Controllers/ProfileController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Data/AspNetRoleClaims.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Data/AspNetRoleClaims.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Data/AspNetRoles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Data/AspNetRoles.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Data/AspNetUserClaims.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Data/AspNetUserClaims.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Data/AspNetUserLogins.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Data/AspNetUserLogins.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Data/AspNetUserRoles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Data/AspNetUserRoles.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Data/AspNetUserTokens.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Data/AspNetUserTokens.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Data/Category.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Data/Category.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Data/ProductCategory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Data/ProductCategory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Data/SenderSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Data/SenderSettings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Data/Status.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Data/Status.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Data/Upload.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Data/Upload.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Data/eCommerceContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Data/eCommerceContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Extensions/ControllerHelpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Extensions/ControllerHelpers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Models/ErrorViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/ViewModels/ErrorViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Repositories/CartRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Repositories/CartRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Repositories/CategoryRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Repositories/CategoryRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Repositories/PanelRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Repositories/PanelRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Repositories/ProductRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Repositories/ProductRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Repositories/UploadRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Repositories/UploadRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Services/EmailSender.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Services/EmailSender.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Services/GeneralServices.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Services/GeneralServices.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Services/IGeneralServices.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Services/IGeneralServices.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Services/ISmsSender.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Services/ISmsSender.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Services/RoleInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Services/RoleInitializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Services/SmsSender.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Services/SmsSender.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/ViewModels/CarouselViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/ViewModels/CarouselViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/ViewModels/CartViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/ViewModels/CartViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/ViewModels/LoginViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/ViewModels/LoginViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/ViewModels/OrdersViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/ViewModels/OrdersViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/ViewModels/PriceListViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/ViewModels/PriceListViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/ViewModels/ProductCartViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/ViewModels/ProductCartViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/ViewModels/ProductItemViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/ViewModels/ProductItemViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/ViewModels/ProductListViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/ViewModels/ProductListViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/ViewModels/ProductsViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/ViewModels/ProductsViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/ViewModels/ProfileEditViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/ViewModels/ProfileEditViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/ViewModels/ProfileViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/ViewModels/ProfileViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/ViewModels/RegisterViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/ViewModels/RegisterViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/ViewModels/UploadViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/ViewModels/UploadViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/ViewModels/UsersViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/ViewModels/UsersViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Views/Category/List.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/Category/List.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Views/Shared/Error.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/Shared/Error.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Views/_ViewImports.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Views/_ViewImports.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/WebApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/WebApp.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,9 +70,6 @@
         <option value="CSS File" />
       </list>
     </option>
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bbdeabf08952bddf26ccbd6a8bd7fc4f88b647ac8d3e66aacb776f7da57c3/SingleQueryingEnumerable.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -45,6 +84,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
@@ -125,6 +165,8 @@
       <updated>1664438717696</updated>
       <workItem from="1664438791442" duration="19942000" />
       <workItem from="1664520769562" duration="3260000" />
+      <workItem from="1664906248073" duration="7676000" />
+      <workItem from="1664950416563" duration="11026000" />
     </task>
     <task id="LOCAL-00001" summary="component">
       <created>1664465299653</created>
@@ -147,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664493884263</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="اصلاح دسته بندی">
+      <created>1664913870226</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1664913870226</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,9 +216,11 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="component" />
     <MESSAGE value="responsive" />
     <MESSAGE value="login&amp;register button  .  login page re design" />
-    <option name="LAST_COMMIT_MESSAGE" value="login&amp;register button  .  login page re design" />
+    <MESSAGE value="اصلاح دسته بندی" />
+    <option name="LAST_COMMIT_MESSAGE" value="اصلاح دسته بندی" />
   </component>
 </project>

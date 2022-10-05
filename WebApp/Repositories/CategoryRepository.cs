@@ -5,9 +5,9 @@ namespace WebApp.Repositories;
 
 public class CategoryRepository : ICategoryRepository
 {
-    private eCommerceContext _context;
+    private readonly ECommerceContext _context;
 
-    public CategoryRepository(eCommerceContext context)
+    public CategoryRepository(ECommerceContext context)
     {
         _context = context;
     }

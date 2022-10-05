@@ -53,7 +53,7 @@
 
                 <label asp-for="@category.Name">نام</label>
 
-                <input asp-for="@category.Name" type="text" class="form-control required"/>
+                <input asp-for="@category.Name" type="text" class="form-control required" data-val-required="لطفا نام  دسته بندی را وارد کنید"/>
 
                 <span asp-validation-for="@category.Name" class="text-danger"></span>
 

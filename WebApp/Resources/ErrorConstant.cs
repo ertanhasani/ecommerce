@@ -19,6 +19,8 @@ public static class ErrorConstant
     public const string PasswordNotEqualToConfirmPassword = "رمز عبور و تکرار رمز برابر نمی باشد";
 
     public const string CurrentPasswordIsNotCorrect = "رمز عبور فعلی درست نیست";
+    
+    public const string PasswordIsNotCorrect = "رمز عبور درست نیست";
 
     public static class GeneralErrors
     {

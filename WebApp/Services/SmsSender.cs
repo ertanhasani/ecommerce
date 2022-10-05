@@ -3,7 +3,7 @@
 // using SmsIrRestfulNetStandard.Classes;
 // using SmsIrRestfulNetStandard.Operations;
 //
-// namespace Indoor.Services.Senders;
+// namespace WebApp.Services;
 //
 // public class SmsSender : ISmsSender
 // {

@@ -34,7 +34,7 @@ namespace WebApp
             services.AddRazorPages().AddRazorRuntimeCompilation();
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(_config.GetConnectionString("eCommerce")));
-            services.AddDbContext<eCommerceContext>(options => options.UseSqlServer(_config.GetConnectionString("eCommerce")));
+            services.AddDbContext<ECommerceContext>(options => options.UseSqlServer(_config.GetConnectionString("eCommerce")));
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IUploadRepository, UploadRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
@@ -45,8 +45,8 @@ namespace WebApp
 
             services.Configure<IdentityOptions>(options =>
             {
-                options.Lockout.MaxFailedAccessAttempts = 5;
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.MaxFailedAccessAttempts = 15;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
                 options.Lockout.AllowedForNewUsers = true;
             });
 
@@ -61,7 +61,6 @@ namespace WebApp
 
             services.AddIdentity<ApplicationUser, IdentityRole>(setupAction =>
                 {
-                    setupAction.Password.RequireDigit = true;
                     setupAction.Password.RequireNonAlphanumeric = false;
                     setupAction.Password.RequireLowercase = true;
                     setupAction.Password.RequireUppercase = true;

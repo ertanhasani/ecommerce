@@ -14,7 +14,8 @@ public class LoginViewModel
     [Display(Name = "رمز عبور")]
     public string Password { get; set; }
 
-    [Display(Name = "به خاطر بسپار")] public bool RememberMe { get; set; }
+    [Display(Name = "به خاطر بسپار")] 
+    public bool RememberMe { get; set; }
 
     public string ReturnUrl { get; set; }
 }

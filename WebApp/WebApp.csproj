@@ -23,11 +23,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Pages" />
+      <Content Include="obj\Debug\net6.0\WebApp.MvcApplicationPartsAssemblyInfo.cache" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="obj\Debug\net6.0\WebApp.MvcApplicationPartsAssemblyInfo.cache" />
+      <Folder Include="Models" />
     </ItemGroup>
 
 </Project>

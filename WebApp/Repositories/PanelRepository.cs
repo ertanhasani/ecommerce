@@ -6,10 +6,10 @@ namespace WebApp.Repositories;
 
 public class PanelRepository : IPanelRepository
 {
-    private eCommerceContext _context;
-    private UserManager<ApplicationUser> _userManager;
+    private readonly ECommerceContext _context;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public PanelRepository(eCommerceContext context, UserManager<ApplicationUser> userManager)
+    public PanelRepository(ECommerceContext context, UserManager<ApplicationUser> userManager)
     {
         _context = context;
         _userManager = userManager;
@@ -51,7 +51,7 @@ public class PanelRepository : IPanelRepository
 
     public IEnumerable<AspNetUsers> GetTopUsers()
     {
-        return _context.AspNetUsers.Include(p => p.Order).ThenInclude(o => o.OrderDetails).Include(p => p.AspNetUserRoles).ThenInclude(o => o.Role).Where(p => p.Order.Where(o => o.IsDeleted == false && o.Payed == true && o.OrderDetails.Count > 0).Count() > 0 && p.AspNetUserRoles.Any(o => o.Role.Name.ToLower().Equals("admin"))).OrderByDescending(p => p.Order.Count());
+        return _context.AspNetUsers.Include(p => p.Order).ThenInclude(o => o.OrderDetails).Include(p => p.AspNetUserRoles).ThenInclude(o => o.Role).Where(p => p.Order.Count(o => o.IsDeleted == false && o.Payed == true && o.OrderDetails.Count > 0) > 0 && p.AspNetUserRoles.Any(o => o.Role.Name.ToLower().Equals("admin"))).OrderByDescending(p => p.Order.Count());
     }
 
     public IEnumerable<Product> GetTopProducts()

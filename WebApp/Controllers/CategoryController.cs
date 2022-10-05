@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApp.Repositories;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WebApp.Data;
@@ -45,14 +44,15 @@ public class CategoryController : Controller
     [HttpPost]
     public IActionResult Create(Category category)
     {
-        var item = new Category();
+        var item = new Category
+        {
+            ParentId = category.ParentId,
+            Name = category.Name,
+            CreatedOnDate = DateTime.Now,
+            CreatedByUserId = _userManager.GetUserId(User),
+            IsDeleted = false
+        };
 
-        item.ParentId = category.ParentId;
-        item.Name = category.Name;
-
-        item.CreatedOnDate = DateTime.Now;
-        item.CreatedByUserId = _userManager.GetUserId(User);
-        item.IsDeleted = false;
         _categoryRepository.AddCategory(item);
         _categoryRepository.SaveChanges();
 

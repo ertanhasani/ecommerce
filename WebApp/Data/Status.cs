@@ -1,6 +1,6 @@
 ﻿namespace WebApp.Data;
 
-public partial class Status
+public class Status
 {
     public Status()
     {

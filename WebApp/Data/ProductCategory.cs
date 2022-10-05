@@ -1,6 +1,6 @@
 ﻿namespace WebApp.Data;
 
-public partial class ProductCategory
+public class ProductCategory
 {
     public int Id { get; set; }
 

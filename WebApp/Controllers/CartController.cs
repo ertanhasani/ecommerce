@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WebApp.Data;
 using WebApp.Extensions;
-using WebApp.Models;
 using WebApp.Repositories;
 using WebApp.Resources;
 using WebApp.ViewModels;
@@ -259,24 +258,24 @@ public class CartController : Controller
     {
         var userId = _userManager.GetUserId(User);
 
-        var shipping = new Shipping();
-        shipping.Address = model.Address;
-        shipping.City = model.City;
-        shipping.State = model.State;
-        shipping.PostalCode = model.PostalCode;
-        shipping.FullName = model.FullName;
-        shipping.CreatedByUserId = userId;
-        shipping.CreatedOnDate = DateTime.Now;
+        var shipping = new Shipping
+        {
+            Address = model.Address,
+            City = model.City,
+            State = model.State,
+            PostalCode = model.PostalCode,
+            FullName = model.FullName,
+            CreatedByUserId = userId,
+            CreatedOnDate = DateTime.Now
+        };
         _cartRepository.AddShipping(shipping);
         _cartRepository.SaveChanges();
 
 
         var currentCart = _cartRepository.GetCurrentUserCart(userId);
 
-        var total = 0M;
         var orderDetails = currentCart.OrderDetails.Select(p => p.Total);
-        foreach (var item in orderDetails)
-            total += (decimal) item;
+        var total = orderDetails.Where(item => item != null).Sum(item => (decimal) item);
 
         currentCart.TotalPrice = total;
         currentCart.ShippingId = shipping.Id;
@@ -352,8 +351,6 @@ public class CartController : Controller
         };
 
         model.Products = new List<ProductCartViewModel>();
-
-        var order = new OrderDetails();
 
         foreach (var cart in cartList)
         {
