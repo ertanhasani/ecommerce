@@ -5,14 +5,14 @@ namespace WebApp.Services;
 
 public class GeneralServices : IGeneralServices
 {
-    private ICategoryRepository _categoryRepository;
+    private readonly ICategoryRepository _categoryRepository;
 
     public GeneralServices(ICategoryRepository categoryRepository)
     {
         _categoryRepository = categoryRepository;
     }
 
-    public void AddCategories(int[] categories, int productId, bool isEditing)
+    public void AddCategories(IEnumerable<int> categories, int productId, bool isEditing)
     {
         if (isEditing)
         {
@@ -21,16 +21,7 @@ public class GeneralServices : IGeneralServices
             _categoryRepository.SaveChanges();
         }
 
-        var newCategories = new List<ProductCategory>();
-
-        foreach (var item in categories)
-        {
-            newCategories.Add(new ProductCategory
-            {
-                CategoryId = item,
-                ProductId = productId
-            });
-        }
+        var newCategories = categories.Select(item => new ProductCategory {CategoryId = item, ProductId = productId}).ToList();
 
         _categoryRepository.AddProductCategories(newCategories);
         _categoryRepository.SaveChanges();

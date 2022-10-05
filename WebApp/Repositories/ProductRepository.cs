@@ -5,9 +5,9 @@ namespace WebApp.Repositories;
 
 public class ProductRepository : IProductRepository
 {
-    private eCommerceContext _context;
+    private readonly ECommerceContext _context;
 
-    public ProductRepository(eCommerceContext context)
+    public ProductRepository(ECommerceContext context)
     {
         _context = context;
     }
@@ -30,7 +30,7 @@ public class ProductRepository : IProductRepository
 
     public void EditProduct(Product product)
     {
-        _context.Entry(product).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+        _context.Entry(product).State = EntityState.Modified;
     }
 
     public void EditProductPrice(Price price)

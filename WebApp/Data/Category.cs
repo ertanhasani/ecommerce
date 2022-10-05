@@ -13,8 +13,7 @@ public class Category
     public int Id { get; set; }
 
     public int? ParentId { get; set; }
-
-    [Required (ErrorMessage = "نام دسته بندی باید وارد گردد")]
+    
     public string Name { get; set; }
 
     public string CreatedByUserId { get; set; }

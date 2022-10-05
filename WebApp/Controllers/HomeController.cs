@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using WebApp.Models;
 using WebApp.Repositories;
 using WebApp.Resources;
 using WebApp.ViewModels;

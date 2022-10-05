@@ -4,9 +4,9 @@ namespace WebApp.Repositories;
 
 public class UploadRepository : IUploadRepository
 {
-    private eCommerceContext _context;
+    private readonly ECommerceContext _context;
 
-    public UploadRepository(eCommerceContext context)
+    public UploadRepository(ECommerceContext context)
     {
         _context = context;
     }

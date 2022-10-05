@@ -2,5 +2,5 @@
 
 public interface IGeneralServices
 {
-    void AddCategories(int[] categories, int productId, bool isEditing);
+    void AddCategories(IEnumerable<int> categories, int productId, bool isEditing);
 }

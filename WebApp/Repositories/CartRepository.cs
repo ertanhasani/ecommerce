@@ -5,16 +5,16 @@ namespace WebApp.Repositories;
 
 public class CartRepository : ICartRepository
 {
-    private eCommerceContext _context;
+    private readonly ECommerceContext _context;
 
-    public CartRepository(eCommerceContext context)
+    public CartRepository(ECommerceContext context)
     {
         _context = context;
     }
 
     public int GetCartCount(string userId)
     {
-        return _context.OrderDetails.Where(p => p.Order.UserId == userId && p.IsDeleted == false && p.Order.IsDeleted == false && p.Order.Payed == false).Count();
+        return _context.OrderDetails.Count(p => p.Order.UserId == userId && p.IsDeleted == false && p.Order.IsDeleted == false && p.Order.Payed == false);
     }
 
     public Order GetCurrentUserCart(string userId)
@@ -105,11 +105,11 @@ public class CartRepository : ICartRepository
 
     public Status GetCartStatus(int id)
     {
-        return _context.Order.Include(p => p.Status).FirstOrDefault(p => p.Id == id).Status;
+        return _context.Order.Include(p => p.Status).FirstOrDefault(p => p.Id == id)?.Status;
     }
 
     public Shipping GetCartShippingAddress(int id)
     {
-        return _context.Order.Include(p => p.Shipping).FirstOrDefault(p => p.Id == id).Shipping;
+        return _context.Order.Include(p => p.Shipping).FirstOrDefault(p => p.Id == id)?.Shipping;
     }
 }

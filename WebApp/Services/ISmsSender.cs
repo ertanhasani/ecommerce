@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Indoor.Services;
+﻿namespace WebApp.Services;
 
 public interface ISmsSender
 {

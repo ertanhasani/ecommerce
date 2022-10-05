@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Data;
-using WebApp.Models;
 using WebApp.Repositories;
 using WebApp.Resources;
 using WebApp.ViewModels;

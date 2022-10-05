@@ -13,8 +13,7 @@ public class SenderSettings
     public string Key { get; set; }
 
     public string From { get; set; }
-
-
+    
     public string Password { get; set; }
 
     public string Username { get; set; }

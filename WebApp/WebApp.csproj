@@ -26,4 +26,8 @@
       <Content Include="obj\Debug\net6.0\WebApp.MvcApplicationPartsAssemblyInfo.cache" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Models" />
+    </ItemGroup>
+
 </Project>
