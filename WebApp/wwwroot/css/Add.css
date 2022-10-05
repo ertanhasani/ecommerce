@@ -1,1 +1,52 @@
 ﻿@import "FormComponent.css";
+
+.note-editor.note-frame{
+    border-radius: 1rem !important;
+    border: 1px solid var(--globalSecondColor) !important;
+}
+
+.note-editor.note-frame .note-editing-area .note-editable{
+    margin: 0 10px;
+}
+
+.note-editor.note-frame .note-statusbar{
+    background-color: #000000 !important;
+    border-radius: 1rem;
+    width: 25%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.select2-container--default .select2-selection--multiple{
+    border-radius: 1rem !important;
+    border: 1px solid var(--globalSecondColor) !important;
+}
+
+.select2-container{
+    width: 100% !important;
+}
+
+.cr-boundary{
+    border-radius: 1rem;
+}
+
+.file-preview{
+    border: 1px solid var(--globalSecondColor) !important;
+    border-radius: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.file-caption {
+    border: 1px solid var(--globalSecondColor) !important;
+    border-radius: 1rem !important;
+    color: var(--globalSecondColor) !important;
+    background: white !important;
+    margin-left: 1rem;
+}
+
+.btn-primary{
+    border: 1px solid var(--globalSecondColor) !important;
+    border-radius: 1rem;
+    color: var(--globalSecondColor) !important;
+    background: white !important;
+}
