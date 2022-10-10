@@ -7,12 +7,16 @@ This is a fork from https://github.com/ertanhasani/ecommerce
 E-Commerce application written in ASP.NET Core 6.0 (MVC) and MSSQL
 
 ## Database
-Run `full.sql` in your database and it will create a database.
+To restore the database, you must use the shop.bak file and it will create a database with few Data.
 
 ## Backend
 If you need to change the connection string you can do it by going to `application.json` file.
 
 Execute `dotnet run` in CMD and the application will start running.
+
+Admin User: Admin@Admin.com
+Customer User: Customer@Customer.com
+Password: Password1
 
 **ENJOY!**
 
