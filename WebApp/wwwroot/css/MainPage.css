@@ -57,11 +57,10 @@ display: flex;
 }
 
 .catalog-pic {
-  width: inherit;
+  width: 100%;
   margin-top: -75px;
 
 }
-
 
 .fadeTop {
   -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));

@@ -28,7 +28,7 @@
                     {
                         <div class="carousel-item @(i == 0 ? "active" : "")">
 
-                            <img class="first-slide" src="@carousels[i].Path" alt="@carousels[i].Name">
+                            <img class="catalog-pic" src="@carousels[i].Path" alt="@carousels[i].Name">
 
                             <div class="container">
 
@@ -69,7 +69,7 @@
 
                 @foreach (var items in Model.Carousels.Where(x => x.PageName == "Home" && x.SectionName == "Catalog"))
                 {
-                    <a class="catalog-container @items.Style" href="@items.Link">
+                    <a class="catalog-container" style="background: @items.Style" href="@items.Link">
 
                         <h3>@items.Title</h3>
 
@@ -262,7 +262,7 @@
 
                             <h4 class="description-title">@items.Title</h4>
 
-                            <p class="description-item">@items.Description</p>
+                            <p class="description-item">@items.ShortDescription</p>
 
 
                         </div>

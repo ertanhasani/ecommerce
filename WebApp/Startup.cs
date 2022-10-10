@@ -62,8 +62,6 @@ namespace WebApp
             services.AddIdentity<ApplicationUser, IdentityRole>(setupAction =>
                 {
                     setupAction.Password.RequireNonAlphanumeric = false;
-                    setupAction.Password.RequireLowercase = true;
-                    setupAction.Password.RequireUppercase = true;
                     setupAction.Password.RequiredLength = 6;
                     setupAction.Password.RequiredUniqueChars = 0;
                     setupAction.SignIn.RequireConfirmedEmail = true;

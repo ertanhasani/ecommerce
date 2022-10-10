@@ -94,9 +94,9 @@ public class AccountController : Controller
             {
                 _logger.LogInformation(LogConstant.NewUserWithPass);
 
-                var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
-                await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
+                // var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                // var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
+                // await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
 
                 await _userManager.AddToRoleAsync(user, GeneralConstant.Roles.Customer);
 
