@@ -18,7 +18,7 @@
 
 <section class="d-flex justify-content-center container text-right">
 
-<div class="formComponent-holder">
+<div class="formComponent-holder col-12">
 
 <form method="post" id="form" enctype="multipart/form-data">
 
@@ -62,7 +62,7 @@
 
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-3">
 
         <div class="form-group">
 
@@ -76,7 +76,7 @@
 
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-4">
 
         <div class="form-group">
 
@@ -84,7 +84,7 @@
 
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
 
-                <div class="input-group-addon">در تخفیف <input asp-for="IsOnSale" type="checkbox"/></div>
+                <div class="input-group-addon d-flex align-items-center">در تخفیف <input asp-for="IsOnSale" type="checkbox"/></div>
 
                 <input asp-for="SalePrice" type="text" class="form-control formComponent-input"/>
 
@@ -96,13 +96,13 @@
 
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-2 d-flex align-items-center justify-content-center">
 
-        <div class="form-group">
-
-            <label asp-for="@Model.IsDigit"></label>
-
+        <div class="form-group mb-0">
+            
             <div class="input-group-addon">
+                
+                <label asp-for="@Model.IsDigit"></label>
 
                 <input asp-for="IsDigit" type="checkbox" class="formComponent-input"/>
 
@@ -114,7 +114,7 @@
 
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-3">
 
         <div class="form-group">
 
@@ -184,7 +184,7 @@
 
             <div class="col">
 
-                <div class="col-md-8 text-center">
+                <div class="col-md-12 text-center">
 
                     <div id="upload-canvas" style=" display:none;"></div>
 
