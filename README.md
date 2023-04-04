@@ -1,71 +1,8 @@
-This repository contains an E-commerce web application built with .Net Core and MVC architecture. The application allows users to browse, search, and purchase products online. It also includes an admin panel where administrators can manage products, orders, and users.
-
-Prerequisites
-Before running the application, you will need to have the following tools and technologies installed on your system:
-
-.Net Core SDK
-Visual Studio Code or any other IDE of your choice
-SQL Server Express or another relational database management system
-Installation
-To install and run the application, follow these steps:
-
-Clone the repository to your local machine using the following command:
-
-bash
-Copy code
-git clone https://github.com/mrbanad/E-commerce-With-.Net-Core-MVC.git
-Open the project in your preferred IDE.
-
-In the appsettings.json file, modify the connection string to match your database configuration. By default, the application uses SQL Server Express and the connection string is as follows:
-
-swift
-Copy code
-"DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=EcommerceDb;Trusted_Connection=True;MultipleActiveResultSets=true"
-Open the Package Manager Console and run the following commands to create the database and apply the initial migration:
-
-sql
-Copy code
-Add-Migration InitialCreate
-Update-Database
-Run the application by pressing F5 or using the command dotnet run in the terminal.
-
-Open a web browser and go to https://localhost:5001 to view the application.
-
-Usage
-The application has two main sections: the storefront and the admin panel.
-
-Storefront
-The storefront allows users to browse and purchase products online. Users can:
-
-Browse products by category or search for a specific product using the search bar.
-View product details such as price, description, and images.
-Add products to their cart and proceed to checkout.
-View their order history and track the status of their orders.
-Admin Panel
-The admin panel is accessible only to users with administrator privileges. Administrators can:
-
-Add, edit, and delete products and categories.
-View and manage orders placed by users.
-Manage user accounts and roles.
-Technologies Used
-The application was built using the following technologies:
-
-.Net Core 3.1
-Entity Framework Core 3.1
-ASP.Net Core MVC
-SQL Server Express
-HTML, CSS, and JavaScript
-Bootstrap 4
-Contributions
-Contributions to this project are welcome. To contribute, follow these steps:
-
-Fork the repository.
-Create a new branch for your feature or bug fix.
-Make your changes and commit them to your branch.
-Push your changes to your forked repository.
-Submit a pull request to the original repository.
-License
-This project is licensed under the MIT License.
+<div class="markdown prose w-full break-words dark:prose-invert dark"><h1>Technical Readme for E-commerce With .Net Core MVC</h1><p>This repository contains an E-commerce web application built with .Net Core and MVC architecture. The application allows users to browse, search, and purchase products online. It also includes an admin panel where administrators can manage products, orders, and users.</p><h2>Prerequisites</h2><p>Before running the application, you will need to have the following tools and technologies installed on your system:</p><ul><li><a href="https://dotnet.microsoft.com/download" target="_new">.Net Core SDK</a></li><li><a href="https://code.visualstudio.com/" target="_new">Visual Studio Code</a> or any other IDE of your choice</li><li><a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads" target="_new">SQL Server Express</a> or another relational database management system</li></ul><h2>Installation</h2><p>To install and run the application, follow these steps:</p><ol><li><p>Clone the repository to your local machine using the following command:</p><pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>bash</span><button class="flex ml-auto gap-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>Copy code</button></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">git <span class="hljs-built_in">clone</span> https://github.com/mrbanad/E-commerce-With-.Net-Core-MVC.git
+</code></div></div></pre></li><li><p>Open the project in your preferred IDE.</p></li><li><p>In the <code>appsettings.json</code> file, modify the connection string to match your database configuration. By default, the application uses SQL Server Express and the connection string is as follows:</p><pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>swift</span><button class="flex ml-auto gap-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>Copy code</button></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-swift"><span class="hljs-string">"DefaultConnection"</span>: <span class="hljs-string">"Server=(localdb)<span class="hljs-subst">\\</span>mssqllocaldb;Database=EcommerceDb;Trusted_Connection=True;MultipleActiveResultSets=true"</span>
+</code></div></div></pre></li><li><p>Open the Package Manager Console and run the following commands to create the database and apply the initial migration:</p><pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>sql</span><button class="flex ml-auto gap-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>Copy code</button></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-sql"><span class="hljs-keyword">Add</span><span class="hljs-operator">-</span>Migration InitialCreate
+<span class="hljs-keyword">Update</span><span class="hljs-operator">-</span>Database
+</code></div></div></pre></li><li><p>Run the application by pressing F5 or using the command <code>dotnet run</code> in the terminal.</p></li><li><p>Open a web browser and go to <code>https://localhost:5001</code> to view the application.</p></li></ol><h2>Usage</h2><p>The application has two main sections: the storefront and the admin panel.</p><h3>Storefront</h3><p>The storefront allows users to browse and purchase products online. Users can:</p><ul><li>Browse products by category or search for a specific product using the search bar.</li><li>View product details such as price, description, and images.</li><li>Add products to their cart and proceed to checkout.</li><li>View their order history and track the status of their orders.</li></ul><h3>Admin Panel</h3><p>The admin panel is accessible only to users with administrator privileges. Administrators can:</p><ul><li>Add, edit, and delete products and categories.</li><li>View and manage orders placed by users.</li><li>Manage user accounts and roles.</li></ul><h2>Technologies Used</h2><p>The application was built using the following technologies:</p><ul><li>.Net Core 7</li><li>Entity Framework Core 7</li><li>ASP.Net Core MVC</li><li>SQL Server Express</li><li>HTML, CSS, and JavaScript</li><li>Bootstrap 4</li></ul><h2>Contributions</h2><p>Contributions to this project are welcome. To contribute, follow these steps:</p><ol><li>Fork the repository.</li><li>Create a new branch for your feature or bug fix.</li><li>Make your changes and commit them to your branch.</li><li>Push your changes to your forked repository.</li><li>Submit a pull request to the original repository.</li></ol><h2>License</h2><p>This project is licensed under the <a href="https://github.com/mrbanad/E-commerce-With-.Net-Core-MVC/blob/main/LICENSE" target="_new">MIT License</a>.</p></div>
 
 **ENJOY!**
 > **Feel free to add any feature that you think it would be nice!**
