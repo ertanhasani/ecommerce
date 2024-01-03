@@ -1,0 +1,23 @@
+[
+  {
+    "outputFileName": "wwwroot/css/bundles/site.min.css",
+    "inputFiles": [
+      "wwwroot/lib/font-awesome-4.7.0/css/font-awesome.min.css",
+      "wwwroot/lib/bootstrap-4.4.1/css/bootstrap.min.css",
+      "wwwroot/css/site.css",
+      "wwwroot/lib/Persian-DatePicker/persian-datepicker.min.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/bundles/site.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/dist/jquery-3.6.0.min.js",
+      "wwwroot/lib/bootstrap-4.4.1/js/bootstrap.bundle.js",
+      "wwwroot/lib/jquery-validation/dist/jquery.validate.js",
+      "wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "wwwroot/js/site.js",
+      "wwwroot/lib/Persian-DatePicker/persian-date.min.js",
+      "wwwroot/lib/Persian-DatePicker/persian-datepicker.min.js"
+    ]
+  }
+]

@@ -1,0 +1,566 @@
+﻿@model WebApp.ViewModels.ProductsViewModel
+
+@{
+    ViewData["Title"] = "اضافه کردن محصول";
+}
+<link href="~/lib/croppie/croppie.css" rel="stylesheet"/>
+<link href="~/lib/summer-note/summernote-bs4.css" rel="stylesheet"/>
+<link href="~/lib/file-input 4/css/fileinput.min.css" rel="stylesheet"/>
+<link href="~/lib/select2/css/select2.min.css" rel="stylesheet"/>
+
+<style>
+
+    .input-group > .input-group-addon > input[type=checkbox] {
+        margin-left: 10px;
+    }
+    
+</style>
+
+<section class="d-flex justify-content-center container text-right">
+
+<div class="formComponent-holder col-12">
+
+<form method="post" id="form" enctype="multipart/form-data">
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<input type="hidden" asp-for="Id"/>
+
+<input type="hidden" asp-for="ThumbnailString"/>
+
+<input type="hidden" asp-for="Description"/>
+
+<div class="row">
+
+    <div class="col-md-12">
+
+        <div class="form-group">
+
+            <label asp-for="@Model.Name"></label>
+
+            <input asp-for="Name" type="text" class="form-control required formComponent-input"/>
+
+            <span asp-validation-for="@Model.Name" class="text-danger"></span>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-12">
+
+        <div class="form-group">
+
+            <label asp-for="@Model.Description"></label>
+
+            <div id="textarea" class="descriptionRequired formComponent-input">
+                @Html.Raw(Model.Description)
+            </div>
+
+            <span asp-validation-for="@Model.Description" class="text-danger"></span>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="form-group">
+
+            <label asp-for="@Model.Price"></label>
+
+            <input asp-for="Price" type="text" class="form-control required formComponent-input"/>
+
+            <span asp-validation-for="@Model.Price" class="text-danger"></span>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="form-group">
+
+            <label asp-for="@Model.SalePrice"></label>
+
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+
+                <div class="input-group-addon d-flex align-items-center">در تخفیف <input asp-for="IsOnSale" type="checkbox"/></div>
+
+                <input asp-for="SalePrice" type="text" class="form-control formComponent-input"/>
+
+            </div>
+
+            <span asp-validation-for="@Model.SalePrice" class="text-danger"></span>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-2 d-flex align-items-center justify-content-center">
+
+        <div class="form-group mb-0">
+            
+            <div class="input-group-addon">
+                
+                <label asp-for="@Model.IsDigit"></label>
+
+                <input asp-for="IsDigit" type="checkbox" class="formComponent-input"/>
+
+            </div>
+
+            <span asp-validation-for="@Model.IsDigit" class="text-danger"></span>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="form-group">
+
+            <label asp-for="@Model.Quantity"></label>
+
+
+            <input asp-for="Quantity" type="text" class="form-control required quantity formComponent-input"/>
+
+            <span asp-validation-for="@Model.Quantity" class="text-danger"></span>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="form-group">
+
+            <label asp-for="@Model.Categories"></label>
+
+            <select asp-for="Categories" asp-items="@((MultiSelectList)ViewData["Categories"])" class="form-control required formComponent-input" multiple></select>
+
+            <span asp-validation-for="@Model.Categories" class="text-danger"></span>
+
+        </div>
+
+    </div>
+
+    @if (Model.ThumbnailUrl != null)
+    {
+        <div class="col-md-12">
+
+            <div class="form-group">
+
+                <label>تصویر فعلی محصول :</label>
+
+                <div>
+
+                    <a href="@Model.ThumbnailUrl" target="_blank">
+
+                        <img src="@Model.ThumbnailUrl" width="50px"/>
+
+                    </a>
+
+                </div>
+
+                <p style="font-size: 10px;">برای تغییر عکس ، عکس جدید را انتخاب کنید</p>
+
+            </div>
+
+            <span asp-validation-for="@Model.ThumbnailUrl" class="text-danger"></span>
+
+        </div>
+    }
+
+    <div class="col-md-12">
+
+        <div class="form-group">
+
+            <label>تصویر محصول:</label>
+
+            <div class="col-md-3">
+
+                <input type="file" id="upload" class="required uploadi">
+
+            </div>
+
+            <div class="col">
+
+                <div class="col-md-12 text-center">
+
+                    <div id="upload-canvas" style=" display:none;"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr/>
+
+    </div>
+
+    <div class="col-md-12">
+
+        <div class="form-group">
+
+            <label>تصاویر دیگر :</label>
+
+            <div class="file-loading formComponent-input">
+
+                <input id="Uploads" name="uploads" type="file" class="formComponent-input" multiple/>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-12 text-right">
+
+        <button id="saveContentBtn" type="button" class="btn formComponent-first-button">ثبت</button>
+
+    </div>
+
+</div>
+
+</form>
+
+</div>
+
+</section>
+
+@section Styles
+{
+    <environment include="Development">
+
+        <link href="~/css/Add.css" rel="stylesheet"/>
+
+    </environment>
+
+    <environment exclude="Development">
+
+        <link href="~/css/bundles/Add.min.css" rel="stylesheet"/>
+
+    </environment>
+
+}
+
+@section scripts{
+
+    <script src="~/lib/croppie/croppie.min.js"></script>
+    <script src="~/lib/summer-note/summernote-bs4.js"></script>
+    <script src="~/lib/file-input 4/js/fileinput.min.js"></script>
+    <script src="~/lib/file-input 4/themes/fa/theme.min.js"></script>
+    <script src="~/lib/select2/js/select2.js"></script>
+
+    <script>
+    
+        $(function () {
+            
+            if (!$('#IsOnSale').is(':checked')) {
+                $('#SalePrice').prop('disabled', true);
+            }
+
+            $('#textarea').summernote({
+                height: 200
+            });
+
+            $('#Categories').select2({
+                placeholder: 'دسته بندی را انتخاب کنید'
+            });
+
+            $('#IsOnSale').on('click', function () {
+                
+                if ($(this).is(':checked')) {
+                    $('#SalePrice').attr('disabled', false);
+                }
+                else {
+                    $('#SalePrice').attr('disabled', true);
+                }
+               
+            });
+
+            $('#saveContentBtn').on('click', function () {
+                
+                saveImage();
+                
+            });
+
+            $uploadCrop = $('#upload-canvas').croppie({
+            
+                enableExif: true,
+                viewport: {
+                    width: 260,
+                    height: 236
+                },
+                boundary: {
+                    width: 550,
+                    height: 380
+                }
+                
+            });
+
+            $('#upload').on('change', function () {
+                
+                var reader = new FileReader();
+                
+                reader.onload = function (e) {
+
+                    $("#upload-canvas").show();
+                    $uploadCrop.croppie('bind', {
+                        url: e.target.result
+                    }).then(function () {
+
+                    });
+
+                }
+                
+                reader.readAsDataURL(this.files[0]);
+            });
+
+            function saveImage() {
+                
+                var check = checkValidation();
+                
+                if (check == false) {
+                    return false;
+                }
+                
+                if ($('#upload').get(0).files.length == 0) {
+                    var summerNote = $('#textarea').summernote('code');
+                    $('#Description').val(summerNote);
+                    $('#form').submit();
+                }
+                else {
+                    $uploadCrop.croppie('result', {
+                        type: 'base64',
+                        size: {
+                            width: 260,
+                            height: 236
+                        },
+                        quality: 1
+                    }).then(function (resp) {
+                        $('#ThumbnailString').val(resp);
+                        var summerNote = $('#textarea').summernote('code');
+                        $('#Description').val(summerNote);
+                        $('#form').submit();
+                    });
+                }
+            }
+
+            $('#form').bind('keypress keydown keyup', function (e) {
+                
+                if (e.keyCode == 13) { e.preventDefault(); }
+                
+            });
+
+            $('input').on('input', function () {
+
+                var value = $(this).val();
+
+                if (value == null || value == '') {
+                    $(this).addClass('validateInput')
+                }
+                else {
+                    $(this).removeClass('validateInput');
+                }
+                
+            });
+
+            function checkValidation() {
+                var hasErrors = false;
+
+                $('#form .required').each(function (i, item) {
+                    
+                    var value = $(this).val();
+                    
+                    if (value == '' || value == null){
+
+                        if ($(this).hasClass('quantity') && value != 0) {
+                            return true;
+                        }
+                        
+                        if ($(this).hasClass('uploadi') && @Model.Id != 0) {
+                            return true;
+                        }
+
+                        $(this).addClass('validateInput');
+                        hasErrors = true;
+                    }
+                    
+                    else {
+                        $(this).removeClass('validateInput');
+                    }
+                });
+
+
+                var isSale = $('#IsOnSale').is(':checked');
+                
+                if (isSale) {
+                    var salePrice = $('#SalePrice').val();
+                    
+                    if (salePrice == '' || salePrice == null) {
+                        $('#SalePrice').addClass('validateInput');
+                        hasErrors = true;
+                    }
+                    else {
+                        $('#SalePrice').removeClass('validateInput');
+                    }
+                    
+                }
+
+                var categories = $('#Categories').val();
+                
+                if (categories == null || categories == '') {
+                    $('.select2-selection.select2-selection--multiple').addClass('validateInput');
+                    hasErrors = true;
+                }
+                else {
+                    $('.select2-selection.select2-selection--multiple').removeClass('validateInput');
+                }
+
+                var id = @Model.Id;
+                
+                if (id == 0) {
+                    if ($('#upload').get(0).files.length == 0) {
+                        $('.file-caption.form-control.kv-fileinput-caption').addClass('validateInput');
+                        hasErrors = true;
+                    }
+                    else {
+                        $('.file-caption.form-control.kv-fileinput-caption').removeClass('validateInput');
+                    }
+                }
+                
+                if (hasErrors) {
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+            
+
+            $('#IsOnSale').on('change', function () {
+                
+                var salePrice = $('#SalePrice').val();
+                
+                if ($(this).is(':checked') && (salePrice == '' || salePrice == null)) {
+                    $('#SalePrice').addClass('validateInput');
+                    hasErrors = true;
+                }
+                else {
+                    $('#SalePrice').removeClass('validateInput');
+                }
+                
+            });
+
+
+            $('#Categories').on('change', function () {
+                
+                if ($(this).val() == null || $(this).val() == '') {
+                    $('.select2-selection.select2-selection--multiple').addClass('validateInput');
+                }
+                else {
+                    $('.select2-selection.select2-selection--multiple').removeClass('validateInput');
+                }
+                
+            });
+            
+        })
+        
+    </script>
+
+    @if (Model.Id == 0)
+    {
+        <script>
+        
+            var uploadi = $("#Uploads").fileinput({
+                theme: 'fa',
+                //uploadUrl: '/Projects/SaveUploads',
+                //uploadExtraData: function () {
+                //    return { projectId: id };
+                //},
+                //uploadAsync: false,
+                maxFileCount: 5,
+                showUpload: false,
+                maxFileCount: 0,
+                //showBrowse: false,
+                showRemove: false,
+                overwriteInitial: false,
+                showClose: false,
+                //browseOnZoneClick: true,
+                deleteUrl: "",
+                fileActionSettings: {
+                    showUpload: false
+                }
+            });
+            
+        </script>
+    }
+    else
+    {
+        <script>
+        
+        var initialPreview = [];
+        
+                var initialPreviewConfig = [];
+        const t = $("input[name='__RequestVerificationToken']").val();
+                $.ajax({
+                    type: 'GET',
+                    url: "/Products/Add/Uploads",
+                    dataType: "json",    
+                    headers:
+                                                                                 {
+                                                                                     "RequestVerificationToken": t
+                                                                                 },
+                    data: {
+                        productIda: @Model.Id,
+                    },
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("XSRF-TOKEN",
+                            $('input:hidden[name="__RequestVerificationToken"]').val());
+                    },
+                    success: function (data) {
+                        if (data.length != 0) {
+                            $.each(data, function (i, item) {
+                                initialPreview.push(item.path);
+                                var model = {
+                                    caption: item.fileName, width: '120px', url: '@Url.Action("DeleteProductUpload", "Products")/' + item.id , key: item.id, extra: item.id
+                                };
+                                initialPreviewConfig.push(model);
+                            });
+
+
+                            var uploadi = $("#Uploads").fileinput({
+                                theme: 'fa',
+                                //uploadUrl: '/Projects/SaveUploads',
+                                //uploadExtraData: function () {
+                                //    return { projectId: id };
+                                //},
+                                //uploadAsync: false,
+                                maxFileCount: 5,
+                                showUpload: false,
+                                maxFileCount: 0,
+                                //showBrowse: false,
+                                showRemove: false,
+                                overwriteInitial: false,
+                                showClose: false,
+                                //browseOnZoneClick: true,
+                                deleteUrl: "",
+                                fileActionSettings: {
+                                    showUpload: false
+                                },
+                                initialPreviewAsData: true,
+                                initialPreview: initialPreview,
+                                initialPreviewConfig: initialPreviewConfig,
+                                deleteUrl: "/site/file-delete"
+                            });
+                            
+                        }
+                        
+                    }
+                    
+                });
+                
+        </script>
+    }
+}

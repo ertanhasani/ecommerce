@@ -1,0 +1,19 @@
+﻿<changelist name="Uncommitted_changes_before_Update_at_10_10_2022_4_41_PM_[Changes]" date="1665407510803" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/.idea.eCommerce/.idea/shelf/Uncommitted_changes_before_Update_at_10_10_2022_4_41_PM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 10/10/2022 4:41 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="WebApp/obj/Debug/net6.0/WebApp.csproj.AssemblyReference.cache" />
+    <option name="AFTER_PATH" value="WebApp/obj/Debug/net6.0/WebApp.csproj.AssemblyReference.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.eCommerce/.idea/shelf/Uncommitted_changes_before_Update_at_10_10_2022_4_41_PM_[Changes]/WebApp.csproj.AssemblyReference.cache" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="WebApp/obj/Debug/net6.0/WebApp.assets.cache" />
+    <option name="AFTER_PATH" value="WebApp/obj/Debug/net6.0/WebApp.assets.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.eCommerce/.idea/shelf/Uncommitted_changes_before_Update_at_10_10_2022_4_41_PM_[Changes]/WebApp.assets.cache" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="WebApp/obj/project.nuget.cache" />
+    <option name="AFTER_PATH" value="WebApp/obj/project.nuget.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.eCommerce/.idea/shelf/Uncommitted_changes_before_Update_at_10_10_2022_4_41_PM_[Changes]/project.nuget.cache" />
+  </binary>
+</changelist>

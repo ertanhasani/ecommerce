@@ -1,0 +1,129 @@
+﻿@model List<WebApp.ViewModels.PriceListViewModel>
+
+@{
+    ViewData["Title"] = "لیست قیمت";
+    Layout = "_Layout";
+}
+
+<h4 style="text-align: center">لیست قیمت</h4>
+
+@foreach (var item in Model)
+{
+    <div class="col-md-12" style="margin: 25px 0;">
+
+        <hr/>
+
+        <form method="post" asp-action="PriceList" style="display: flex; flex-wrap: wrap;">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input asp-for="@item.Price.Id" type="hidden" class="form-control"/>
+            <input asp-for="@item.ProductId" type="hidden" class="form-control"/>
+
+            <div class="form-group col-md-12">
+
+                <label asp-for="@item.Name">@item.Name</label>
+
+            </div>
+
+            <div class="form-group col-md-4">
+
+                <label asp-for="@item.Price.Price1">قیمت</label>
+
+                <input asp-for="@item.Price.Price1" class="form-control"/>
+
+                <span asp-validation-for="@item.Price.Price1" class="text-danger"></span>
+
+            </div>
+
+            <div class="form-group form-group col-md-4">
+
+                <label asp-for="@item.OffPrice"></label>
+
+                <input asp-for="@item.OffPrice" class="form-control"/>
+
+                <span asp-validation-for="@item.OffPrice" class="text-danger"></span>
+
+            </div>
+
+            <div class="form-group form-group col-md-1">
+
+                <label asp-for="@item.IsDigit"></label>
+
+                <div class="input-group-addon">
+
+                    <input asp-for="@item.IsDigit" type="checkbox"/>
+
+                </div>
+
+                <span asp-validation-for="@item.IsDigit" class="text-danger"></span>
+
+            </div>
+
+            <div class="form-group col-md-1">
+
+                <label asp-for="@item.IsOnSale"></label>
+
+                <div class="input-group-addon">
+
+                    <input asp-for="@item.IsOnSale" type="checkbox"/>
+
+                </div>
+
+                <span asp-validation-for="@item.IsOnSale" class="text-danger"></span>
+
+            </div>
+
+            <button type="submit" id="submitBtn" class="btn btn-default" style="background: #04adbf; color:white; height: fit-content">ثبت</button>
+
+            <label id="result" style=" height: fit-content; margin: 0 auto;"></label>
+
+        </form>
+
+    </div>
+}
+
+@section Scripts
+{
+    <script>
+    
+     $("form").submit(function(e){
+         
+            e.preventDefault();
+            
+                    const t = $("input[name='__RequestVerificationToken']").val();
+            var response = $(this).find("#result");
+            
+             $.ajax("/ProductItem/PriceList/",
+              {
+                data: $(this).serialize(),
+                method:"Post",    
+                headers:
+                                                                          {
+                                                                              "RequestVerificationToken": t
+                                                                          },
+                    success: function (data, status){
+
+                    if (status === "success"){
+                        
+                     response.text(data);
+                                            
+                     response.addClass("alert alert-success")
+                     
+                    }
+                    else{
+                     response.text(data);
+                                                                    
+                    response.addClass("alert alert-danger")
+                    }},
+                                 
+                    error: function (data){
+                    response.text(data);                                                                                        
+                    response.addClass("alert alert-danger")                                          
+                }
+              });
+        });
+    
+    </script>
+
+}

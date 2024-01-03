@@ -1,0 +1,28 @@
+﻿@import "_variable.css";
+
+.register-holder {
+    background: white;
+    padding: 2rem 1rem;
+    border-radius: var(--globalRadius);
+}
+
+.register-input {
+    border-radius: 1rem;
+    border: 1px solid var(--globalSecondColor);
+}
+
+.form-control:focus {
+    background: white !important;
+    border-color: var(--globalSecondColor) !important;
+    box-shadow: none;
+}
+
+.register-button {
+    background: var(--globalSecondColor);
+    border-radius: 1rem;
+    color: white !important;
+}
+
+span{
+    font-size: 14px;
+}

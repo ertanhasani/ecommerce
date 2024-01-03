@@ -1,0 +1,111 @@
+﻿@model WebApp.ViewModels.RegisterViewModel
+
+@{
+    ViewData["Title"] = "ثبت پروفایل";
+    Layout = "_Layout";
+}
+
+<section class="d-flex justify-content-center container text-right">
+
+    <div class="col-12 col-md-7 col-lg-6 formComponent-holder">
+
+        <form id="form" method="post" asp-action="RegisterForm">
+
+            <h4 class="text-center">ایجاد حساب کاربری</h4>
+
+            <input asp-for="ReturnUrl" class="form-control formComponent-input" type="hidden"/>
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="d-flex flex-wrap justify-content-between mt-3">
+                
+                <div class="form-group col-12 col-sm-6">
+
+                    <label asp-for="FirstName"></label>
+
+                    <input asp-for="FirstName" class="form-control formComponent-input"/>
+
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group col-12 col-sm-6">
+
+                    <label asp-for="LastName"></label>
+
+                    <input asp-for="LastName" class="form-control formComponent-input"/>
+
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group col-12 col-sm-6">
+
+                    <label asp-for="BirthDateString"></label>
+
+                    <input asp-for="BirthDateString" type="text" class="form-control persianDatepicker formComponent-input"/>
+
+                    <span asp-validation-for="BirthDateString" class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group col-12 col-sm-6">
+
+                    <label asp-for="Email"></label>
+
+                    <input asp-for="Email" class="form-control formComponent-input"/>
+
+                    <span asp-validation-for="Email" class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group col-12 col-sm-6">
+
+                    <label asp-for="Password"></label>
+
+                    <input asp-for="Password" class="form-control formComponent-input"/>
+
+                    <span asp-validation-for="Password" class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group col-12 col-sm-6">
+
+                    <label asp-for="ConfirmPassword"></label>
+
+                    <input asp-for="ConfirmPassword" class="form-control formComponent-input"/>
+
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+                </div>
+                
+                <div class=" col-12 mt-3">
+                    
+                    <button type="submit" id="submitBtn" class="btn btn-default formComponent-first-button w-100">ثبت نام</button>
+                    
+                </div>
+                
+            </div>
+            
+        </form>
+
+    </div>
+
+</section>
+
+@section Styles
+{
+    <environment include="Development">
+
+        <link href="~/css/FormComponent.css" rel="stylesheet"/>
+
+    </environment>
+
+    <environment exclude="Development">
+
+        <link href="~/css/bundles/FormComponent.min.css" rel="stylesheet"/>
+
+
+    </environment>
+
+}

@@ -1,0 +1,197 @@
+﻿@model WebApp.ViewModels.CartViewModel
+
+@{
+    ViewData["Title"] = "سبد خرید";
+}
+
+<div class="contenti">
+
+    <div class="container">
+
+        <div class="row" style="margin-bottom: 20px;">
+
+            <h2 style="text-align: center">سبد خرید</h2>
+
+            <div class="col-md-12">
+
+                <table class="table table-condensed table-hover">
+
+                    <thead>
+
+                    <tr>
+
+                        <th>تصویر</th>
+
+                        <th>نام</th>
+
+                        <th>قیمت واحد</th>
+
+                        <th>تعداد</th>
+
+                        <th>مبلغ کل</th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    @foreach (var item in Model.Products)
+                    {
+                        <tr>
+
+                            <td>
+
+                                <a target="_blank" href="@item.ImagePath">
+
+                                    <img height="50px" src="@item.ImagePath" alt=""/>
+
+                                </a>
+
+                            </td>
+
+                            <td>@item.ProductName</td>
+
+                            <td class="price"> ریال @item.Price</td>
+
+                            <td>@item.Quantity</td>
+
+                            <td class="price"> ریال @item.Total</td>
+
+                        </tr>
+                    }
+
+                    </tbody>
+
+                </table>
+
+                <div class="text-right">
+
+                    <h2 class="form-control"> مبلغ کل : ریال @Model.Total.ToString("0.00") </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        @if (Model.Shipping != null)
+        {
+            <h4 style="text-align: center; margin-top: 50px">اطلاعات مرسوله</h4>
+
+            <hr/>
+
+            <div class="row">
+
+                <div class="col-4">
+
+                    <div class="form-group">
+
+                        <h6>نام و نام خانوادگی</h6>
+
+                        <label>@Model.Shipping.FullName</label>
+
+                    </div>
+
+                </div>
+
+                <div class="col-4">
+
+                    <div class="form-group">
+
+                        <h6>آدرس :</h6>
+
+                        <label>@Model.Shipping.Address</label>
+
+                    </div>
+
+                </div>
+
+                <div class="col-4">
+
+                    <div class="form-group">
+
+                        <h6>استان :</h6>
+
+                        <label>@Model.Shipping.State</label>
+
+                    </div>
+
+                </div>
+
+                <div class="col-4">
+
+                    <div class="form-group">
+
+                        <h6>شهر :</h6>
+
+                        <label>@Model.Shipping.City</label>
+
+                    </div>
+
+                </div>
+
+                <div class="col-4">
+
+                    <div class="form-group">
+
+                        <h6>کد پستی :</h6>
+
+                        <label>@Model.Shipping.PostalCode</label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <hr/>
+
+                <br/>
+
+                <form asp-action="ChangeStatus" method="post">
+
+                    <input type="hidden" asp-for="@Model.Id"/>
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="row">
+
+                        <div class="col-md-1">
+
+                            <label asp-for="@Model.StatusId"></label>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <select class="form-control" asp-for="StatusId" asp-items="@((SelectList) ViewData["Statuses"])"></select>
+
+                        </div>
+
+                        <div class="col-md-1">
+
+                            <span asp-validation-for="@Model.StatusId" class="text-danger"></span>
+
+                        </div>
+
+                        <div class="col">
+
+                            <button type="submit" class="btn btn-primary">ذخیره</button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+            }
+        }
+
+    </div>
+
+</div>
+
+@section scripts{
+}

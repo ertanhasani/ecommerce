@@ -1,0 +1,34 @@
+﻿@import "_variable.css";
+
+.component-section{
+    background: white;
+    border-radius: 1rem;
+}
+.form-control{
+    border: 1px solid var(--globalSecondColor);
+    border-radius: 1rem;
+}
+
+.component-table thead tr{
+    background:  var(--globalFourthColor);
+    border-radius: 1rem;
+}
+
+.component-table thead tr th:first-child{
+    border-radius: 0 1rem 1rem 0;
+}
+
+.component-table thead tr th:last-child{
+    border-radius:  1rem 0 0 1rem;
+}
+
+
+.table td ,.table th{
+    border-top: 0;
+}
+.table thead{
+    border: none;
+}
+.table thead th{
+    border-bottom: 0;
+}

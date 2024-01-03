@@ -1,0 +1,101 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model WebApp.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "ورود";
+}
+
+<section class="container text-right">
+
+    <div class="row justify-content-md-center">
+
+        <div class="col-12 col-md-7 col-lg-5 formComponent-holder">
+
+            <form id="form" method="post">
+
+                    <input asp-for="@Model.ReturnUrl" class="form-control" type="hidden"/>
+
+                    <h4 class="text-center">ورود</h4>
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+
+                        <label asp-for="@Model.Email"></label>
+
+                        <input asp-for="@Model.Email" class="form-control formComponent-input"/>
+
+                        <span asp-validation-for="@Model.Email" class="text-danger"></span>
+
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label asp-for="@Model.Password"></label>
+
+                        <input asp-for="@Model.Password" class="form-control formComponent-input"/>
+
+                        <span asp-validation-for="@Model.Password" class="text-danger"></span>
+
+                    </div>
+                    
+
+                    <div class="form-group mb-0 d-flex justify-content-between password-login-forget flex-column flex-sm-row">
+                        
+                        <div class="checkbox">
+                        
+                            <label asp-for="@Model.RememberMe" class="d-flex align-items-center">
+                        
+                                <input asp-for="@Model.RememberMe" class="ml-2"/>
+                        
+                                @Html.DisplayNameFor(m => m.RememberMe)
+                        
+                            </label>
+                        
+                        </div>
+
+                        <p>
+                            <a asp-action="ForgotPassword" asp-controller="Account">رمز عبور خود را فراموش کرده اید؟</a>
+                        </p>
+                        
+                    </div>
+
+                    <div class="form-group w-100 text-center">
+
+                        <button id="loginBtn" type="submit" class="btn btn-default formComponent-first-button w-100">ورود</button>
+
+                    </div>
+
+                    <div class="form-group text-center signUp-link">
+
+         
+                            <a asp-action="Register" asp-route-returnUrl="@Model.ReturnUrl" class="d-flex justify-content-center" ><p>حساب کاربری ندارید؟</p> / ایجاد حساب کاربری</a>
+           
+
+                    </div>
+
+                </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+@section Styles
+{
+    <environment include="Development">
+
+        <link href="~/css/login.css" rel="stylesheet"/>
+
+    </environment>
+
+    <environment exclude="Development">
+
+        <link href="~/css/bundles/Login.min.css" rel="stylesheet"/>
+
+
+    </environment>
+
+}

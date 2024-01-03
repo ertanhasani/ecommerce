@@ -1,0 +1,428 @@
+﻿@model WebApp.ViewModels.OrdersViewModel
+
+@{
+    ViewData["Title"] = "سفارشات";
+}
+<section class="container">
+
+    <div class="col-md-12 component-section p-3">
+
+        <div class="d-flex justify-content-between align-items-center flex-column flex-sm-row component-title">
+
+            <h4>سفارشات</h4>
+
+            <div class="form-group">
+
+                <input style="width: 250px !important;" id="search" type="text" class="form-control" placeholder="جستجو..."/>
+
+            </div>
+
+        </div>
+
+
+        <table id="ordersTable" class="table component-table table-responsive-md">
+
+            <thead>
+
+            <tr>
+
+                <th>شماره</th>
+
+                <th>وضعیت</th>
+
+                <th>تاریخ سفارش</th>
+
+                <th>جمع کل</th>
+
+                <th>نام و نام خانوادگی کاربران</th>
+
+                <th>ایمیل کاربران</th>
+
+                <th></th>
+
+            </tr>
+
+            </thead>
+
+            <tbody id="ordersTableBody"></tbody>
+
+        </table>
+
+        <div class="text-center paginationRow component-pagination">
+
+            <ul id="pagination" class="pagination-sm pagination"></ul>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-md-12 component-section p-3 mt-4">
+
+        <div class="d-flex justify-content-between align-items-center flex-column flex-sm-row component-title">
+
+            <h4>در حال اقدام</h4>
+            
+            <div class="form-group">
+
+                <input style="width: 250px !important;" id="processingSearch" type="text" class="form-control" placeholder="جستجو..."/>
+
+            </div>
+            
+        </div>
+
+        <table id="processingOrdersTable" class="table component-table table-responsive-md">
+
+            <thead>
+
+            <tr>
+
+                <th>شماره</th>
+
+                <th>وضعیت</th>
+
+                <th>تاریخ سفارش</th>
+
+                <th>جمع کل</th>
+
+                <th>نام و نام خانوادگی کاربر</th>
+
+                <th>ایمیل کاربر</th>
+
+                <th></th>
+
+            </tr>
+
+            </thead>
+
+            <tbody id="processingOrdersTableBody"></tbody>
+
+        </table>
+
+        <div class="text-center paginationRow component-pagination">
+
+            <ul id="processingPagination" class="pagination-sm pagination"></ul>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-md-12 component-section p-3 mt-4">
+
+        <div class="d-flex justify-content-between align-items-center flex-column flex-sm-row component-title">
+
+            <h4>ارسال شده</h4>
+            
+            <div class="form-group">
+
+                <input style="width: 250px !important;" id="shippedSearch" type="text" class="form-control" placeholder="جستجو..."/>
+
+            </div>
+            
+        </div>
+
+        <table id="shippedOrdersTable" class="table component-table table-responsive-md">
+
+            <thead>
+
+            <tr>
+
+                <th>شماره</th>
+
+                <th>وضعیت</th>
+
+                <th>تاریخ سفارش</th>
+
+                <th>جمع کل</th>
+
+                <th>نام و نام خانوادگی کاربر</th>
+
+                <th>ایمیل کاربر</th>
+
+                <th></th>
+
+            </tr>
+
+            </thead>
+
+            <tbody id="shippedOrdersTableBody"></tbody>
+
+        </table>
+
+        <div class="text-center paginationRow component-pagination">
+
+            <ul id="shippedPagination" class="pagination-sm pagination"></ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+@section Styles
+{
+    <environment include="Development">
+
+        <link href="~/css/Component.css" rel="stylesheet"/>
+
+    </environment>
+
+    <environment exclude="Development">
+
+        <link href="~/css/bundles/Component.min.css" rel="stylesheet"/>
+
+
+    </environment>
+
+}
+
+@section scripts{
+
+    <script src="~/lib/twbs-pagination/jquery.twbsPagination.min.js"></script>
+
+    <script>
+    
+        $(function () {
+            let isInitialized = false;
+                        let element = $('#search');
+                        
+            getOrders(1, false);
+            function getOrders(page, isFromPagination) {
+                
+                const search = element.val();
+                const t = $("input[name='__RequestVerificationToken']").val();
+
+                $.ajax({
+                    type: 'Post',
+                    url: "/Panel/Orders",
+                    dataType: "json",
+                     headers:
+                        {
+                            "RequestVerificationToken": t
+                        },
+                    data: {
+                        search: search,
+                        pageNr: page,
+                    },
+                    success: function (data) {
+                        if (!isInitialized) {
+                            $('#pagination').twbsPagination({
+                                totalPages: data.totalPages === 0 ? 1 : data.totalPages,
+                                visiblePages: 3,
+                                onPageClick: function (event, pageNr) {
+                                    getOrders(pageNr, true);
+                                    return false;
+                                }
+                            });
+                            isInitialized = true;
+                        }
+                        else if (page === 1 && isFromPagination === false) {
+                            $('#pagination').twbsPagination('show', 1);
+                        }
+
+                        let html = '';
+
+                        if (data.orders.length) {
+                            
+                            $.each(data.orders, function (i, item) {
+                                html += '<tr>';
+
+                                html += '<td>' + item.id + '</td>';
+                                html += '<td>' + item.status + '</td>';
+                                html += '<td>' + item.shamsiOrderedDate + '</td>';
+                                html += '<td>ریال ' + Number(item.totalPrice).toFixed(2) + '</td>';
+                                html += '<td>' + item.usersFullName + '</td>';
+                                html += '<td>' + item.usersEmail + '</td>';
+                                html += '<td><a href="/Cart/Detail?id=' + item.id + '" class="btn btn-primary"><i class="fa fa-eye"></i></a></td>';
+
+                                html += '</tr>';
+                            });
+                            
+                        }
+                        else {
+                            html += '<tr>';
+
+                            html += '<td class="text-center" colspan="7">سفارشی ثبت نشده است.</td>'
+
+                            html += '</tr>';
+                        }
+
+                        $('#ordersTableBody').html(html);
+                    }
+                });
+            }
+            
+            element.on('input', function () {
+                getOrders(1, false);
+            });
+        });
+    </script>
+
+    <script>
+        $(function () {
+            let isProcessingInitialized = false;
+            let element = $('#processingSearch');
+            const t = $("input[name='__RequestVerificationToken']").val();
+                            
+            getProcessingOrders(1, false);
+
+            function getProcessingOrders(page, isFromPagination) {
+                const search = element.val();
+
+                $.ajax({
+                    type: 'Post',
+                    url: "/Panel/ProcessingOrders",
+                    dataType: "json",
+                      headers:
+                                            {
+                                                "RequestVerificationToken": t
+                                            },
+                    data: {
+                        search: search,
+                        pageNr: page,
+                    },
+                    success: function (data) {
+                        
+                        if (!isProcessingInitialized) {
+                            
+                            $('#processingPagination').twbsPagination({
+                                totalPages: data.totalPages === 0 ? 1 : data.totalPages,
+                                visiblePages: 3,
+                                onPageClick: function (event, pageNr) {
+                                    getProcessingOrders(pageNr, true);
+                                    return false;
+                                }
+                            });
+                            
+                            isProcessingInitialized = true;
+                        }
+                        else if (page === 1 && isFromPagination === false) {
+                            
+                            $('#processingPagination').twbsPagination('show', 1);
+                            
+                        }
+
+                        let html = '';
+
+                        if (data.orders.length) {
+                            
+                            $.each(data.orders, function (i, item) {
+                                html += '<tr>';
+
+                                html += '<td>' + item.id + '</td>';
+                                html += '<td>' + item.status + '</td>';
+                                html += '<td>' + item.shamsiOrderedDate + '</td>';
+                                html += '<td>ریال ' + Number(item.totalPrice).toFixed(2) + '</td>';
+                                html += '<td>' + item.usersFullName + '</td>';
+                                html += '<td>' + item.usersEmail + '</td>';
+                                html += '<td><a href="/Cart/Detail?id=' + item.id + '" class="btn btn-primary"><i class="fa fa-eye"></i></a></td>';
+
+                                html += '</tr>';
+                            });
+                            
+                        }
+                        else {
+                            
+                            html += '<tr>';
+
+                            html += '<td class="text-center" colspan="7">سفارشی در حال اقدام ثبت نشده است.</td>'
+
+                            html += '</tr>';
+                            
+                        }
+
+                        $('#processingOrdersTableBody').html(html);
+                    }
+                });
+            }
+            
+            element.on('input', function () {
+                getProcessingOrders(1, false);
+            });
+        });
+        
+    </script>
+
+    <script>
+        $(function () {
+            
+            let isShippedInitialized = false;
+            let element = $('#shippedSearch');
+                        const t = $("input[name='__RequestVerificationToken']").val();
+                        
+            getShippedOrders(1, false);
+
+            function getShippedOrders(page, isFromPagination) {
+                
+                const search = element.val();
+
+                $.ajax({
+                    type: 'Post',
+                    url: "/Panel/ShippedOrders",
+                    dataType: "json",
+                    data: {
+                        search: search,
+                        pageNr: page,
+                    },
+                      headers:
+                                            {
+                                                "RequestVerificationToken": t
+                                            },
+                    success: function (data) {
+                        if (!isShippedInitialized) {
+                            $('#shippedPagination').twbsPagination({
+                                totalPages: data.totalPages === 0 ? 1 : data.totalPages,
+                                visiblePages: 3,
+                                onPageClick: function (event, pageNr) {
+                                    getShippedOrders(pageNr, true);
+                                    return false;
+                                }
+                            });
+                            isShippedInitialized = true;
+                        }
+                        else if (page === 1 && isFromPagination === false) {
+                            $('#shippedPagination').twbsPagination('show', 1);
+                        }
+
+                        let html = '';
+
+                        if (data.orders.length) {
+                            
+                            $.each(data.orders, function (i, item) {
+                                
+                                html += '<tr>';
+
+                                html += '<td>' + item.id + '</td>';
+                                html += '<td>' + item.status + '</td>';
+                                html += '<td>' + item.shamsiOrderedDate + '</td>';
+                                html += '<td>ریال ' + Number(item.totalPrice).toFixed(2) + '</td>';
+                                html += '<td>' + item.usersFullName + '</td>';
+                                html += '<td>' + item.usersEmail + '</td>';
+                                html += '<td><a href="/Cart/Detail?id=' + item.id + '" class="btn btn-primary"><i class="fa fa-eye"></i></a></td>';
+
+                                html += '</tr>';
+                                
+                            });
+                        }
+                        else {
+                            
+                            html += '<tr>';
+
+                            html += '<td class="text-center" colspan="7">سفارش ارسال شده موجود نیست.</td>'
+
+                            html += '</tr>';
+                        }
+
+                        $('#shippedOrdersTableBody').html(html);
+                    }
+                });
+            }
+            
+            element.on('input', function () {
+                getShippedOrders(1, false);
+            });
+        });
+        
+    </script>
+}

@@ -1,0 +1,150 @@
+﻿@{
+    ViewData["Title"] = "کاربران";
+}
+
+<section class="container">
+
+    <div class="col-md-12 component-section p-3">
+
+            <div class="form-group">
+
+                <input style="width: 250px !important;" id="search" type="text" class="form-control" placeholder="جستجو..."/>
+
+            </div>
+
+            <table id="usersTable" class="table component-table table-responsive-md">
+
+                <thead>
+
+                <tr>
+
+                    <th>نام کاربری</th>
+
+                    <th>نام و نام خانوادگی</th>
+
+                    <th>ایمیل</th>
+
+                    <th>تاریخ تولد</th>
+
+                    <th>سبد خرید</th>
+
+                    <th>سفارشات</th>
+
+                    <th></th>
+
+                </tr>
+
+                </thead>
+
+                <tbody id="usersTableBody"></tbody>
+
+            </table>
+
+            <div class="text-center paginationRow">
+
+                <ul id="pagination" class="pagination-sm pagination"></ul>
+
+            </div>
+
+        </div>
+
+</section>
+
+@section Styles
+{
+    <environment include="Development">
+
+        <link href="~/css/Component.css" rel="stylesheet"/>
+
+    </environment>
+
+    <environment exclude="Development">
+
+        <link href="~/css/bundles/Component.min.css" rel="stylesheet"/>
+
+
+    </environment>
+
+}
+
+@section scripts{
+    <script src="~/lib/twbs-pagination/jquery.twbsPagination.min.js"></script>
+    <script>
+        $(function () {
+            let isInitialized = false;
+            let element = $('#search');
+                    const t = $("input[name='__RequestVerificationToken']").val();
+            getUsers(1, false);
+
+            function getUsers(page, isFromPagination) {
+                const search = element.val();
+
+                $.ajax({
+                    type: 'Post',
+                    url: "/Panel/AllUsers",
+                    dataType: "json",    headers:
+                                                                                 {
+                                                                                     "RequestVerificationToken": t
+                                                                                 },
+                    data: {
+                        search: search,
+                        pageNr: page,
+                    },
+                    success: function (data) {
+                        if (!isInitialized) {
+                            $('#pagination').twbsPagination({
+                                totalPages: data.totalPages === 0 ? 1 : data.totalPages,
+                                visiblePages: 3,
+                                onPageClick: function (event, pageNr) {
+                                    getUsers(pageNr, true);
+                                    $("html, body").animate({ scrollTop: 0 }, "slow");
+                                    return false;
+                                }
+                            });
+                            isInitialized = true;
+                        }
+                        else if (page === 1 && isFromPagination === false) {
+                            $('#pagination').twbsPagination('show', 1);
+                        }
+
+                        let html = '';
+
+                        if (data.users.length) {
+                            $.each(data.users, function (i, item) {
+                                html += '<tr>';
+
+                                html += '<td>' + item.userName + '</td>';
+                                html += '<td>' + item.fullName + '</td>';
+                                html += '<td>' + item.email + '</td>';
+                                html += '<td>' + item.shamsiBirthDate + '</td>';
+                                if (item.currentCart === true) {
+                                    html += '<td><a href="/Cart/Index?id=' + item.id + '">نمایش</a></td>';
+                                }
+                                else {
+                                    html +=  '<td>' + 'خالی' + '</td>';
+                                }
+                                html += '<td>' + item.orders + '</td>';
+                                html += '<td><a href="/Profile?id=' + item.id + '" class="btn btn-primary"><i class="fa fa-eye"></i></a></td>';
+
+                                html += '</tr>'
+                            });
+                        }
+                        else {
+                            html += '<tr>';
+
+                            html += '<td class="text-center" colspan="7">کاربری موجود نیست.</td>'
+
+                            html += '</tr>';
+                        }
+
+                        $('#usersTableBody').html(html);
+                    }
+                });
+            }
+            
+            element.on('input', function () {
+                getUsers(1, false);
+            });
+        });
+    </script>
+}

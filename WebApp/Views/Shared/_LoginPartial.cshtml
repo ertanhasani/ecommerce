@@ -1,0 +1,57 @@
+@using WebApp.Data
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+<li class="nav-item nav-admin mb-2 mb-lg-0">
+
+    <a id="cartBtn" class="nav-link cartBtn d-flex justify-content-center align-items-center" asp-action="Index" asp-controller="Cart">
+        <i class="fa fa-shopping-cart fa-lg"></i><span id="cartCount" class="badge badge-primary cartBadge ml-1">0</span>
+        
+        سبد خرید
+    </a>
+
+</li>
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    var user = await UserManager.GetUserAsync(User);
+
+    <li class="nav-item dropdown mb-2 mb-lg-0">
+
+        <a class="nav-link dropdown-toggle userInfo d-flex justify-content-center align-items-center" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+            <i class="fa fa-user fa-lg ml-1"></i>
+
+            @user.FirstName @user.LastName
+            
+        </a>
+
+        <div class="dropdown-menu text-right" aria-labelledby="dropdown01">
+
+            <a class="dropdown-item" asp-action="Index" asp-controller="Profile" asp-route-userId="@UserManager.GetUserId(User)">پروفایل</a>
+
+            <a class="dropdown-item" asp-action="DigitFileList" asp-controller="Cart">محصولات الکترونیکی من</a>
+
+            <form asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
+
+                <a href="#" id="logoutBtn" class="dropdown-item">خروج</a>
+
+            </form>
+
+        </div>
+
+    </li>
+}
+else
+{
+
+    <li class="nav-item mb-2 mb-lg-0">
+
+        <a class="nav-link userLogin d-flex justify-content-center align-items-center" asp-action="Login" asp-controller="Account">ورود | ثبت نام</a>
+
+    </li>
+}

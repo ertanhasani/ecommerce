@@ -1,0 +1,250 @@
+﻿@model WebApp.ViewModels.CartViewModel
+
+@{
+    ViewData["Title"] = "سبد خرید";
+}
+<link href="~/lib/jquery-confirm/dist/jquery-confirm.min.css" rel="stylesheet"/>
+
+<style>
+
+    .refreshQuantity {
+        padding: 7px !important;
+        display: block;
+    }
+
+    .quantityGroup {
+        float: left;
+    }
+    
+</style>
+
+<div class="contenti">
+
+    <div class="container">
+
+        <div class="row">
+
+            @if (Model?.Products.Count > 0)
+            {
+                <div class="col-md-12">
+
+                    <table class="table table-condensed table-hover">
+
+                        <thead>
+
+                        <tr>
+
+                            <th>تصویر</th>
+
+                            <th>نام</th>
+
+                            <th>قیمت واحد</th>
+
+                            <th>تعداد</th>
+
+                            <th>مبلغ کل</th>
+
+                            <th></th>
+
+                        </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                        @foreach (var item in Model.Products)
+                        {
+                            <tr>
+
+                                <td>
+
+                                    <a target="_blank" href="@item.ImagePath">
+
+                                        <img height="50px" src="@item.ImagePath" alt=""/>
+
+                                    </a>
+
+                                </td>
+
+                                <td>@item.ProductName</td>
+
+                                <td class="price"> ریال @item.Price</td>
+
+                                @if (!item.IsDigit)
+                                {
+                                    <td style="display: flex; justify-content: center;">
+
+                                        <div class="input-group col-md-5 quantityGroup" style="    margin-top: 10px;">
+
+                                            <div class="input-group-addon">
+
+                                                <a class="minus" href="#">
+
+                                                    <i class="fa fa-minus"></i>
+
+                                                </a>
+
+                                            </div>
+
+                                            <input value="@item.Quantity" type="text" class="form-control col-xs-2 text-center">
+
+                                            <div class="input-group-addon">
+
+                                                <a class="plus" href="#">
+
+                                                    <i class="fa fa-plus"></i>
+
+                                                </a>
+
+                                            </div>
+
+                                        </div>
+
+                                        <a data-id="@item.Id" class="updateProduct refreshQuantity" href="#" style="    margin-top: 10px;">
+
+                                            <i class="fa fa-refresh"></i>
+
+                                        </a>
+
+                                    </td>
+                                }
+
+                                <td class="price"> ریال @(item.Total * item.Quantity) </td>
+
+                                <td>
+
+                                    <a href="#" data-id="@item.Id" class="btn btn-danger deleteProduct">
+
+                                        <i class="fa fa-trash"></i>
+
+                                    </a>
+
+                                </td>
+
+                            </tr>
+                        }
+
+                        </tbody>
+
+                    </table>
+
+                    <div class="text-right">
+
+                        <h2 class="form-control"> جمع کل : ریال @Model.Total.ToString("0.00")</h2>
+
+                        <a asp-action="Index" asp-controller="Products" class="btn btn-success" style="margin-right: 10px;">ادامه خرید</a>
+
+                        <a asp-action="Shipping" asp-controller="Cart" class="btn btn-primary">تایید سفارش</a>
+
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-12 text-center" style="height: 500px;">
+
+                    <label>سبد خرید شما خالی است .</label>
+
+                    <label>
+                        <a asp-action="Index" asp-controller="Products">شروع خرید</a>
+                    </label>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+</div>
+
+<form id="deleteForm" method="post" asp-action="Delete">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <input type="hidden" id="deleteId" name="deleteId"/>
+
+</form>
+
+<form id="updateForm" method="post" asp-action="Update">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <input type="hidden" id="updateId" name="updateId"/>
+
+    <input type="hidden" id="updatedQuantity" name="updatedQuantity"/>
+
+</form>
+
+
+@section scripts{
+
+    <script src="~/lib/jquery-confirm/dist/jquery-confirm.min.js"></script>
+
+    <script>
+    
+        $(function () {
+            
+            $('.deleteProduct').on('click', function () {
+                
+                const id = $(this).data('id');
+                
+                $('#deleteId').val(id);
+
+                $.confirm({
+                
+                    title: '<i class="fa fa-exclamation-triangle"></i> آیا اطمینان دارید ؟',
+                    content: 'آیا از حذف این محصول اطمینان دارید؟',
+                    buttons: {
+                        somethingElse: {
+                            text: 'حذف',
+                            btnClass: 'btn-danger',
+                            keys: ['enter'],
+                            action: function () {
+                                $('#deleteForm').submit();
+                            }
+                        },
+                        
+                        cancel: { 
+                            text: 'لغو',
+                            action:function () {
+                        }}
+                    }
+                });
+            });
+
+            $('.updateProduct').on('click', function () {
+                
+                const id = $(this).data('id');
+                
+                $('#updateId').val(id);
+
+                const quantity = $(this).parent().children('div').children('input').val();
+                
+                $('#updatedQuantity').val(quantity);
+
+                $('#updateForm').submit();
+            });
+
+            $('.plus').on('click', function () {
+                
+                const currentValue = $(this).parent().siblings('input').val();
+                
+                $(this).parent().siblings('input').val(parseInt(currentValue) + 1);
+                
+            });
+
+            $('.minus').on('click', function () {
+                
+                const currentValue = $(this).parent().siblings('input').val();
+                
+                if (currentValue == 1) {
+                    return false;
+                }
+                
+                $(this).parent().siblings('input').val(parseInt(currentValue) - 1);
+            });
+        });
+        
+    </script>
+}

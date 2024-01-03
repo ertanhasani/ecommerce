@@ -1,0 +1,351 @@
+﻿@import "_variable.css";
+
+@font-face {
+    font-family: Vazir;
+    src: url(../font/Vazir.ttf);
+}
+@font-face {
+    font-family: Vazir;
+    src: url(../font/Vazir-Bold.ttf);
+    font-weight: bold;
+}
+body {
+    padding-top: 50px;
+    font-family: 'Vazir', sans-serif;
+    font-weight: 300;
+    direction: rtl;
+    background:var(--globalThirdColor);
+}
+
+header {
+    margin-bottom: 30px;
+}
+
+footer {
+    margin-top: 50px;
+}
+
+:focus-visible {
+    outline: none !important;
+}
+
+button:focus {
+    outline: none !important;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.row{
+    margin: 0 !important;
+}
+.selector-for-some-widget {
+    box-sizing: content-box;
+}
+
+table{
+    text-align: center;
+}
+
+td{
+    text-align: center;
+    vertical-align: middle !important;
+}
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/*#region Navbar*/
+
+.navbar-nav {
+    width: available;
+    width: -moz-available;
+    width: -webkit-fill-available;
+}
+
+
+.nav-admin{
+    margin-right: auto;
+}
+
+.nav-item {
+    margin-left: 15px;
+}
+.nav-link{
+    /*color: #04adbf !important;*/
+
+    color:var(--globalFourthColor) !important;
+
+}
+
+.dropdown-menu{
+    left: auto;
+    background:var(--globalFourthColor);
+    color: var(--globalSecondColor);
+}
+
+.input-group-addon {
+    position: relative;
+    z-index: 3;
+    border: none;
+    display: flex;
+    background: none !important;
+}
+
+.input-group-addon a {
+    margin: auto 5px;
+    height: fit-content;
+}
+
+#searchString{
+    min-width: 250px;
+    border-radius: var(--globalRadius)!important;
+    background: var(--globalThirdColor);
+    min-height: 39px;
+}
+
+#searchString::placeholder{
+color: var(--globalPrimaryColor);
+}
+
+section:nth-child(1){
+    margin-top: 4rem;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+
+.dropdown-menu > li > a {
+    font-weight: 300;
+}
+
+.navbar-default .navbar-nav > li > a {
+    font-weight: 400;
+}
+
+.navbar-default {
+    background-color: #04adbf;
+    border-color: #04adbf;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color: #04adbf;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav > li.active > a {
+    color: #04adbf;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    color: #04adbf !important;
+    background-color: transparent !important;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    color: white;
+    text-decoration: none;
+    background-color: #04adbf;
+}
+
+ul.nav > li.dropdown > ul.dropdown-menu {
+    border-top: 0;
+    border-color: #04adbf;
+}
+
+.navbar-brand > img {
+    position: relative;
+    top: -8px;
+}
+
+/*#region ContactUs*/
+
+.contact-us-title{
+    width: available;
+    width: -moz-available;
+    width: -webkit-fill-available;
+    text-align: center;
+}
+
+.contact-us-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.contact-us{
+    display: flex;
+    flex-direction: column;
+    background: #ececec;
+    width: 200px;
+    height: 300px;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.contact-us-circle{
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+    background-color: #04aec0;
+    color: white;
+    display: flex;
+    margin: 15px auto;
+    font-size: 48px;
+}
+
+.contact-us:hover .contact-us-circle, .contact-us:active .contact-us-circle{
+    background-color: #ee3b73;
+}
+
+.contact-us-circle span{
+    margin: auto;
+}
+
+.contact-us-item{
+    margin: auto 30px;
+    color: white !important;
+    background-color: #04aec0;
+    padding: 5px;
+    text-align: center;
+    border-radius: var(--globalRadius);
+    width: -webkit-fill-available;
+    width: available;
+    width: -moz-available;
+}
+
+.contact-us-item:hover, .contact-us-item:active{
+    color: white !important;
+    background-color: #ee3b73;
+    border:none;
+    cursor: pointer;
+}
+
+.contact-us-address{
+    text-align: center;
+    margin: 0 10px;
+}
+
+/*#endregion*/
+
+.form-group{
+    text-align: right;
+}
+
+.login-navbar{
+    background: var(--globalPrimaryColor);
+    color:var(--globalFourthColor);
+}
+
+#searchBtn{
+    position: absolute;
+    left: 6px;
+    top: 9px;
+}
+
+#searchBtn i{
+    color: var(--globalPrimaryColor);
+}
+
+.userInfo{
+    border: 1px solid var(--globalThirdColor);
+    border-radius: var(--globalRadius);
+    font-size: 14px;
+    width: 150px;
+}
+
+.userInfo:hover{
+    transform: scale(1.1);
+    transition: var(--transitionTimer);
+}
+
+.cartBtn{
+    border: 1px solid var(--globalThirdColor);
+    border-radius: var(--globalRadius);
+    color: var(--globalFourthColor);
+    font-size: 14px;
+    width: 150px;
+}
+
+.cartBtn i{
+color: var(--globalFourthColor);
+}
+
+.cartBtn:hover{
+    transform: scale(1.1);
+    transition: var(--transitionTimer);
+}
+.navbar-brand{
+    color:var(--globalFourthColor) !important; 
+}
+
+
+/* footer */
+.footer-layout{
+    background: #100F0FFF ;
+    color:var(--globalFourthColor);
+}
+
+.media-box{
+    background:var(--globalThirdColor);
+    height: 40px;
+    border-radius: var(--globalRadius);
+    padding: 0 2rem;
+}
+
+.tab-divider{
+    width: 1px;
+    margin: 0 1.5rem;
+    background: var(--globalSecondColor);
+    height: 50%;
+}
+
+.userLogin{
+    border: 1px solid var(--globalThirdColor);
+    border-radius: var(--globalRadius);
+    font-size: 14px;
+    width: 150px;
+}
+
+.userLogin:hover{
+    transform: scale(1.1);
+    transition: var(--transitionTimer);
+}
+
+@media (max-width: 991px) {
+    .nav-admin {
+        margin-right: inherit;
+    }
+}

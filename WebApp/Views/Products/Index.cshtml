@@ -1,0 +1,134 @@
+﻿@model WebApp.ViewModels.AllProductViewModel
+
+@{
+    ViewData["Title"] = "محصولات";
+}
+
+<link href="~/css/ProductList.css" rel="stylesheet"/>
+
+<div class="album contenti">
+
+    <div class="container">
+
+        @if (!string.IsNullOrEmpty(Model.SearchQuery))
+        {
+            <div class="row">
+
+                <h4 style="margin:auto;">جستجوی محصول: @Model.SearchQuery</h4>
+
+            </div>
+        }
+        else
+        {
+            if (Model.Category != null)
+            {
+                <div class="row">
+
+                    <h4 style="margin:auto;">جستجوی دسته بندی: @Model.Category.Name</h4>
+
+                </div>
+            }
+
+            else
+            {
+                <div class="row">
+
+                    <h4 style="margin:auto;">محصولات</h4>
+
+                </div>
+            }
+        }
+
+        @if (User.IsInRole("Admin"))
+        {
+            <div class="row">
+
+                <div class="col-md-12 text-right">
+
+                    <a asp-action="Add" class="btn btn-primary">محصول جدید</a>
+
+                </div>
+
+            </div>
+        }
+
+        @if (!Model.ProductList.Any())
+        {
+            <div class="row noProducts" style="display: none;">
+
+                <div class="col-md-12 text-center text-danger" style="height: 500px;">
+
+                    <h5>محصولی یافت نشده است</h5>
+
+                </div>
+
+            </div>
+        }
+        else
+        {
+            <div data-section="main-product" class="album contenti section">
+
+                <div class="container">
+
+                    <div class="row" style="justify-content: space-evenly;">
+
+                        @foreach (var item in Model.ProductList)
+                        {
+                            <div class="product-wrapper">
+
+                                <div class="item">
+
+                                    <a href="@item.Url">
+
+                                        <img src="@item.ImagePath" alt="Thumbnail" data-holder-render="true"/>
+
+                                    </a>
+
+                                    <div class="product-description">
+
+                                        <p class="Category">@item.ProdoctCategories</p>
+
+                                        <a href="@item.Url">@item.Title</a>
+
+                                        <div class="button-container">
+
+                                            <div class="price">
+
+                                                @if (item.IsOnSale)
+                                                {
+                                                    <h4 class="currentPrice"> @item.SalePrice</h4>
+
+                                                    <label class="oldPrice"> @item.Price</label>
+                                                }
+                                                else
+                                                {
+                                                    <h4 class="currentPrice"> @item.Price</h4>
+                                                }
+
+                                            </div>
+
+                                            <div class="action text-center">
+
+                                                <a href="@item.Url" class="btn">خرید</a>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</div>
